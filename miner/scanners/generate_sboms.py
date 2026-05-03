@@ -15,21 +15,33 @@ for directory in [REPOS_DIR, SBOMS_DIR, VULNS_DIR, CICD_DIR]:
     os.makedirs(directory, exist_ok=True)
 
 
+def format_json_file(filepath):
+    """Reformat a JSON file to have proper indentation (2 spaces)."""
+    try:
+        with open(filepath, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        with open(filepath, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        print(f"Formatted JSON: {filepath}")
+    except Exception as e:
+        print(f"Error formatting {filepath}: {e}")
+
+
 def scan_workflow(file_path):
     issues = []
     try:
         with open(file_path, "r", encoding="utf-8") as f:
             content = f.read()
-        
+
         if "npm install" in content and "npm ci" not in content:
             issues.append("Falta npm ci")
-        
+
         with open(file_path, "r", encoding="utf-8") as f:
             parsed = yaml.safe_load(f)
-        
+
         if not isinstance(parsed, dict):
             return issues
-        
+
         permissions = parsed.get("permissions")
         if permissions == "write-all":
             issues.append("Permisos excesivos: write-all")
@@ -44,22 +56,25 @@ def scan_workflow(file_path):
 def procesar_repositorios():
     with open(REPOS_JSON, "r", encoding="utf-8") as f:
         repos = json.load(f)
-    
+
     for repo in repos:
         name = repo["name"]
         clone_url = repo["clone_url"]
         repo_path = os.path.join(REPOS_DIR, name)
-        
+
         sbom_path = os.path.join(SBOMS_DIR, f"{name}_sbom.json")
         vuln_path = os.path.join(VULNS_DIR, f"{name}_vuln.json")
         cicd_path = os.path.join(CICD_DIR, f"{name}_cicd.json")
-        
+
         if not os.path.exists(repo_path):
             Repo.clone_from(clone_url, repo_path, depth=1)
-        
+
         subprocess.run(["syft", f"dir:{repo_path}", "-o", f"json={sbom_path}"], check=True, stderr=subprocess.DEVNULL)
+        format_json_file(sbom_path)
+
         subprocess.run(["grype", f"sbom:{sbom_path}", "-o", f"json={vuln_path}"], check=True, stderr=subprocess.DEVNULL)
-        
+        format_json_file(vuln_path)
+
         workflows_dir = os.path.join(repo_path, ".github", "workflows")
         repo_issues = []
         if os.path.exists(workflows_dir):
@@ -72,7 +87,7 @@ def procesar_repositorios():
                             "workflow": file_name,
                             "issues": issues
                         })
-        
+
         with open(cicd_path, "w", encoding="utf-8") as cicd_file:
             json.dump({"repositorio": name, "hallazgos": repo_issues}, cicd_file, indent=2)
 
