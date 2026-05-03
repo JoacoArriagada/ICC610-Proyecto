@@ -5,11 +5,13 @@ x-base: &base
   volumes:
     - .:/workspace
   working_dir: /workspace
+  user: "${UID:-1000}:${GID:-1000}"
 
 services:
   miner:
     <<: *base
     env_file: .env
+    hostname: miner
     # Mantenemos el contenedor vivo para que puedas entrar con 'docker compose exec miner bash'
     command: tail -f /dev/null
     stdin_open: true
@@ -17,6 +19,7 @@ services:
 
   analyzer:
     <<: *base
+    hostname: analyzer
     # Levanta Jupyter sin token y con permisos de root
     command: jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token='' analyzer/
     ports:

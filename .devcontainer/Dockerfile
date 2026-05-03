@@ -21,4 +21,12 @@ RUN curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh |
 
 COPY requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+# Crear usuario para evitar "I have no name!" en la terminal
+ARG USERNAME=appuser
+ARG USER_UID=1000
+ARG USER_GID=$USER_UID
+RUN groupadd --gid $USER_GID $USERNAME \
+    && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash
+
 WORKDIR /workspace

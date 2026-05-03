@@ -102,18 +102,20 @@ docker compose ps
 docker compose exec miner bash
 
 # Acceder al Analyzer (Jupyter Lab)
-# Abrir en el navegador: http://localhost:8888
+Abrir en el navegador: http://localhost:8888
 ```
 
 ### Uso con Docker Compose (Recomendado)
 
 ```bash
+# Ejecutar el Miner completo Generico (fetch + SBOMs + Grype + CodeQL + limpieza)
+docker compose exec miner bash
+python miner/run.py --org <organizacion> --limit <cantidad>
+
 # Ejecutar el Miner completo (fetch + SBOMs + Grype + CodeQL + limpieza)
 docker compose exec miner bash
 python miner/run.py --org FlowiseAI --limit 5
 
-# Extraer vulnerabilidades críticas
-python extract_critical_vulns.py
 ```
 
 ### Uso directo de los componentes
