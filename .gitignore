@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.idea/
+data/repos/
+.env
+.opencode/
+AGENTS.md
+plan_proyecto.md
+**/__pycache__/
+**/*.pyc
+miner/__pycache__/
+miner/scanners/__pycache__/
