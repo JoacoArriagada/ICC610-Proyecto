@@ -75,8 +75,6 @@ def procesar_repositorios():
         
         with open(cicd_path, "w", encoding="utf-8") as cicd_file:
             json.dump({"repositorio": name, "hallazgos": repo_issues}, cicd_file, indent=2)
-        
-        shutil.rmtree(repo_path, ignore_errors=True)
 
 
 if __name__ == "__main__":

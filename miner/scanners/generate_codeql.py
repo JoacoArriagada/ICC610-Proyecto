@@ -41,7 +41,7 @@ from pathlib import Path
 from git import Repo
 
 
-RUTA_BASE_CODEQL = Path(__file__).resolve().parents[1]
+RUTA_BASE_CODEQL = Path(__file__).resolve().parents[2]
 RUTA_REPOS_POR_DEFECTO = RUTA_BASE_CODEQL / "data" / "repos"
 RUTA_RESULTADOS_POR_DEFECTO = RUTA_BASE_CODEQL / "data" / "results" / "sast"
 SUFIJO_CODEQL = "-codeql.json"
@@ -61,7 +61,7 @@ class CodeQLAnalyzer:
     def __init__(self, repos_path: str, output_path: str):
         self.repos_path = Path(repos_path).expanduser().resolve()
         self.output_path = Path(output_path).expanduser().resolve()
-        self.project_root = Path(__file__).resolve().parents[1]
+        self.project_root = Path(__file__).resolve().parents[2]
         self.codeql_bin = "codeql"
         self.dry_run = False
         self.codeql_path: str | None = None

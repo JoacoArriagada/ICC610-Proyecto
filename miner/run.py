@@ -1,6 +1,7 @@
 import argparse
 import subprocess
 import sys
+import shutil
 from pathlib import Path
 
 def main():
@@ -46,6 +47,15 @@ def main():
     if result.returncode != 0:
         print("Error en análisis CodeQL")
         return 1
+    
+    # Paso 4: Limpieza de repositorios clonados
+    print("\n[4/4] Limpiando repositorios clonados...")
+    repos_path = base_dir.parent / "data" / "repos"
+    if repos_path.exists():
+        shutil.rmtree(repos_path, ignore_errors=True)
+        print(f"Directorio {repos_path} eliminado.")
+    else:
+        print("No se encontró el directorio de repositorios para limpiar.")
     
     print("\n" + "=" * 60)
     print("MINER COMPLETADO EXITOSAMENTE")

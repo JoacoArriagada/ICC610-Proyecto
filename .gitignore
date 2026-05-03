@@ -2,7 +2,7 @@
 __pycache__/
 *.pyc
 .idea/
-data/repos/
+data/
 .env
 .opencode/
 AGENTS.md
