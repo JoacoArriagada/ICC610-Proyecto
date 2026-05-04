@@ -30,3 +30,6 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME -s /bin/bash
 
 WORKDIR /workspace
+
+# Iniciar servidor HTTP al ejecutar el contenedor
+CMD ["python", "-m", "http.server", "8080"]
