@@ -1,0 +1,801 @@
+const DATA_BASE = '../data/results';
+
+const REPOS = ['langchain', 'langgraph', 'langchainjs', 'open_deep_research', 'local-deep-researcher'];
+
+const SEVERITY_ORDER = ['critical', 'high', 'medium', 'low'];
+
+const AppState = {
+    currentView: 'resumen',
+    dataset: null,
+    filteredRepos: [],
+    severityFilter: 'all',
+    searchQuery: '',
+    dateFilter: 'all',
+    viewSeverityFilter: 'all',
+    chartsManager: null,
+};
+
+const DatasetLoader = {
+    async load() {
+        await new Promise(resolve => setTimeout(resolve, 300));
+
+        const reposMeta = await fetch(`${DATA_BASE}/repos_activos.json`).then(r => r.json());
+
+        const vulnData = {};
+        const sastData = {};
+        const sbomData = {};
+        const cicdData = {};
+
+        await Promise.all(REPOS.map(async repo => {
+            try {
+                const v = await fetch(`${DATA_BASE}/vulns/${repo}_vuln.json`).then(r => r.json());
+                vulnData[repo] = v;
+            } catch (e) {
+                vulnData[repo] = { matches: [] };
+            }
+            try {
+                const s = await fetch(`${DATA_BASE}/sast/${repo}-codeql.json`).then(r => r.json());
+                sastData[repo] = s;
+            } catch (e) {
+                sastData[repo] = { total_issues: 0, issues: [] };
+            }
+            try {
+                const sb = await fetch(`${DATA_BASE}/sboms/${repo}_sbom.json`).then(r => r.json());
+                sbomData[repo] = sb;
+            } catch (e) {
+                sbomData[repo] = { artifacts: [] };
+            }
+            try {
+                const ci = await fetch(`${DATA_BASE}/cicd/${repo}_cicd.json`).then(r => r.json());
+                cicdData[repo] = ci;
+            } catch (e) {
+                cicdData[repo] = { hallazgos: [] };
+            }
+        }));
+
+        return this.transform(reposMeta, vulnData, sastData, sbomData, cicdData);
+    },
+
+    transform(reposMeta, vulnData, sastData, sbomData, cicdData) {
+        const repositories = [];
+        let totalVulns = 0;
+        let totalDeps = 0;
+
+        reposMeta.forEach(meta => {
+            const repoName = meta.name;
+            const vulns = vulnData[repoName] || { matches: [] };
+            const sast = sastData[repoName] || { issues: [] };
+            const sbom = sbomData[repoName] || { artifacts: [] };
+            const cicd = cicdData[repoName] || { hallazgos: [] };
+
+            const vulnerabilities = [];
+
+            vulns.matches.forEach((match, idx) => {
+                const v = match.vulnerability;
+                const a = match.artifact;
+                const severity = (v.severity || 'Low').toLowerCase();
+                const cvssScore = v.cvss && v.cvss.length > 0 ? v.cvss[0].metrics.baseScore : null;
+                const location = a.locations && a.locations.length > 0 ? a.locations[0].path : '';
+                const detectedAt = (v.fix && v.fix.available && v.fix.available.length > 0)
+                    ? v.fix.available[0].date + 'T00:00:00Z'
+                    : '2025-01-01T00:00:00Z';
+
+                vulnerabilities.push({
+                    id: v.id || `GRYPE-${idx}`,
+                    severity: severity,
+                    type: a.type || 'dependency',
+                    source: 'Grype',
+                    file: location,
+                    lineStart: null,
+                    lineEnd: null,
+                    description: (v.description || '').substring(0, 200),
+                    cve: (v.id && v.id.startsWith('CVE')) ? v.id : null,
+                    cvss: cvssScore,
+                    detectedAt: detectedAt,
+                    artifactName: a.name,
+                    artifactVersion: a.version,
+                });
+            });
+
+            if (sast.issues && sast.issues.length > 0) {
+                sast.issues.forEach((issue, idx) => {
+                    const sevMap = { error: 'critical', warning: 'high', note: 'medium' };
+                    const sev = sevMap[issue.severity] || 'low';
+                    const loc = issue.locations && issue.locations[0] && issue.locations[0].physicalLocation
+                        ? issue.locations[0].physicalLocation.artifactLocation.uri : '';
+
+                    vulnerabilities.push({
+                        id: issue.ruleId || `SAST-${idx}`,
+                        severity: sev,
+                        type: 'SAST',
+                        source: 'CodeQL',
+                        file: loc,
+                        lineStart: issue.locations && issue.locations[0] ? issue.locations[0].physicalLocation.region.startLine : null,
+                        lineEnd: issue.locations && issue.locations[0] ? issue.locations[0].physicalLocation.region.endLine : null,
+                        description: (issue.message && issue.message.text || '').substring(0, 200),
+                        cve: null,
+                        cvss: null,
+                        detectedAt: '2025-01-01T00:00:00Z',
+                        artifactName: null,
+                        artifactVersion: null,
+                    });
+                });
+            }
+
+            const cicdIssues = [];
+            if (cicd.hallazgos) {
+                cicd.hallazgos.forEach(h => {
+                    if (h.issues) {
+                        h.issues.forEach(issueText => {
+                            cicdIssues.push({
+                                workflow: h.workflow,
+                                issue: issueText,
+                            });
+                        });
+                    }
+                });
+            }
+
+            const dependencies = this.transformDependencies(sbom.artifacts || []);
+
+            repositories.push({
+                id: `REPO-${meta.name}`,
+                name: meta.name,
+                url: meta.clone_url,
+                language: meta.language,
+                vulnerabilityCount: vulnerabilities.length,
+                lastAnalysis: '2025-01-15T00:00:00Z',
+                vulnerabilities: vulnerabilities,
+                dependencies: dependencies,
+                cicdIssues: cicdIssues,
+                stargazers: meta.stargazers_count,
+                sbomArtifactCount: (sbom.artifacts || []).length,
+            });
+
+            totalVulns += vulnerabilities.length;
+            totalDeps += dependencies.length;
+        });
+
+        return {
+            organization: {
+                name: 'LangChain AI',
+                id: 'ORG-LANGCHAIN',
+                analyzedAt: new Date().toISOString(),
+                totalRepositories: repositories.length,
+                totalVulnerabilities: totalVulns,
+                totalDependencies: totalDeps,
+                repositories: repositories,
+            },
+        };
+    },
+
+    transformDependencies(artifacts) {
+        if (!artifacts || artifacts.length === 0) return [];
+
+        const depMap = new Map();
+        artifacts.forEach(a => {
+            const name = a.name || 'unknown';
+            const key = `${name}@${a.version || 'unknown'}`;
+            if (!depMap.has(key)) {
+                depMap.set(key, {
+                    name: name,
+                    version: a.version || 'unknown',
+                    source: 'Syft',
+                    vulnerabilities: 0,
+                    type: a.type || 'unknown',
+                    children: [],
+                });
+            }
+        });
+
+        return Array.from(depMap.values());
+    },
+};
+
+const GlobalFilters = {
+    apply(dataset, filters) {
+        let repos = [...dataset.organization.repositories];
+
+        if (filters.searchQuery) {
+            const q = filters.searchQuery.toLowerCase();
+            repos = repos.filter(r =>
+                r.name.toLowerCase().includes(q) ||
+                r.language.toLowerCase().includes(q)
+            );
+        }
+
+        if (filters.severityFilter && filters.severityFilter !== 'all') {
+            const minIdx = SEVERITY_ORDER.indexOf(filters.severityFilter);
+            repos = repos.map(r => {
+                const filteredVulns = r.vulnerabilities.filter(v => {
+                    const vIdx = SEVERITY_ORDER.indexOf(v.severity);
+                    return vIdx >= 0 && vIdx <= minIdx;
+                });
+                return { ...r, vulnerabilities: filteredVulns, vulnerabilityCount: filteredVulns.length };
+            });
+        }
+
+        if (filters.dateFilter && filters.dateFilter !== 'all') {
+            const daysMap = { '7d': 7, '30d': 30, '90d': 90 };
+            const days = daysMap[filters.dateFilter];
+            const cutoff = new Date();
+            cutoff.setDate(cutoff.getDate() - days);
+            repos = repos.filter(r => new Date(r.lastAnalysis) >= cutoff);
+        }
+
+        return repos;
+    },
+
+    getSummaryStats(repos) {
+        let totalVulns = 0;
+        let critical = 0, high = 0, medium = 0, low = 0;
+        const typeCount = {};
+        const sourceCount = { Grype: 0, CodeQL: 0 };
+        let totalCvss = 0, cvssCount = 0;
+
+        repos.forEach(r => {
+            r.vulnerabilities.forEach(v => {
+                totalVulns++;
+                if (v.severity === 'critical') critical++;
+                else if (v.severity === 'high') high++;
+                else if (v.severity === 'medium') medium++;
+                else if (v.severity === 'low') low++;
+                typeCount[v.type] = (typeCount[v.type] || 0) + 1;
+                sourceCount[v.source] = (sourceCount[v.source] || 0) + 1;
+                if (v.cvss !== null && v.cvss !== undefined) {
+                    totalCvss += v.cvss;
+                    cvssCount++;
+                }
+            });
+        });
+
+        const sortedTypes = Object.entries(typeCount)
+            .sort((a, b) => b[1] - a[1])
+            .slice(0, 10);
+
+        return {
+            totalVulns,
+            totalRepos: repos.length,
+            critical, high, medium, low,
+            typeCount: sortedTypes,
+            sourceCount,
+            cleanRepos: repos.filter(r => r.vulnerabilities.length === 0).length,
+            avgCvss: cvssCount > 0 ? (totalCvss / cvssCount).toFixed(1) : 'N/A',
+        };
+    },
+};
+
+const ViewRenderer = {
+    render(viewName) {
+        const container = document.getElementById('view-container');
+        AppState.currentView = viewName;
+
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.view === viewName);
+        });
+
+        container.innerHTML = '';
+
+        switch (viewName) {
+            case 'resumen': this.renderResumen(container); break;
+            case 'severidad': this.renderSeveridad(container); break;
+            case 'repositorios': this.renderRepositorios(container); break;
+            case 'sbom': this.renderSBOM(container); break;
+            default: this.renderResumen(container);
+        }
+
+        if (AppState.chartsManager) {
+            AppState.chartsManager.destroyAll();
+        }
+        AppState.chartsManager = new ChartsManager(AppState.filteredRepos);
+        AppState.chartsManager.init(viewName);
+
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    },
+
+    renderResumen(container) {
+        const stats = GlobalFilters.getSummaryStats(AppState.filteredRepos);
+        const severityPercent = stats.totalVulns > 0
+            ? {
+                critical: ((stats.critical / stats.totalVulns) * 100).toFixed(1),
+                high: ((stats.high / stats.totalVulns) * 100).toFixed(1),
+                medium: ((stats.medium / stats.totalVulns) * 100).toFixed(1),
+                low: ((stats.low / stats.totalVulns) * 100).toFixed(1),
+            }
+            : { critical: 0, high: 0, medium: 0, low: 0 };
+
+        container.innerHTML = `
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+                <div class="stat-card animate-slide-up" style="animation-delay: 0ms;">
+                    <div class="stat-card__icon bg-red-100">
+                        <i data-lucide="shield-alert" class="w-5 h-5 text-red-600"></i>
+                    </div>
+                    <div>
+                        <div class="stat-card__value">${stats.critical}</div>
+                        <div class="stat-card__label">Críticas</div>
+                    </div>
+                </div>
+                <div class="stat-card animate-slide-up" style="animation-delay: 80ms;">
+                    <div class="stat-card__icon bg-orange-100">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-orange-600"></i>
+                    </div>
+                    <div>
+                        <div class="stat-card__value">${stats.high}</div>
+                        <div class="stat-card__label">Altas</div>
+                    </div>
+                </div>
+                <div class="stat-card animate-slide-up" style="animation-delay: 160ms;">
+                    <div class="stat-card__icon bg-yellow-100">
+                        <i data-lucide="alert-circle" class="w-5 h-5 text-yellow-600"></i>
+                    </div>
+                    <div>
+                        <div class="stat-card__value">${stats.medium}</div>
+                        <div class="stat-card__label">Medias</div>
+                    </div>
+                </div>
+                <div class="stat-card animate-slide-up" style="animation-delay: 240ms;">
+                    <div class="stat-card__icon bg-green-100">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-green-600"></i>
+                    </div>
+                    <div>
+                        <div class="stat-card__value">${stats.low}</div>
+                        <div class="stat-card__label">Bajas</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid mb-6">
+                <div class="card animate-slide-up" style="animation-delay: 300ms;">
+                    <div class="card__header">
+                        <h3 class="card__title">Distribución por Severidad</h3>
+                        <span class="card__subtitle">Donut Chart</span>
+                    </div>
+                    <div class="card__body">
+                        <div class="relative" style="max-width: 320px; margin: 0 auto;">
+                            <canvas id="chart-donut-severity"></canvas>
+                        </div>
+                        <div class="flex justify-center gap-4 mt-3 flex-wrap text-xs">
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span> Crítica ${severityPercent.critical}%</span>
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-orange-500 inline-block"></span> Alta ${severityPercent.high}%</span>
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-yellow-500 inline-block"></span> Media ${severityPercent.medium}%</span>
+                            <span class="flex items-center gap-1"><span class="w-3 h-3 rounded-full bg-green-500 inline-block"></span> Baja ${severityPercent.low}%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card animate-slide-up" style="animation-delay: 380ms;">
+                    <div class="card__header">
+                        <h3 class="card__title">Top Tipos de Vulnerabilidad</h3>
+                        <span class="card__subtitle">Análisis de Pareto</span>
+                    </div>
+                    <div class="card__body">
+                        <canvas id="chart-hbar-types"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card animate-slide-up" style="animation-delay: 460ms;">
+                <div class="card__header">
+                    <h3 class="card__title">Últimas Vulnerabilidades Detectadas</h3>
+                    <span class="card__subtitle">${stats.totalVulns} hallazgos en ${stats.totalRepos} repositorios</span>
+                </div>
+                <div class="card__body card__body--no-padding overflow-x-auto">
+                    ${this.buildSeverityFilterBar(stats)}
+                    ${this.buildVulnerabilityTable(AppState.filteredRepos, 5)}
+                </div>
+            </div>
+        `;
+    },
+
+    renderSeveridad(container) {
+        const stats = GlobalFilters.getSummaryStats(AppState.filteredRepos);
+        container.innerHTML = `
+            <div class="dashboard-grid--3col mb-6">
+                <div class="card col-span-full lg:col-span-2 animate-slide-up">
+                    <div class="card__header">
+                        <h3 class="card__title">Donut de Severidad - Impacto Global</h3>
+                        <span class="card__subtitle">Click en segmento para filtrar</span>
+                    </div>
+                    <div class="card__body flex items-center justify-center">
+                        <div class="relative" style="max-width: 380px; width: 100%;">
+                            <canvas id="chart-donut-severity-large"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="card animate-slide-up" style="animation-delay: 100ms;">
+                    <div class="card__header">
+                        <h3 class="card__title">Resumen Rápido</h3>
+                    </div>
+                    <div class="card__body space-y-3">
+                        <div class="flex justify-between py-2 border-b border-[#E8ECF0]"><span class="text-sm text-[#88AABF]">Total Vulnerabilidades</span><span class="font-bold text-[#023E73]">${stats.totalVulns}</span></div>
+                        <div class="flex justify-between py-2 border-b border-[#E8ECF0]"><span class="text-sm text-[#88AABF]">Repositorios afectados</span><span class="font-bold text-[#023E73]">${stats.totalRepos - stats.cleanRepos}</span></div>
+                        <div class="flex justify-between py-2 border-b border-[#E8ECF0]"><span class="text-sm text-[#88AABF]">Repositorios limpios</span><span class="font-bold text-green-600">${stats.cleanRepos}</span></div>
+                        <div class="flex justify-between py-2 border-b border-[#E8ECF0]"><span class="text-sm text-[#88AABF]">Grype</span><span class="font-bold text-[#023E73]">${stats.sourceCount.Grype || 0}</span></div>
+                        <div class="flex justify-between py-2"><span class="text-sm text-[#88AABF]">CodeQL</span><span class="font-bold text-[#023E73]">${stats.sourceCount.CodeQL || 0}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card animate-slide-up" style="animation-delay: 200ms;">
+                <div class="card__header">
+                    <h3 class="card__title">Detalle de Vulnerabilidades por Severidad</h3>
+                </div>
+                <div class="card__body card__body--no-padding overflow-x-auto">
+                    ${this.buildSeverityFilterBar(stats)}
+                    ${this.buildVulnerabilityTable(AppState.filteredRepos, 50)}
+                </div>
+            </div>
+        `;
+    },
+
+    renderRepositorios(container) {
+        container.innerHTML = `
+            <div class="card animate-slide-up mb-6">
+                <div class="card__header">
+                    <h3 class="card__title">Comparativa por Repositorio (Stacked Bar)</h3>
+                    <span class="card__subtitle">Volumen apilado por severidad</span>
+                </div>
+                <div class="card__body">
+                    <div style="max-height: 450px; overflow-y: auto;">
+                        <canvas id="chart-stacked-bar" style="min-height: 400px;"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="card animate-slide-up" style="animation-delay: 150ms;">
+                <div class="card__header">
+                    <h3 class="card__title">Listado de Repositorios</h3>
+                </div>
+                <div class="card__body card__body--no-padding overflow-x-auto">
+                    ${this.buildRepoTable(AppState.filteredRepos)}
+                </div>
+            </div>
+        `;
+    },
+
+    renderSBOM(container) {
+        const allDeps = [];
+        AppState.filteredRepos.forEach(r => {
+            if (r.dependencies) {
+                r.dependencies.forEach(d => {
+                    allDeps.push({ ...d, repoName: r.name, repoVulns: r.vulnerabilityCount, sbomCount: r.sbomArtifactCount });
+                });
+            }
+        });
+
+        container.innerHTML = `
+            <div class="flex items-center gap-4 mb-4 flex-wrap">
+                <label class="text-sm font-medium text-[#023E73]">Filtrar por fuente:</label>
+                <select id="sbom-source-filter" class="text-sm border border-[#E0E6EB] rounded-lg bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#03658C]/30 cursor-pointer">
+                    <option value="all">Todas (Syft SBOM)</option>
+                    <option value="Syft">Syft (SBOM)</option>
+                </select>
+                <span class="text-xs text-[#88AABF]">${allDeps.length} dependencias encontradas</span>
+            </div>
+            <div class="dashboard-grid mb-6">
+                <div class="card animate-slide-up col-span-full lg:col-span-2">
+                    <div class="card__header">
+                        <h3 class="card__title">Distribución de Artefactos por Repositorio</h3>
+                        <span class="card__subtitle">SBOM Artifacts</span>
+                    </div>
+                    <div class="card__body">
+                        <div id="treemap-container" style="min-height: 420px;"></div>
+                    </div>
+                </div>
+                <div class="card animate-slide-up" style="animation-delay: 100ms;">
+                    <div class="card__header">
+                        <h3 class="card__title">Resumen SBOM</h3>
+                    </div>
+                    <div class="card__body card__body--no-padding overflow-x-auto">
+                        ${this.buildSBOMSummaryTable(AppState.filteredRepos)}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        setTimeout(() => {
+            if (AppState.chartsManager) {
+                AppState.chartsManager.initTreeMap('treemap-container');
+            }
+        }, 100);
+    },
+
+    buildSeverityFilterBar(stats) {
+        return `
+            <div class="flex items-center gap-2 p-3 flex-wrap border-b border-[#E8ECF0]">
+                <button class="severity-filter-btn ${AppState.viewSeverityFilter === 'all' ? 'active' : ''}" data-sev="all">
+                    Todas <span class="count">${stats.totalVulns}</span>
+                </button>
+                <button class="severity-filter-btn ${AppState.viewSeverityFilter === 'critical' ? 'active' : ''}" data-sev="critical">
+                    Críticas <span class="count">${stats.critical}</span>
+                </button>
+                <button class="severity-filter-btn ${AppState.viewSeverityFilter === 'high' ? 'active' : ''}" data-sev="high">
+                    Altas <span class="count">${stats.high}</span>
+                </button>
+                <button class="severity-filter-btn ${AppState.viewSeverityFilter === 'medium' ? 'active' : ''}" data-sev="medium">
+                    Medias <span class="count">${stats.medium}</span>
+                </button>
+                <button class="severity-filter-btn ${AppState.viewSeverityFilter === 'low' ? 'active' : ''}" data-sev="low">
+                    Bajas <span class="count">${stats.low}</span>
+                </button>
+            </div>
+        `;
+    },
+
+    buildVulnerabilityTable(repos, limit) {
+        let allVulns = [];
+        repos.forEach(r => {
+            r.vulnerabilities.forEach(v => {
+                if (AppState.viewSeverityFilter !== 'all' && v.severity !== AppState.viewSeverityFilter) return;
+                allVulns.push({ ...v, repoName: r.name });
+            });
+        });
+
+        allVulns.sort((a, b) => {
+            return new Date(b.detectedAt) - new Date(a.detectedAt);
+        });
+
+        const displayed = allVulns.slice(0, limit);
+
+        if (displayed.length === 0) {
+            return `
+                <div class="empty-state">
+                    <div class="empty-state__icon">
+                        <i data-lucide="shield-check" class="w-10 h-10 text-[#88AABF]"></i>
+                    </div>
+                    <p class="empty-state__title">Sin vulnerabilidades</p>
+                    <p class="empty-state__text">No se encontraron vulnerabilidades con los filtros actuales.</p>
+                </div>
+            `;
+        }
+
+        return `
+            <table class="table-zebra w-full">
+                <thead>
+                    <tr>
+                        <th>Severidad</th>
+                        <th>Artefacto</th>
+                        <th>Repositorio</th>
+                        <th>Archivo</th>
+                        <th>Fuente</th>
+                        <th>CVE</th>
+                        <th>CVSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${displayed.map(v => `
+                        <tr class="row-${v.severity}">
+                            <td><span class="severity-badge severity-badge--${v.severity}">${v.severity}</span></td>
+                            <td class="font-medium text-sm max-w-[200px] truncate" title="${this.escape(v.artifactName || v.type)}">${this.escape(v.artifactName || v.type)}</td>
+                            <td class="text-xs text-[#03658C]">${v.repoName}</td>
+                            <td class="text-xs font-mono max-w-[150px] truncate" title="${this.escape(v.file)}">${this.escape(v.file)}</td>
+                            <td><span class="text-xs px-2 py-0.5 rounded-full ${v.source === 'CodeQL' ? 'bg-purple-100 text-purple-700' : 'bg-teal-100 text-teal-700'}">${v.source}</span></td>
+                            <td class="text-xs font-mono text-[#88AABF]">${v.cve || 'N/A'}</td>
+                            <td><span class="font-bold text-sm ${v.cvss >= 9 ? 'text-red-600' : v.cvss >= 7 ? 'text-orange-600' : 'text-yellow-600'}">${v.cvss !== null ? v.cvss : '-'}</span></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+    },
+
+    buildRepoTable(repos) {
+        if (repos.length === 0) {
+            return `
+                <div class="empty-state">
+                    <div class="empty-state__icon">
+                        <i data-lucide="folder-open" class="w-10 h-10 text-[#88AABF]"></i>
+                    </div>
+                    <p class="empty-state__title">Sin repositorios</p>
+                    <p class="empty-state__text">No hay repositorios que coincidan con los filtros actuales.</p>
+                </div>
+            `;
+        }
+
+        return `
+            <table class="table-zebra w-full">
+                <thead>
+                    <tr>
+                        <th>Repositorio</th>
+                        <th>Lenguaje</th>
+                        <th>Vulnerabilidades</th>
+                        <th>Stars</th>
+                        <th>Artefactos SBOM</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${repos.map(r => {
+                        const critCount = r.vulnerabilities.filter(v => v.severity === 'critical').length;
+                        const highCount = r.vulnerabilities.filter(v => v.severity === 'high').length;
+                        const statusClass = critCount > 0 ? 'bg-red-100 text-red-700' :
+                            highCount > 0 ? 'bg-orange-100 text-orange-700' :
+                            r.vulnerabilityCount === 0 ? 'bg-green-100 text-green-700' :
+                            'bg-yellow-100 text-yellow-700';
+                        const statusText = critCount > 0 ? 'Crítico' :
+                            highCount > 0 ? 'Alto' :
+                            r.vulnerabilityCount === 0 ? 'Limpio' : 'Medio';
+                        return `
+                            <tr>
+                                <td class="font-medium text-[#023E73]">
+                                    <a href="${r.url}" target="_blank" class="hover:text-[#03658C]">${r.name}</a>
+                                </td>
+                                <td><span class="text-xs px-2 py-1 bg-[#F0F7FB] rounded-full text-[#03658C]">${r.language}</span></td>
+                                <td class="font-bold">${r.vulnerabilityCount}</td>
+                                <td class="text-xs text-[#88AABF]">${r.stargazers ? r.stargazers.toLocaleString() : '-'}</td>
+                                <td class="text-xs text-[#88AABF]">${r.sbomArtifactCount || 0}</td>
+                                <td><span class="text-xs px-2 py-0.5 rounded-full font-medium ${statusClass}">${statusText}</span></td>
+                            </tr>
+                        `;
+                    }).join('')}
+                </tbody>
+            </table>
+        `;
+    },
+
+    buildSBOMSummaryTable(repos) {
+        if (repos.length === 0) {
+            return `<div class="empty-state"><p class="empty-state__text text-sm">Sin datos SBOM</p></div>`;
+        }
+
+        return `
+            <table class="table-zebra w-full">
+                <thead>
+                    <tr>
+                        <th>Repositorio</th>
+                        <th>Artefactos</th>
+                        <th>Dependencias</th>
+                        <th>Vulns</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${repos.map(r => `
+                        <tr>
+                            <td class="font-medium text-sm text-[#023E73]">${r.name}</td>
+                            <td><span class="font-bold text-[#03658C]">${r.sbomArtifactCount || 0}</span></td>
+                            <td><span class="font-bold text-[#03658C]">${r.dependencies ? r.dependencies.length : 0}</span></td>
+                            <td><span class="font-bold ${r.vulnerabilityCount > 50 ? 'text-red-600' : r.vulnerabilityCount > 10 ? 'text-orange-600' : 'text-green-600'}">${r.vulnerabilityCount}</span></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+        `;
+    },
+
+    escape(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    },
+};
+
+function refreshView() {
+    const dataset = AppState.dataset;
+    if (!dataset) return;
+    AppState.filteredRepos = GlobalFilters.apply(dataset, {
+        searchQuery: AppState.searchQuery,
+        severityFilter: AppState.severityFilter,
+        dateFilter: AppState.dateFilter,
+    });
+    ViewRenderer.render(AppState.currentView);
+    updateTopBarStats();
+    bindSeverityFilterButtons();
+}
+
+function updateTopBarStats() {
+    const stats = GlobalFilters.getSummaryStats(AppState.filteredRepos);
+    document.getElementById('repo-count-display').textContent =
+        `${stats.totalRepos} repositorios · ${stats.totalVulns} vulns`;
+    document.getElementById('dataset-info').textContent =
+        `Total: ${stats.totalVulns} vulnerabilidades · Grype: ${stats.sourceCount.Grype || 0} · CodeQL: ${stats.sourceCount.CodeQL || 0}`;
+
+    const statusIndicator = document.getElementById('status-indicator');
+    const statusText = document.getElementById('status-text');
+    if (stats.critical > 0) {
+        statusIndicator.className = 'w-2 h-2 rounded-full bg-red-400 animate-pulse-soft';
+        statusText.textContent = 'Crítico';
+    } else if (stats.high > 5) {
+        statusIndicator.className = 'w-2 h-2 rounded-full bg-orange-400';
+        statusText.textContent = 'Atención';
+    } else {
+        statusIndicator.className = 'w-2 h-2 rounded-full bg-green-400 animate-pulse-soft';
+        statusText.textContent = 'Sistema Operativo';
+    }
+}
+
+function bindSeverityFilterButtons() {
+    document.querySelectorAll('.severity-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            AppState.viewSeverityFilter = btn.dataset.sev;
+            refreshView();
+        });
+    });
+}
+
+async function initApp() {
+    console.log('Inicializando Miner-Visualizer...');
+
+    document.getElementById('loading-placeholder').style.display = 'flex';
+
+    try {
+        AppState.dataset = await DatasetLoader.load();
+
+        document.getElementById('org-name-sidebar').textContent = AppState.dataset.organization.name;
+
+        AppState.filteredRepos = GlobalFilters.apply(AppState.dataset, {
+            searchQuery: '',
+            severityFilter: 'all',
+            dateFilter: 'all',
+            viewSeverityFilter: 'all',
+        });
+
+        document.getElementById('loading-placeholder').style.display = 'none';
+
+        ViewRenderer.render('resumen');
+        updateTopBarStats();
+        bindSeverityFilterButtons();
+
+        console.log('Miner-Visualizer inicializado correctamente');
+    } catch (error) {
+        console.error('Error al inicializar:', error);
+        document.getElementById('loading-placeholder').innerHTML = `
+            <div class="empty-state">
+                <p class="empty-state__title text-red-600">Error al cargar datos</p>
+                <p class="empty-state__text">${error.message}. Asegúrate de servir los archivos desde un servidor HTTP local.</p>
+            </div>
+        `;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    initApp();
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            AppState.currentView = btn.dataset.view;
+            AppState.viewSeverityFilter = 'all';
+            refreshView();
+        });
+    });
+
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const sidebar = document.getElementById('sidebar');
+    let overlay = null;
+
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', () => {
+            sidebar.classList.toggle('open');
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.className = 'sidebar-overlay';
+                document.body.appendChild(overlay);
+                overlay.addEventListener('click', () => {
+                    sidebar.classList.remove('open');
+                    overlay.classList.remove('active');
+                });
+            }
+            overlay.classList.toggle('active');
+        });
+    }
+
+    let searchDebounce;
+    document.getElementById('global-search').addEventListener('input', e => {
+        clearTimeout(searchDebounce);
+        searchDebounce = setTimeout(() => {
+            AppState.searchQuery = e.target.value;
+            refreshView();
+        }, 300);
+    });
+
+    document.getElementById('severity-filter').addEventListener('change', e => {
+        AppState.severityFilter = e.target.value;
+        AppState.viewSeverityFilter = 'all';
+        refreshView();
+    });
+
+    document.getElementById('date-filter').addEventListener('change', e => {
+        AppState.dateFilter = e.target.value;
+        refreshView();
+    });
+
+    console.log('Event listeners registrados');
+});
