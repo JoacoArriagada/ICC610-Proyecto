@@ -5,7 +5,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update && apt-get install -y nodejs && rm -rf /var/lib/apt/lists/*
 
 # Install CodeQL CLI
-RUN curl -L -o /tmp/codeql.zip https://github.com/github/codeql-cli-binaries/releases/download/v2.20.3/codeql-linux64.zip \
+RUN curl -L -o /tmp/codeql.zip https://github.com/github/codeql-cli-binaries/releases/download/v2.25.3/codeql-linux64.zip \
     && unzip /tmp/codeql.zip -d /opt \
     && rm /tmp/codeql.zip
 ENV PATH="/opt/codeql:${PATH}"

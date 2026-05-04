@@ -113,20 +113,21 @@ const DatasetLoader = {
             if (sast.issues && sast.issues.length > 0) {
                 sast.issues.forEach((issue, idx) => {
                     const sevMap = { error: 'critical', warning: 'high', note: 'medium' };
-                    const sev = sevMap[issue.severity] || 'low';
-                    const physLoc = (issue.locations && issue.locations[0]) ? issue.locations[0].physicalLocation : null;
-                    const loc = (physLoc && physLoc.artifactLocation) ? physLoc.artifactLocation.uri || '' : '';
-                    const region = physLoc ? physLoc.region : null;
+                    const sev = sevMap[issue.level] || sevMap[issue.severity] || 'low';
+                    const loc = issue.file || (issue.locations && issue.locations[0] && issue.locations[0].physicalLocation ? issue.locations[0].physicalLocation.artifactLocation.uri || '' : '');
+                    const region = issue.region || (issue.locations && issue.locations[0] && issue.locations[0].physicalLocation ? issue.locations[0].physicalLocation.region : null);
 
                     vulnerabilities.push({
-                        id: issue.ruleId || `SAST-${idx}`,
+                        id: issue.rule_id || issue.ruleId || `SAST-${idx}`,
                         severity: sev,
                         type: 'SAST',
                         source: 'CodeQL',
                         file: loc,
                         lineStart: region ? region.startLine : null,
                         lineEnd: region ? region.endLine : null,
-                        description: (issue.message && issue.message.text || '').substring(0, 200),
+                        description: typeof issue.message === 'string'
+                            ? issue.message.substring(0, 200)
+                            : (issue.message && issue.message.text || '').substring(0, 200),
                         cve: null,
                         cvss: null,
                         detectedAt: '2025-01-01T00:00:00Z',

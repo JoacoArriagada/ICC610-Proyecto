@@ -568,9 +568,8 @@ class CodeQLAnalyzer:
             # NO eliminar - dejar para debugging
             return salida
         else:
-            # Si no hay archivo, devolver SARIF vacío
-            LOGGER.warning("Archivo SARIF no fue generado para %s", db_path.name)
-            return json.dumps({"version": "2.1.0", "runs": []})
+            # Lanzar un error para que no genere un reporte JSON enmascarado
+            raise RuntimeError(f"Archivo SARIF no fue generado para {repo_name}. CodeQL falló silenciosamente, probablemente por falta de memoria (OOMKilled) o fallo de compilación.")
     
     def _normalizar_sarif(self, salida_cruda: str) -> str:
         """Limpia y valida el SARIF JSON."""
