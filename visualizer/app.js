@@ -1,7 +1,5 @@
 const DATA_BASE = '../data/results';
 
-const REPOS = ['langchain', 'langgraph', 'langchainjs', 'open_deep_research', 'local-deep-researcher'];
-
 const SEVERITY_ORDER = ['critical', 'high', 'medium', 'low'];
 
 const AppState = {
@@ -19,34 +17,48 @@ const DatasetLoader = {
     async load() {
         await new Promise(resolve => setTimeout(resolve, 300));
 
-        const reposMeta = await fetch(`${DATA_BASE}/repos_activos.json`).then(r => r.json());
+        const ts = Date.now();
+        const reposMeta = await fetch(`${DATA_BASE}/repos_activos.json?t=${ts}`).then(r => r.json());
+
+        if (!Array.isArray(reposMeta) || reposMeta.length === 0) {
+            throw new Error('No se encontraron repositorios en repos_activos.json');
+        }
+
+        const repoNames = reposMeta.map(r => r.name);
 
         const vulnData = {};
         const sastData = {};
         const sbomData = {};
         const cicdData = {};
 
-        await Promise.all(REPOS.map(async repo => {
+        await Promise.all(repoNames.map(async repo => {
             try {
-                const v = await fetch(`${DATA_BASE}/vulns/${repo}_vuln.json`).then(r => r.json());
+                const v = await fetch(`${DATA_BASE}/vulns/${repo}_vuln.json?t=${ts}`).then(r => r.json());
                 vulnData[repo] = v;
             } catch (e) {
                 vulnData[repo] = { matches: [] };
             }
             try {
-                const s = await fetch(`${DATA_BASE}/sast/${repo}-codeql.json`).then(r => r.json());
-                sastData[repo] = s;
+                const s = await fetch(`${DATA_BASE}/sast/${repo}-codeql.json?t=${ts}`).then(r => {
+                    if (!r.ok) throw new Error('Not found');
+                    return r.json();
+                });
+                if (s.sarif_metadata && s.sarif_metadata.tool && s.sarif_metadata.tool.name === 'unknown') {
+                    sastData[repo] = { error: true, total_issues: 0, issues: [] };
+                } else {
+                    sastData[repo] = s;
+                }
             } catch (e) {
-                sastData[repo] = { total_issues: 0, issues: [] };
+                sastData[repo] = { error: true, total_issues: 0, issues: [] };
             }
             try {
-                const sb = await fetch(`${DATA_BASE}/sboms/${repo}_sbom.json`).then(r => r.json());
+                const sb = await fetch(`${DATA_BASE}/sboms/${repo}_sbom.json?t=${ts}`).then(r => r.json());
                 sbomData[repo] = sb;
             } catch (e) {
                 sbomData[repo] = { artifacts: [] };
             }
             try {
-                const ci = await fetch(`${DATA_BASE}/cicd/${repo}_cicd.json`).then(r => r.json());
+                const ci = await fetch(`${DATA_BASE}/cicd/${repo}_cicd.json?t=${ts}`).then(r => r.json());
                 cicdData[repo] = ci;
             } catch (e) {
                 cicdData[repo] = { hallazgos: [] };
@@ -74,9 +86,10 @@ const DatasetLoader = {
                 const v = match.vulnerability;
                 const a = match.artifact;
                 const severity = (v.severity || 'Low').toLowerCase();
-                const cvssScore = v.cvss && v.cvss.length > 0 ? v.cvss[0].metrics.baseScore : null;
+                const cvssItem = (v.cvss && Array.isArray(v.cvss)) ? v.cvss.find(c => c && c.metrics && c.metrics.baseScore !== undefined) : null;
+                const cvssScore = cvssItem ? cvssItem.metrics.baseScore : null;
                 const location = a.locations && a.locations.length > 0 ? a.locations[0].path : '';
-                const detectedAt = (v.fix && v.fix.available && v.fix.available.length > 0)
+                const detectedAt = (v.fix && v.fix.available && v.fix.available.length > 0 && v.fix.available[0].date)
                     ? v.fix.available[0].date + 'T00:00:00Z'
                     : '2025-01-01T00:00:00Z';
 
@@ -101,8 +114,9 @@ const DatasetLoader = {
                 sast.issues.forEach((issue, idx) => {
                     const sevMap = { error: 'critical', warning: 'high', note: 'medium' };
                     const sev = sevMap[issue.severity] || 'low';
-                    const loc = issue.locations && issue.locations[0] && issue.locations[0].physicalLocation
-                        ? issue.locations[0].physicalLocation.artifactLocation.uri : '';
+                    const physLoc = (issue.locations && issue.locations[0]) ? issue.locations[0].physicalLocation : null;
+                    const loc = (physLoc && physLoc.artifactLocation) ? physLoc.artifactLocation.uri || '' : '';
+                    const region = physLoc ? physLoc.region : null;
 
                     vulnerabilities.push({
                         id: issue.ruleId || `SAST-${idx}`,
@@ -110,8 +124,8 @@ const DatasetLoader = {
                         type: 'SAST',
                         source: 'CodeQL',
                         file: loc,
-                        lineStart: issue.locations && issue.locations[0] ? issue.locations[0].physicalLocation.region.startLine : null,
-                        lineEnd: issue.locations && issue.locations[0] ? issue.locations[0].physicalLocation.region.endLine : null,
+                        lineStart: region ? region.startLine : null,
+                        lineEnd: region ? region.endLine : null,
                         description: (issue.message && issue.message.text || '').substring(0, 200),
                         cve: null,
                         cvss: null,
@@ -150,16 +164,27 @@ const DatasetLoader = {
                 cicdIssues: cicdIssues,
                 stargazers: meta.stargazers_count,
                 sbomArtifactCount: (sbom.artifacts || []).length,
+                sastError: sast.error === true,
             });
 
             totalVulns += vulnerabilities.length;
             totalDeps += dependencies.length;
         });
 
+        let orgName = 'Organización';
+        if (reposMeta.length > 0 && reposMeta[0].clone_url) {
+            const match = reposMeta[0].clone_url.match(/github\.com\/([^\/]+)\//);
+            if (match && match[1]) {
+                orgName = match[1];
+            } else {
+                orgName = reposMeta[0].name.split('/')[0];
+            }
+        }
+
         return {
             organization: {
-                name: 'LangChain AI',
-                id: 'ORG-LANGCHAIN',
+                name: orgName,
+                id: 'ORG-ANALYZED',
                 analyzedAt: new Date().toISOString(),
                 totalRepositories: repositories.length,
                 totalVulnerabilities: totalVulns,
@@ -608,13 +633,25 @@ const ViewRenderer = {
                     ${repos.map(r => {
                         const critCount = r.vulnerabilities.filter(v => v.severity === 'critical').length;
                         const highCount = r.vulnerabilities.filter(v => v.severity === 'high').length;
-                        const statusClass = critCount > 0 ? 'bg-red-100 text-red-700' :
-                            highCount > 0 ? 'bg-orange-100 text-orange-700' :
-                            r.vulnerabilityCount === 0 ? 'bg-green-100 text-green-700' :
-                            'bg-yellow-100 text-yellow-700';
-                        const statusText = critCount > 0 ? 'Crítico' :
-                            highCount > 0 ? 'Alto' :
-                            r.vulnerabilityCount === 0 ? 'Limpio' : 'Medio';
+                        let statusClass = '';
+                        let statusText = '';
+                        
+                        if (r.sastError && r.vulnerabilityCount === 0) {
+                            statusClass = 'bg-gray-100 text-gray-700';
+                            statusText = 'Error SAST';
+                        } else if (critCount > 0) {
+                            statusClass = 'bg-red-100 text-red-700';
+                            statusText = 'Crítico';
+                        } else if (highCount > 0) {
+                            statusClass = 'bg-orange-100 text-orange-700';
+                            statusText = 'Alto';
+                        } else if (r.vulnerabilityCount === 0) {
+                            statusClass = 'bg-green-100 text-green-700';
+                            statusText = 'Limpio';
+                        } else {
+                            statusClass = 'bg-yellow-100 text-yellow-700';
+                            statusText = 'Medio';
+                        }
                         return `
                             <tr>
                                 <td class="font-medium text-[#023E73]">
