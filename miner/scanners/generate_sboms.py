@@ -1,9 +1,11 @@
 import os
 import json
 import subprocess
-import shutil
+import logging
 import yaml
 from git import Repo
+
+LOGGER = logging.getLogger(__name__)
 
 REPOS_JSON = "data/results/repos_activos.json"
 REPOS_DIR = "data/repos"
@@ -16,15 +18,14 @@ for directory in [REPOS_DIR, SBOMS_DIR, VULNS_DIR, CICD_DIR]:
 
 
 def format_json_file(filepath):
-    """Reformat a JSON file to have proper indentation (2 spaces)."""
     try:
         with open(filepath, 'r', encoding='utf-8') as f:
             data = json.load(f)
         with open(filepath, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-        print(f"Formatted JSON: {filepath}")
+        LOGGER.info("Formatted JSON: %s", filepath)
     except Exception as e:
-        print(f"Error formatting {filepath}: {e}")
+        LOGGER.error("Error formatting %s: %s", filepath, e)
 
 
 def scan_workflow(file_path):
@@ -48,8 +49,8 @@ def scan_workflow(file_path):
         elif isinstance(permissions, dict):
             if permissions.get("contents") == "write":
                 issues.append("Permiso contents: write")
-    except Exception:
-        pass
+    except Exception as e:
+        LOGGER.warning("Error escaneando workflow %s: %s", file_path, e)
     return issues
 
 
@@ -66,12 +67,17 @@ def procesar_repositorios():
         vuln_path = os.path.join(VULNS_DIR, f"{name}_vuln.json")
         cicd_path = os.path.join(CICD_DIR, f"{name}_cicd.json")
 
+        LOGGER.info("Procesando repositorio: %s", name)
+
         if not os.path.exists(repo_path):
+            LOGGER.info("Clonando %s...", name)
             Repo.clone_from(clone_url, repo_path, depth=1)
 
+        LOGGER.info("Generando SBOM para %s...", name)
         subprocess.run(["syft", f"dir:{repo_path}", "-o", f"json={sbom_path}"], check=True, stderr=subprocess.DEVNULL)
         format_json_file(sbom_path)
 
+        LOGGER.info("Escaneando vulnerabilidades para %s...", name)
         subprocess.run(["grype", f"sbom:{sbom_path}", "-o", f"json={vuln_path}"], check=True, stderr=subprocess.DEVNULL)
         format_json_file(vuln_path)
 
@@ -90,7 +96,9 @@ def procesar_repositorios():
 
         with open(cicd_path, "w", encoding="utf-8") as cicd_file:
             json.dump({"repositorio": name, "hallazgos": repo_issues}, cicd_file, indent=2)
+        LOGGER.info("CI/CD: %d issues encontrados en %s", len(repo_issues), name)
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
     procesar_repositorios()

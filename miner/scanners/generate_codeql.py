@@ -18,9 +18,16 @@ Uso:
     python scripts/generate_codeql.py --repos-path PATH  # Con rutas personalizadas
 
 Requisitos:
-    - CodeQL CLI instalado (https://github.com/github/codeql-cli-binaries/releases)
-    - Query packs descargados: codeql pack download codeql/python-queries codeql/javascript-queries
+    - CodeQL CLI <= 2.17.x (versiones >= 2.18.x eliminan soporte para anotación 'overlay'
+      usada por los query packs JavaScript/Python actuales)
+    - Query packs: codeql/javascript-queries, codeql/python-queries
     - Repositorios clonados en data/repos/
+
+IMPORTANTE - Compatibilidad de versiones:
+    CodeQL >= 2.18.0 eliminó el soporte para la anotación 'overlay' en el lenguaje QL.
+    Los query packs actuales (javascript-queries, python-queries) dependen de esta
+    anotación. Si usas CodeQL >= 2.18.x, el análisis SAST no funcionará.
+    Se recomienda CodeQL 2.17.x o anterior.
 
 Salida:
     - Archivos JSON en data/results/ con patrón {repo-name}-codeql.json
@@ -481,15 +488,23 @@ class CodeQLAnalyzer:
         """Resuelve la suite de queries para el lenguaje específico.
         
         Estrategia:
-        1. Verificar si el query pack está disponible
-        2. Si no, intentar descargarlo
-        3. Fallback a query pack directo como último recurso
+        1. Buscar en /opt/codeql-queries/ (instalación global de CodeQL)
+        2. Verificar si el query pack está disponible en ~/.codeql/packages
+        3. Si no, intentar descargarlo
+        4. Fallback a query pack directo como último recurso
         """
-        codeql_packages = Path.home() / ".codeql" / "packages" / "codeql"
+        # Buscar en instalación global de CodeQL queries
+        global_queries = Path("/opt/codeql-queries")
+        suite_pattern = f"{lenguaje}/ql/src/codeql-suites/{lenguaje}-security-and-quality.qls"
+        global_suite = global_queries / suite_pattern
+        if global_suite.exists():
+            LOGGER.info(f"Usando suite global: {global_suite}")
+            return str(global_suite)
         
-        # Buscar suite explícita compilada
-        suite_pattern = f"{lenguaje}-queries/*/codeql-suites/{lenguaje}-security-and-quality.qls"
-        suite_files = list(codeql_packages.glob(suite_pattern))
+        # Buscar en cache local del usuario
+        codeql_packages = Path.home() / ".codeql" / "packages" / "codeql"
+        local_pattern = f"{lenguaje}-queries/*/codeql-suites/{lenguaje}-security-and-quality.qls"
+        suite_files = list(codeql_packages.glob(local_pattern))
         
         if suite_files:
             query_suite = str(suite_files[0])
@@ -514,7 +529,6 @@ class CodeQLAnalyzer:
         query_suite = self._resolver_query_suite(lenguaje)
         
         # Guardar SARIF directamente en el directorio de resultados (no en temp)
-        # Esto evita problemas de sincronización y facilita debugging
         self.output_path.mkdir(parents=True, exist_ok=True)
         sarif_output = self.output_path / f"{repo_name}_temp.sarif"
         
@@ -523,9 +537,9 @@ class CodeQLAnalyzer:
             "database",
             "analyze",
             str(db_path),
-            query_suite,  # Usar la suite completa
+            query_suite,
             f"--format={FORMATO_SALIDA_CODEQL}",
-            f"--output={str(sarif_output)}",  # Guardar en archivo del output directory
+            f"--output={str(sarif_output)}",
         ]
         
         resultado = subprocess.run(
@@ -536,11 +550,9 @@ class CodeQLAnalyzer:
         )
         
         if resultado.returncode != 0:
-            # Log del error pero continuar
             stderr_msg = resultado.stderr.strip() if resultado.stderr else "Sin detalles en stderr"
             stdout_msg = resultado.stdout.strip() if resultado.stdout else ""
             
-            # Detectar error específico de query pack no encontrado
             if "cannot be found" in stderr_msg or "not found" in stderr_msg:
                 LOGGER.warning(
                     "Query pack '%s' no encontrado. Esto puede ocurrir si los query packs no están instalados. "
@@ -552,7 +564,7 @@ class CodeQLAnalyzer:
             error_context += f"  Código de error: {resultado.returncode}\n"
             error_context += f"  STDERR: {stderr_msg}\n"
             if stdout_msg:
-                error_context += f"  STDOUT: {stdout_msg[:500]}\n"  # Primeros 500 chars de stdout
+                error_context += f"  STDOUT: {stdout_msg[:500]}\n"
             error_context += f"  Base de datos: {db_path}\n"
             error_context += f"  Suite de queries: {query_suite}\n"
             error_context += f"  Archivo de salida esperado: {sarif_output}\n"
@@ -560,15 +572,11 @@ class CodeQLAnalyzer:
             
             LOGGER.warning("CodeQL devolvió un código de error:%s", error_context)
         
-        # Leer el archivo SARIF generado
         if sarif_output.exists():
             salida = sarif_output.read_text(encoding="utf-8")
-            # MANTENER el archivo temporal para debugging
             LOGGER.info(f"SARIF guardado en: {sarif_output} ({len(salida)} bytes)")
-            # NO eliminar - dejar para debugging
             return salida
         else:
-            # Lanzar un error para que no genere un reporte JSON enmascarado
             raise RuntimeError(f"Archivo SARIF no fue generado para {repo_name}. CodeQL falló silenciosamente, probablemente por falta de memoria (OOMKilled) o fallo de compilación.")
     
     def _normalizar_sarif(self, salida_cruda: str) -> str:

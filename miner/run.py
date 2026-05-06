@@ -1,66 +1,73 @@
 import argparse
-import subprocess
-import sys
+import logging
 import shutil
 from pathlib import Path
 
+logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
+LOGGER = logging.getLogger(__name__)
+
+
 def main():
-    parser = argparse.ArgumentParser(description="Miner: Extrae y analiza vulnerabilidades de una organización de GitHub")
-    parser.add_argument("--org", type=str, default="", help="Nombre de la organización en GitHub")
-    parser.add_argument("--limit", type=int, default=5, help="Número máximo de repositorios a procesar")
-    
+    parser = argparse.ArgumentParser(description="Miner: Extrae y analiza vulnerabilidades de una organizacion de GitHub")
+    parser.add_argument("--org", type=str, default="", help="Nombre de la organizacion en GitHub")
+    parser.add_argument("--limit", type=int, default=5, help="Numero maximo de repositorios a procesar")
+
     args = parser.parse_args()
-    
+
     base_dir = Path(__file__).resolve().parent
-    scanners_dir = base_dir / "scanners"
-    
-    print("=" * 60)
-    print(f"INICIANDO MINER PARA ORGANIZACIÓN: {args.org}")
-    print("=" * 60)
-    
+    project_root = base_dir.parent
+
+    LOGGER.info("=" * 60)
+    LOGGER.info("INICIANDO MINER PARA ORGANIZACION: %s", args.org)
+    LOGGER.info("=" * 60)
+
     # Paso 1: Fetch repos
-    print("\n[1/3] Obteniendo repositorios...")
-    result = subprocess.run(
-        [sys.executable, str(scanners_dir / "fetch_repos.py"), "--org", args.org, "--limit", str(args.limit)],
-        cwd=str(base_dir.parent)
-    )
-    if result.returncode != 0:
-        print("Error al obtener repositorios")
+    LOGGER.info("[1/4] Obteniendo repositorios...")
+    from miner.scanners.fetch_repos import get_top_repos
+    import json
+    import os
+
+    results_dir = str(project_root / "data" / "results")
+    output_file = os.path.join(results_dir, "repos_activos.json")
+    os.makedirs(results_dir, exist_ok=True)
+
+    repos = get_top_repos(args.org, args.limit)
+    with open(output_file, "w", encoding="utf-8") as f:
+        json.dump(repos, f, indent=2)
+    LOGGER.info("Se han guardado %d repositorios.", len(repos))
+
+    if not repos:
+        LOGGER.warning("No se encontraron repositorios para %s", args.org)
         return 1
-    
+
     # Paso 2: Generate SBOMs y escanear con Grype
-    print("\n[2/3] Generando SBOMs y escaneando vulnerabilidades...")
-    result = subprocess.run(
-        [sys.executable, str(scanners_dir / "generate_sboms.py")],
-        cwd=str(base_dir.parent)
+    LOGGER.info("[2/4] Generando SBOMs y escaneando vulnerabilidades...")
+    from miner.scanners.generate_sboms import procesar_repositorios
+    procesar_repositorios()
+
+    # Paso 3: Ejecutar analisis CodeQL
+    LOGGER.info("[3/4] Ejecutando analisis CodeQL...")
+    from miner.scanners.generate_codeql import CodeQLAnalyzer
+    analyzer = CodeQLAnalyzer(
+        repos_path=str(project_root / "data" / "repos"),
+        output_path=str(project_root / "data" / "results" / "sast"),
     )
-    if result.returncode != 0:
-        print("Error al generar SBOMs")
-        return 1
-    
-    # Paso 3: Ejecutar análisis CodeQL
-    print("\n[3/3] Ejecutando análisis CodeQL...")
-    result = subprocess.run(
-        [sys.executable, str(scanners_dir / "generate_codeql.py")],
-        cwd=str(base_dir.parent)
-    )
-    if result.returncode != 0:
-        print("Error en análisis CodeQL")
-        return 1
-    
+    analyzer.run()
+
     # Paso 4: Limpieza de repositorios clonados
-    print("\n[4/4] Limpiando repositorios clonados...")
-    repos_path = base_dir.parent / "data" / "repos"
+    LOGGER.info("[4/4] Limpiando repositorios clonados...")
+    repos_path = project_root / "data" / "repos"
     if repos_path.exists():
         shutil.rmtree(repos_path, ignore_errors=True)
-        print(f"Directorio {repos_path} eliminado.")
+        LOGGER.info("Directorio %s eliminado.", repos_path)
     else:
-        print("No se encontró el directorio de repositorios para limpiar.")
-    
-    print("\n" + "=" * 60)
-    print("MINER COMPLETADO EXITOSAMENTE")
-    print("=" * 60)
+        LOGGER.info("No se encontro el directorio de repositorios para limpiar.")
+
+    LOGGER.info("=" * 60)
+    LOGGER.info("MINER COMPLETADO EXITOSAMENTE")
+    LOGGER.info("=" * 60)
     return 0
+
 
 if __name__ == "__main__":
     raise SystemExit(main())
