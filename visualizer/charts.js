@@ -29,6 +29,10 @@ class ChartsManager {
             case 'repositorios':
                 this.initStackedBar('chart-stacked-bar');
                 break;
+            case 'evolucion':
+                this.initEvolucionChart();
+                this.initEvolucionAreaChart();
+                break;
             case 'sbom':
                 break;
         }
@@ -279,6 +283,174 @@ class ChartsManager {
                     },
                     y: {
                         stacked: true,
+                        beginAtZero: true,
+                        ticks: { font: { family: 'Inter', size: 11 }, color: '#88AABF' },
+                        grid: { color: '#E8ECF0' },
+                    },
+                },
+            },
+        });
+
+        this.charts.push(chart);
+    }
+
+    initEvolucionChart() {
+        const canvas = document.getElementById('chart-evolucion-timeline');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const timeline = AppState.dataset ? AppState.dataset.timeline : null;
+        if (!timeline || !timeline.yearlyData || timeline.yearlyData.length === 0) {
+            ctx.font = '14px Inter';
+            ctx.fillStyle = '#88AABF';
+            ctx.textAlign = 'center';
+            ctx.fillText('Sin datos de evolución', canvas.width / 2, canvas.height / 2);
+            return;
+        }
+
+        const yearlyData = timeline.yearlyData;
+        const labels = yearlyData.map(y => y.year);
+        const barData = yearlyData.map(y => y.count);
+        const lineData = yearlyData.map(y => y.cumulative);
+
+        const chart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Nuevas por año',
+                        data: barData,
+                        backgroundColor: 'rgba(3, 101, 140, 0.35)',
+                        borderColor: '#03658C',
+                        borderWidth: 1,
+                        borderRadius: 4,
+                        order: 2,
+                    },
+                    {
+                        label: 'Acumulado',
+                        data: lineData,
+                        type: 'line',
+                        borderColor: '#DC2626',
+                        backgroundColor: 'rgba(220, 38, 38, 0.08)',
+                        borderWidth: 2.5,
+                        pointRadius: 5,
+                        pointBackgroundColor: '#DC2626',
+                        pointBorderColor: '#FFFFFF',
+                        pointBorderWidth: 2,
+                        pointHoverRadius: 7,
+                        tension: 0.3,
+                        fill: true,
+                        order: 1,
+                    },
+                ],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    intersect: false,
+                    mode: 'index',
+                },
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            font: { family: 'Inter', size: 11 },
+                            color: '#023E73',
+                        },
+                    },
+                    tooltip: {
+                        backgroundColor: '#023E73',
+                        titleFont: { family: 'Inter', weight: '600' },
+                        bodyFont: { family: 'Inter' },
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: { font: { family: 'Inter', size: 11 }, color: '#023E73' },
+                        grid: { display: false },
+                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: { font: { family: 'Inter', size: 11 }, color: '#88AABF' },
+                        grid: { color: '#E8ECF0' },
+                    },
+                },
+            },
+        });
+
+        this.charts.push(chart);
+    }
+
+    initEvolucionAreaChart() {
+        const canvas = document.getElementById('chart-evolucion-area');
+        if (!canvas) return;
+
+        const ctx = canvas.getContext('2d');
+        const timeline = AppState.dataset ? AppState.dataset.timeline : null;
+        if (!timeline || !timeline.yearlyData || timeline.yearlyData.length === 0) {
+            ctx.font = '14px Inter';
+            ctx.fillStyle = '#88AABF';
+            ctx.textAlign = 'center';
+            ctx.fillText('Sin datos', canvas.width / 2, canvas.height / 2);
+            return;
+        }
+
+        const yearlyData = timeline.yearlyData;
+        const labels = yearlyData.map(y => y.year);
+        const data = yearlyData.map(y => y.cumulative);
+
+        const chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Total acumulado',
+                    data: data,
+                    borderColor: '#03658C',
+                    backgroundColor: (context) => {
+                        const c = context.chart;
+                        const { chartArea } = c;
+                        if (!chartArea) return 'rgba(3, 101, 140, 0.15)';
+                        const gradient = c.ctx.createLinearGradient(0, chartArea.top, 0, chartArea.bottom);
+                        gradient.addColorStop(0, 'rgba(3, 101, 140, 0.25)');
+                        gradient.addColorStop(1, 'rgba(3, 101, 140, 0.02)');
+                        return gradient;
+                    },
+                    borderWidth: 3,
+                    pointRadius: 6,
+                    pointBackgroundColor: '#03658C',
+                    pointBorderColor: '#FFFFFF',
+                    pointBorderWidth: 2,
+                    pointHoverRadius: 8,
+                    tension: 0.35,
+                    fill: true,
+                }],
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        backgroundColor: '#023E73',
+                        titleFont: { family: 'Inter', weight: '600' },
+                        bodyFont: { family: 'Inter' },
+                        callbacks: {
+                            label: function(ctx) {
+                                return ` Acumulado: ${ctx.raw} vulnerabilidades`;
+                            },
+                        },
+                    },
+                },
+                scales: {
+                    x: {
+                        ticks: { font: { family: 'Inter', size: 11 }, color: '#023E73' },
+                        grid: { display: false },
+                    },
+                    y: {
                         beginAtZero: true,
                         ticks: { font: { family: 'Inter', size: 11 }, color: '#88AABF' },
                         grid: { color: '#E8ECF0' },
