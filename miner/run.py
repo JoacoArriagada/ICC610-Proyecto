@@ -1,6 +1,7 @@
 import argparse
 import logging
 import shutil
+import sys
 from pathlib import Path
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s | %(message)s")
@@ -16,6 +17,9 @@ def main():
 
     base_dir = Path(__file__).resolve().parent
     project_root = base_dir.parent
+    # Add project root to sys.path to resolve the miner package
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
 
     LOGGER.info("=" * 60)
     LOGGER.info("INICIANDO MINER PARA ORGANIZACION: %s", args.org)

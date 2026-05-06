@@ -29,7 +29,7 @@ services:
     <<: *base
     hostname: visualizer
     # Servidor HTTP para servir archivos del visualizer
-    working_dir: /workspace/visualizer
+    working_dir: /workspace
     command: python -m http.server 8080
     ports:
       - "8080:8080"

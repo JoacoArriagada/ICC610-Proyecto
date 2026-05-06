@@ -1,4 +1,4 @@
-const DATA_BASE = '../data/results';
+const DATA_BASE = '/data/results';
 
 const SEVERITY_ORDER = ['critical', 'high', 'medium', 'low'];
 
