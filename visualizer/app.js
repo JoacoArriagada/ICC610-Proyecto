@@ -15,6 +15,9 @@ const AppState = {
     severityFilter: 'all',
     searchQuery: '',
     viewSeverityFilter: 'all',
+    vulnLimit: 50,
+    sourceFilter: 'all',
+    cvssSortOrder: 'none',
     chartsManager: null,
     pagination: {
         severidad: { page: 1, limit: 50 },
@@ -125,7 +128,9 @@ const DatasetLoader = {
                     lineStart: null,
                     lineEnd: null,
                     description: (v.description || '').substring(0, 200),
-                    cve: (v.id && v.id.startsWith('CVE')) ? v.id : null,
+                    cve: (v.id && typeof v.id === 'string') ? v.id : null,
+                    cwe: (v.cwes && Array.isArray(v.cwes) && v.cwes.length > 0) ? 
+                        v.cwes.map(item => item.cwe).filter(cwe => cwe).join(', ') : null,
                     cvss: cvssScore,
                     detectedAt: detectedAt,
                     artifactName: a.name,
@@ -152,6 +157,7 @@ const DatasetLoader = {
                             ? issue.message.substring(0, 200)
                             : (issue.message && issue.message.text || '').substring(0, 200),
                         cve: null,
+                        cwe: null,
                         cvss: null,
                         detectedAt: null,
                         artifactName: null,
@@ -168,7 +174,47 @@ const DatasetLoader = {
                             cicdIssues.push({
                                 workflow: h.workflow,
                                 issue: issueText,
-                            });
+});
+
+// Global function for toggling vulnerability details
+window.toggleVulnDetails = function(idx) {
+    const detailsRow = document.getElementById(`details-${idx}`);
+    const chevron = document.getElementById(`chevron-${idx}`);
+    
+    if (detailsRow && chevron) {
+        const isHidden = detailsRow.classList.contains('hidden');
+        
+        if (isHidden) {
+            detailsRow.classList.remove('hidden');
+            chevron.style.transform = 'rotate(90deg)';
+        } else {
+            detailsRow.classList.add('hidden');
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+};
+
+// Global function for toggling CVSS sort
+window.toggleCvssSort = function() {
+    if (AppState.cvssSortOrder === 'none') {
+        AppState.cvssSortOrder = 'desc';  // Start with descending (highest first)
+    } else if (AppState.cvssSortOrder === 'desc') {
+        AppState.cvssSortOrder = 'asc';
+    } else {
+        AppState.cvssSortOrder = 'none';
+    }
+    
+    // Re-render only the table, not the entire view
+    const tableContainer = document.querySelector('#severity-table-container');
+    if (tableContainer) {
+        tableContainer.innerHTML = ViewRenderer.buildVulnerabilityTable(AppState.filteredRepos, AppState.vulnLimit);
+        
+        // Re-initialize Lucide icons for the new content
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    }
+};
                         });
                     }
                 });
@@ -428,6 +474,41 @@ const ViewRenderer = {
         if (typeof lucide !== 'undefined') {
             lucide.createIcons();
         }
+
+        // Add event listeners for severity view filters
+        if (viewName === 'severidad') {
+            setTimeout(() => {
+                const limitSelector = document.getElementById('vuln-limit-selector');
+                if (limitSelector) {
+                    limitSelector.value = AppState.vulnLimit;
+                    limitSelector.addEventListener('change', (e) => {
+                        AppState.vulnLimit = parseInt(e.target.value);
+                        const tableContainer = document.querySelector('#severity-table-container');
+                        if (tableContainer) {
+                            tableContainer.innerHTML = this.buildVulnerabilityTable(AppState.filteredRepos, AppState.vulnLimit);
+                            if (typeof lucide !== 'undefined') {
+                                lucide.createIcons();
+                            }
+                        }
+                    });
+                }
+
+                const sourceSelector = document.getElementById('source-filter');
+                if (sourceSelector) {
+                    sourceSelector.value = AppState.sourceFilter;
+                    sourceSelector.addEventListener('change', (e) => {
+                        AppState.sourceFilter = e.target.value;
+                        const tableContainer = document.querySelector('#severity-table-container');
+                        if (tableContainer) {
+                            tableContainer.innerHTML = this.buildVulnerabilityTable(AppState.filteredRepos, AppState.vulnLimit);
+                            if (typeof lucide !== 'undefined') {
+                                lucide.createIcons();
+                            }
+                        }
+                    });
+                }
+            }, 100);
+        }
     },
 
     renderResumen(container) {
@@ -555,11 +636,32 @@ const ViewRenderer = {
             <div class="card animate-slide-up" style="animation-delay: 200ms;">
                 <div class="card__header">
                     <h3 class="card__title">Detalle de Vulnerabilidades por Severidad</h3>
+                    <div class="flex items-center gap-4 flex-wrap">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="filter" class="w-4 h-4 text-[#88AABF]"></i>
+                            <select id="source-filter" class="text-sm border border-[#E0E6EB] rounded-lg bg-[#F9FAFB] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#03658C]/30 cursor-pointer">
+                                <option value="all">Todas las fuentes</option>
+                                <option value="Grype">Grype (Dependencias)</option>
+                                <option value="CodeQL">CodeQL (SAST)</option>
+                            </select>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <label class="text-sm font-medium text-[#023E73]">Mostrar:</label>
+                            <select id="vuln-limit-selector" class="text-sm border border-[#E0E6EB] rounded-lg bg-[#F9FAFB] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#03658C]/30 cursor-pointer">
+                                <option value="10">10</option>
+                                <option value="25">25</option>
+                                <option value="50" selected>50</option>
+                                <option value="100">100</option>
+                                <option value="200">200</option>
+                                <option value="-1">Todas</option>
+                            </select>
+                            <span class="text-xs text-[#88AABF]">vulnerabilidades</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="card__body card__body--no-padding overflow-x-auto">
-                    ${this.buildSeverityTableControls(this.getSeverityTableTotal(AppState.filteredRepos))}
                     ${this.buildSeverityFilterBar(stats)}
-                    ${this.buildVulnerabilityTable(AppState.filteredRepos)}
+                    <div id="severity-table-container">${this.buildVulnerabilityTable(AppState.filteredRepos, AppState.vulnLimit)}</div>
                 </div>
             </div>
         `;
@@ -940,27 +1042,42 @@ const ViewRenderer = {
         return list.slice(start, start + state.limit);
     },
 
-    buildVulnerabilityTable(repos) {
+    buildVulnerabilityTable(repos, limit) {
         let allVulns = [];
         repos.forEach(r => {
             r.vulnerabilities.forEach(v => {
-        if (AppState.viewSeverityFilter !== 'all' && v.severity !== AppState.viewSeverityFilter) return;
-        allVulns.push({ ...v, repoName: r.name });
+                if (AppState.viewSeverityFilter !== 'all' && v.severity !== AppState.viewSeverityFilter) return;
+                if (AppState.sourceFilter !== 'all' && v.source !== AppState.sourceFilter) return;
+                allVulns.push({ ...v, repoName: r.name });
             });
         });
-
-        if (AppState.severityTable.source !== 'all') {
-            allVulns = allVulns.filter(v => v.source === AppState.severityTable.source);
+        
+        allVulns.sort((a, b) => {
+            return new Date(b.detectedAt) - new Date(a.detectedAt);
+        });
+        
+        // Apply CVSS sorting if active
+        if (AppState.cvssSortOrder !== 'none') {
+            allVulns.sort((a, b) => {
+                // Handle null values (put them at the end)
+                if (a.cvss === null && b.cvss === null) return 0;
+                if (a.cvss === null) return 1;
+                if (b.cvss === null) return -1;
+                
+                // For CodeQL, use lineStart as numeric value for sorting
+                const valA = a.cvss !== null ? a.cvss : (a.lineStart || 0);
+                const valB = b.cvss !== null ? b.cvss : (b.lineStart || 0);
+                
+                if (AppState.cvssSortOrder === 'asc') {
+                    return valA - valB;
+                } else {
+                    return valB - valA;
+                }
+            });
         }
-
-        if (AppState.severityTable.sortBy === 'cvss_desc') {
-            allVulns.sort((a, b) => (b.cvss ?? -1) - (a.cvss ?? -1) || String(a.id || '').localeCompare(String(b.id || '')));
-        } else if (AppState.severityTable.sortBy === 'cvss_asc') {
-            allVulns.sort((a, b) => (a.cvss ?? 9999) - (b.cvss ?? 9999) || String(a.id || '').localeCompare(String(b.id || '')));
-        } else {
-            allVulns.sort((a, b) => (new Date(b.detectedAt || 0) - new Date(a.detectedAt || 0)) || String(a.id || '').localeCompare(String(b.id || '')));
-        }
-        const displayed = this.paginateList(allVulns, 'severidad');
+        
+        limit = limit || AppState.vulnLimit || 50;
+        const displayed = limit === -1 ? allVulns : allVulns.slice(0, limit);
 
         if (displayed.length === 0) {
             return `
@@ -983,20 +1100,47 @@ const ViewRenderer = {
                         <th>Repositorio</th>
                         <th>Archivo</th>
                         <th>Fuente</th>
-                        <th>CVE</th>
-                        <th>CVSS</th>
+                        <th>ID (CVE/Rule)</th>
+                        <th>CWE</th>
+                        <th class="cursor-pointer hover:bg-gray-100" onclick="toggleCvssSort()">
+                            CVSS / Línea
+                            <i data-lucide="arrow-up-down" class="w-3 h-3 inline-block ml-1 ${AppState.cvssSortOrder !== 'none' ? 'text-[#03658C]' : 'text-gray-400'}"></i>
+                            ${AppState.cvssSortOrder === 'asc' ? '<i data-lucide="arrow-up" class="w-3 h-3 inline-block ml-1"></i>' : 
+                              AppState.cvssSortOrder === 'desc' ? '<i data-lucide="arrow-down" class="w-3 h-3 inline-block ml-1"></i>' : ''}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
-                    ${displayed.map(v => `
-                        <tr class="row-${v.severity}">
-                            <td><span class="severity-badge severity-badge--${v.severity}">${SEVERITY_ES[v.severity] || v.severity}</span></td>
+                    ${displayed.map((v, idx) => `
+                        <tr class="row-${v.severity} cursor-pointer hover:bg-gray-50" data-vuln-idx="${idx}" onclick="toggleVulnDetails(${idx})">
+                            <td><i data-lucide="chevron-right" class="w-4 h-4 inline-block transition-transform duration-200" id="chevron-${idx}"></i> <span class="severity-badge severity-badge--${v.severity}">${v.severity}</span></td>
                             <td class="font-medium text-sm max-w-[200px] truncate" title="${this.escape(v.artifactName || v.type)}">${this.escape(v.artifactName || v.type)}</td>
                             <td class="text-xs text-[#03658C]">${v.repoName}</td>
-                            <td class="text-xs font-mono max-w-[150px] truncate" title="${this.escape(v.file)}">${this.escape(v.file)}</td>
+                            <td class="text-xs font-mono max-w-[150px] truncate" title="${this.escape(v.file)}">${this.escape(v.file)}${v.lineStart ? `<span class="text-[#88AABF]">:${v.lineStart}${v.lineEnd && v.lineEnd !== v.lineStart ? '-'+v.lineEnd : ''}</span>` : ''}</td>
                             <td><span class="text-xs px-2 py-0.5 rounded-full ${v.source === 'CodeQL' ? 'bg-purple-100 text-purple-700' : 'bg-teal-100 text-teal-700'}">${v.source}</span></td>
-                            <td class="text-xs font-mono text-[#88AABF]">${v.cve || 'N/A'}</td>
-                            <td><span class="font-bold text-sm ${v.cvss >= 9 ? 'text-red-600' : v.cvss >= 7 ? 'text-orange-600' : 'text-yellow-600'}">${v.cvss !== null ? v.cvss : '-'}</span></td>
+                             <td class="text-xs font-mono text-[#88AABF]">${v.source === 'CodeQL' ? `<span class="truncate max-w-[150px] inline-block">${this.escape((v.id || '').substring(0, 30))}</span>` : (v.cve || 'N/A')}</td>
+                             <td class="text-xs text-[#88AABF]">${v.cwe || 'N/A'}</td>
+                             <td>${v.source === 'CodeQL' ? 
+    `<span class="text-xs text-[#88AABF]">${v.lineStart ? v.lineStart + (v.lineEnd && v.lineEnd !== v.lineStart ? '-'+v.lineEnd : '') : '-'}</span>` : 
+    `<span class="font-bold text-sm ${v.cvss >= 9 ? 'text-red-600' : v.cvss >= 7 ? 'text-orange-600' : v.cvss !== null ? 'text-yellow-600' : 'text-gray-400'}">${v.cvss !== null ? v.cvss : '-'}</span>`}
+</td>
+                        </tr>
+                        <tr class="vuln-details-row hidden" id="details-${idx}">
+                            <td colspan="8" class="bg-gray-50 p-4">
+                                <div class="text-xs space-y-2">
+                                    ${v.source === 'CodeQL' ? `
+                                        <div><strong class="text-[#023E73]">Rule ID:</strong> <span class="font-mono">${this.escape(v.id || '')}</span></div>
+                                        <div><strong class="text-[#023E73]">Message:</strong> <span>${this.escape(v.description || '')}</span></div>
+                                        ${v.lineStart ? `<div><strong class="text-[#023E73]">Lines:</strong> ${v.lineStart}${v.lineEnd && v.lineEnd !== v.lineStart ? '-'+v.lineEnd : ''}</div>` : ''}
+                                    ` : `
+                                        <div><strong class="text-[#023E73]">CVE/GHSA:</strong> <span class="font-mono">${v.cve || 'N/A'}</span></div>
+                                        ${v.cwe ? `<div><strong class="text-[#023E73]">CWE:</strong> <span class="font-mono">${this.escape(v.cwe)}</span></div>` : ''}
+                                        <div><strong class="text-[#023E73]">Description:</strong> <span>${this.escape((v.description || '').substring(0, 500))}</span></div>
+                                        ${v.cvss ? `<div><strong class="text-[#023E73]">CVSS Score:</strong> <span class="font-bold ${v.cvss >= 9 ? 'text-red-600' : v.cvss >= 7 ? 'text-orange-600' : 'text-yellow-600'}">${v.cvss}</span></div>` : ''}
+                                        ${v.artifactVersion ? `<div><strong class="text-[#023E73]">Version:</strong> ${this.escape(v.artifactVersion || '')}</div>` : ''}
+                                    `}
+                                </div>
+                            </td>
                         </tr>
                     `).join('')}
                 </tbody>

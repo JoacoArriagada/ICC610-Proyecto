@@ -436,3 +436,40 @@ body {
         padding: 6px 8px;
     }
 }
+
+/* Expandable vulnerability rows */
+.vuln-details-row {
+    transition: all 0.2s ease;
+}
+
+.vuln-details-row td {
+    border-top: 1px dashed #E8ECF0;
+    background-color: #F9FAFB;
+}
+
+.vuln-details-row .text-xs {
+    font-size: 0.75rem;
+    line-height: 1.5;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+#chevron-right {
+    transition: transform 0.2s ease;
+}
+
+/* Sortable column headers */
+.cursor-pointer:hover {
+    background-color: #F9FAFB;
+}
+
+th.cursor-pointer {
+    user-select: none;
+    position: relative;
+}
+
+th.cursor-pointer i {
+    vertical-align: middle;
+}
