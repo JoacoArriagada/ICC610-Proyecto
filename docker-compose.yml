@@ -30,6 +30,6 @@ services:
     hostname: visualizer
     # Servidor HTTP para servir archivos del visualizer
     working_dir: /workspace
-    command: python -m http.server 8080
+    command: python serve.py
     ports:
       - "8080:8080"

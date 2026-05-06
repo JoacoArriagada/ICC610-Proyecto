@@ -14,11 +14,22 @@ const AppState = {
 };
 
 const DatasetLoader = {
+    async fetchJSON(url) {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
+        const contentType = response.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+            throw new Error('Content-Type inválido');
+        }
+        return response.json();
+    },
     async load() {
         await new Promise(resolve => setTimeout(resolve, 300));
 
         const ts = Date.now();
-        const reposMeta = await fetch(`${DATA_BASE}/repos_activos.json?t=${ts}`).then(r => r.json());
+        const reposMeta = await this.fetchJSON(`${DATA_BASE}/repos_activos.json?t=${ts}`);
 
         if (!Array.isArray(reposMeta) || reposMeta.length === 0) {
             throw new Error('No se encontraron repositorios en repos_activos.json');
@@ -33,16 +44,13 @@ const DatasetLoader = {
 
         await Promise.all(repoNames.map(async repo => {
             try {
-                const v = await fetch(`${DATA_BASE}/vulns/${repo}_vuln.json?t=${ts}`).then(r => r.json());
+                const v = await this.fetchJSON(`${DATA_BASE}/vulns/${repo}_vuln.json?t=${ts}`);
                 vulnData[repo] = v;
             } catch (e) {
                 vulnData[repo] = { matches: [] };
             }
             try {
-                const s = await fetch(`${DATA_BASE}/sast/${repo}-codeql.json?t=${ts}`).then(r => {
-                    if (!r.ok) throw new Error('Not found');
-                    return r.json();
-                });
+                const s = await this.fetchJSON(`${DATA_BASE}/sast/${repo}-codeql.json?t=${ts}`);
                 if (s.sarif_metadata && s.sarif_metadata.tool && s.sarif_metadata.tool.name === 'unknown') {
                     sastData[repo] = { error: true, total_issues: 0, issues: [] };
                 } else {
@@ -52,13 +60,13 @@ const DatasetLoader = {
                 sastData[repo] = { error: true, total_issues: 0, issues: [] };
             }
             try {
-                const sb = await fetch(`${DATA_BASE}/sboms/${repo}_sbom.json?t=${ts}`).then(r => r.json());
+                const sb = await this.fetchJSON(`${DATA_BASE}/sboms/${repo}_sbom.json?t=${ts}`);
                 sbomData[repo] = sb;
             } catch (e) {
                 sbomData[repo] = { artifacts: [] };
             }
             try {
-                const ci = await fetch(`${DATA_BASE}/cicd/${repo}_cicd.json?t=${ts}`).then(r => r.json());
+                const ci = await this.fetchJSON(`${DATA_BASE}/cicd/${repo}_cicd.json?t=${ts}`);
                 cicdData[repo] = ci;
             } catch (e) {
                 cicdData[repo] = { hallazgos: [] };
@@ -91,7 +99,7 @@ const DatasetLoader = {
                 const location = a.locations && a.locations.length > 0 ? a.locations[0].path : '';
                 const detectedAt = (v.fix && v.fix.available && v.fix.available.length > 0 && v.fix.available[0].date)
                     ? v.fix.available[0].date + 'T00:00:00Z'
-                    : '2025-01-01T00:00:00Z';
+                    : null;
 
                 vulnerabilities.push({
                     id: v.id || `GRYPE-${idx}`,
@@ -130,7 +138,7 @@ const DatasetLoader = {
                             : (issue.message && issue.message.text || '').substring(0, 200),
                         cve: null,
                         cvss: null,
-                        detectedAt: '2025-01-01T00:00:00Z',
+                        detectedAt: null,
                         artifactName: null,
                         artifactVersion: null,
                     });
@@ -159,7 +167,7 @@ const DatasetLoader = {
                 url: meta.clone_url,
                 language: meta.language,
                 vulnerabilityCount: vulnerabilities.length,
-                lastAnalysis: '2025-01-15T00:00:00Z',
+                lastAnalysis: meta.analyzed_at || meta.analyzedAt || null,
                 vulnerabilities: vulnerabilities,
                 dependencies: dependencies,
                 cicdIssues: cicdIssues,
@@ -339,7 +347,7 @@ const GlobalFilters = {
             const days = daysMap[filters.dateFilter];
             const cutoff = new Date();
             cutoff.setDate(cutoff.getDate() - days);
-            repos = repos.filter(r => new Date(r.lastAnalysis) >= cutoff);
+            repos = repos.filter(r => r.lastAnalysis && new Date(r.lastAnalysis) >= cutoff);
         }
 
         return repos;
@@ -1135,7 +1143,6 @@ function bindSeverityFilterButtons() {
 }
 
 async function initApp() {
-    console.log('Inicializando Miner-Visualizer...');
 
     document.getElementById('loading-placeholder').style.display = 'flex';
 
@@ -1157,7 +1164,6 @@ async function initApp() {
         updateTopBarStats();
         bindSeverityFilterButtons();
 
-        console.log('Miner-Visualizer inicializado correctamente');
     } catch (error) {
         console.error('Error al inicializar:', error);
         document.getElementById('loading-placeholder').innerHTML = `
@@ -1220,5 +1226,4 @@ document.addEventListener('DOMContentLoaded', () => {
         refreshView();
     });
 
-    console.log('Event listeners registrados');
 });
