@@ -1,6 +1,12 @@
 const DATA_BASE = '/data/results';
 
 const SEVERITY_ORDER = ['critical', 'high', 'medium', 'low'];
+const SEVERITY_ES = {
+    critical: 'Crítica',
+    high: 'Alta',
+    medium: 'Media',
+    low: 'Baja',
+};
 
 const AppState = {
     currentView: 'resumen',
@@ -8,9 +14,18 @@ const AppState = {
     filteredRepos: [],
     severityFilter: 'all',
     searchQuery: '',
-    dateFilter: 'all',
     viewSeverityFilter: 'all',
     chartsManager: null,
+    pagination: {
+        severidad: { page: 1, limit: 50 },
+        evolucion: { page: 1, limit: 10 },
+        sbom: { page: 1, limit: 50 },
+    },
+    severityTable: {
+        source: 'all',
+        sortBy: 'date_desc',
+    },
+    sbomSource: 'all',
 };
 
 const DatasetLoader = {
@@ -342,14 +357,6 @@ const GlobalFilters = {
             });
         }
 
-        if (filters.dateFilter && filters.dateFilter !== 'all') {
-            const daysMap = { '7d': 7, '30d': 30, '90d': 90 };
-            const days = daysMap[filters.dateFilter];
-            const cutoff = new Date();
-            cutoff.setDate(cutoff.getDate() - days);
-            repos = repos.filter(r => r.lastAnalysis && new Date(r.lastAnalysis) >= cutoff);
-        }
-
         return repos;
     },
 
@@ -511,7 +518,7 @@ const ViewRenderer = {
                 </div>
                 <div class="card__body card__body--no-padding overflow-x-auto">
                     ${this.buildSeverityFilterBar(stats)}
-                    ${this.buildVulnerabilityTable(AppState.filteredRepos, 5)}
+                    ${this.buildVulnerabilityTable(AppState.filteredRepos)}
                 </div>
             </div>
         `;
@@ -550,8 +557,9 @@ const ViewRenderer = {
                     <h3 class="card__title">Detalle de Vulnerabilidades por Severidad</h3>
                 </div>
                 <div class="card__body card__body--no-padding overflow-x-auto">
+                    ${this.buildSeverityTableControls(this.getSeverityTableTotal(AppState.filteredRepos))}
                     ${this.buildSeverityFilterBar(stats)}
-                    ${this.buildVulnerabilityTable(AppState.filteredRepos, 50)}
+                    ${this.buildVulnerabilityTable(AppState.filteredRepos)}
                 </div>
             </div>
         `;
@@ -604,7 +612,7 @@ const ViewRenderer = {
             highOverTime.push({ year: y.year, count: highCumul });
         });
 
-        const latestVulns = vulnsByDate.slice(0, 10);
+        const pagedVulns = this.paginateList(vulnsByDate, 'evolucion');
 
         container.innerHTML = `
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -711,7 +719,8 @@ const ViewRenderer = {
                     <span class="card__subtitle">${vulnsByDate.length} hallazgos con fecha registrada</span>
                 </div>
                 <div class="card__body card__body--no-padding overflow-x-auto">
-                    ${latestVulns.length > 0 ? `
+                    ${this.buildPaginationControls('evolucion', vulnsByDate.length)}
+                    ${pagedVulns.length > 0 ? `
                     <table class="table-zebra w-full">
                         <thead>
                             <tr>
@@ -724,11 +733,11 @@ const ViewRenderer = {
                             </tr>
                         </thead>
                         <tbody>
-                            ${latestVulns.map(v => `
+                            ${pagedVulns.map(v => `
                                 <tr class="row-${v.severity}">
                                     <td class="text-xs font-mono text-[#88AABF] whitespace-nowrap">${v.date}</td>
                                     <td class="font-medium text-sm max-w-[250px] truncate" title="${this.escape((v.artifactName || '') + ' ' + v.id)}">${this.escape(v.id)}</td>
-                                    <td><span class="severity-badge severity-badge--${v.severity}">${v.severity}</span></td>
+                                    <td><span class="severity-badge severity-badge--${v.severity}">${SEVERITY_ES[v.severity] || v.severity}</span></td>
                                     <td class="text-xs text-[#03658C]">${v.repoName}</td>
                                     <td><span class="text-xs px-2 py-0.5 rounded-full ${v.source === 'CodeQL' ? 'bg-purple-100 text-purple-700' : 'bg-teal-100 text-teal-700'}">${v.source}</span></td>
                                     <td><span class="font-bold text-sm ${v.cvss >= 9 ? 'text-red-600' : v.cvss >= 7 ? 'text-orange-600' : 'text-yellow-600'}">${v.cvss !== null ? v.cvss : '-'}</span></td>
@@ -756,14 +765,19 @@ const ViewRenderer = {
             }
         });
 
+        const selectedSource = AppState.sbomSource || 'all';
+        const filteredDeps = selectedSource === 'all'
+            ? allDeps
+            : allDeps.filter(d => (d.source || 'Syft') === selectedSource);
+
         container.innerHTML = `
             <div class="flex items-center gap-4 mb-4 flex-wrap">
                 <label class="text-sm font-medium text-[#023E73]">Filtrar por fuente:</label>
                 <select id="sbom-source-filter" class="text-sm border border-[#E0E6EB] rounded-lg bg-white px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#03658C]/30 cursor-pointer">
-                    <option value="all">Todas (Syft SBOM)</option>
-                    <option value="Syft">Syft (SBOM)</option>
+                    <option value="all" ${selectedSource === 'all' ? 'selected' : ''}>Todas (Syft SBOM)</option>
+                    <option value="Syft" ${selectedSource === 'Syft' ? 'selected' : ''}>Syft (SBOM)</option>
                 </select>
-                <span class="text-xs text-[#88AABF]">${allDeps.length} dependencias (${totalDirectas} directas · ${totalTransitivas} transitivas)</span>
+                <span class="text-xs text-[#88AABF]">${filteredDeps.length} dependencias (${totalDirectas} directas · ${totalTransitivas} transitivas)</span>
             </div>
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
@@ -831,7 +845,7 @@ const ViewRenderer = {
                     <span class="card__subtitle">Directas vs Transitivas con detalle de licencias</span>
                 </div>
                 <div class="card__body card__body--no-padding overflow-x-auto">
-                    ${this.buildDependencyDetailTable(AppState.filteredRepos)}
+                    ${this.buildDependencyDetailTable(filteredDeps)}
                 </div>
             </div>
         `;
@@ -865,20 +879,88 @@ const ViewRenderer = {
         `;
     },
 
-    buildVulnerabilityTable(repos, limit) {
-        let allVulns = [];
+    getSeverityTableTotal(repos) {
+        let total = 0;
         repos.forEach(r => {
             r.vulnerabilities.forEach(v => {
                 if (AppState.viewSeverityFilter !== 'all' && v.severity !== AppState.viewSeverityFilter) return;
-                allVulns.push({ ...v, repoName: r.name });
+                if (AppState.severityTable.source !== 'all' && v.source !== AppState.severityTable.source) return;
+                total += 1;
+            });
+        });
+        return total;
+    },
+
+    buildSeverityTableControls(totalItems) {
+        return `
+            <div class="flex items-center gap-3 p-3 flex-wrap border-b border-[#E8ECF0]">
+                <label class="text-xs font-semibold text-[#88AABF]">Ordenar por</label>
+                <select id="severity-sort" class="text-xs border border-[#E0E6EB] rounded-lg bg-white px-2 py-1">
+                    <option value="date_desc" ${AppState.severityTable.sortBy === 'date_desc' ? 'selected' : ''}>Fecha (desc)</option>
+                    <option value="cvss_desc" ${AppState.severityTable.sortBy === 'cvss_desc' ? 'selected' : ''}>CVSS (desc)</option>
+                    <option value="cvss_asc" ${AppState.severityTable.sortBy === 'cvss_asc' ? 'selected' : ''}>CVSS (asc)</option>
+                </select>
+                <label class="text-xs font-semibold text-[#88AABF]">Fuente</label>
+                <select id="severity-source" class="text-xs border border-[#E0E6EB] rounded-lg bg-white px-2 py-1">
+                    <option value="all" ${AppState.severityTable.source === 'all' ? 'selected' : ''}>Todas</option>
+                    <option value="Grype" ${AppState.severityTable.source === 'Grype' ? 'selected' : ''}>Grype</option>
+                    <option value="CodeQL" ${AppState.severityTable.source === 'CodeQL' ? 'selected' : ''}>CodeQL</option>
+                </select>
+                ${this.buildPaginationControls('severidad', totalItems)}
+            </div>
+        `;
+    },
+
+    buildPaginationControls(viewKey, totalItems) {
+        const state = AppState.pagination[viewKey];
+        if (!state) return '';
+        const totalPages = Math.max(1, Math.ceil(totalItems / state.limit));
+        const currentPage = Math.min(state.page, totalPages);
+        return `
+            <div class="flex items-center gap-2 ml-auto" data-pagination="${viewKey}" data-total="${totalItems}">
+                <select class="page-size text-xs border border-[#E0E6EB] rounded-lg bg-white px-2 py-1">
+                    ${[10, 20, 50, 100].map(size => `<option value="${size}" ${state.limit === size ? 'selected' : ''}>${size}</option>`).join('')}
+                </select>
+                <button class="page-prev text-xs px-2 py-1 rounded-lg border border-[#E0E6EB]" ${currentPage === 1 ? 'disabled' : ''}>Anterior</button>
+                <span class="text-xs text-[#88AABF]">${currentPage}/${totalPages}</span>
+                <button class="page-next text-xs px-2 py-1 rounded-lg border border-[#E0E6EB]" ${currentPage === totalPages ? 'disabled' : ''}>Siguiente</button>
+            </div>
+        `;
+    },
+
+    paginateList(list, viewKey) {
+        const state = AppState.pagination[viewKey];
+        if (!state) return list;
+        const totalPages = Math.max(1, Math.ceil(list.length / state.limit));
+        const page = Math.min(state.page, totalPages);
+        if (state.page !== page) {
+            state.page = page;
+        }
+        const start = (page - 1) * state.limit;
+        return list.slice(start, start + state.limit);
+    },
+
+    buildVulnerabilityTable(repos) {
+        let allVulns = [];
+        repos.forEach(r => {
+            r.vulnerabilities.forEach(v => {
+        if (AppState.viewSeverityFilter !== 'all' && v.severity !== AppState.viewSeverityFilter) return;
+        allVulns.push({ ...v, repoName: r.name });
             });
         });
 
-        allVulns.sort((a, b) => {
-            return new Date(b.detectedAt) - new Date(a.detectedAt);
-        });
+        if (AppState.severityTable.source !== 'all') {
+            allVulns = allVulns.filter(v => v.source === AppState.severityTable.source);
+        }
 
-        const displayed = allVulns.slice(0, limit);
+        if (AppState.severityTable.sortBy === 'cvss_desc') {
+            allVulns.sort((a, b) => (b.cvss ?? -1) - (a.cvss ?? -1) || String(a.id || '').localeCompare(String(b.id || '')));
+        } else if (AppState.severityTable.sortBy === 'cvss_asc') {
+            allVulns.sort((a, b) => (a.cvss ?? 9999) - (b.cvss ?? 9999) || String(a.id || '').localeCompare(String(b.id || '')));
+        } else {
+            allVulns.sort((a, b) => (new Date(b.detectedAt || 0) - new Date(a.detectedAt || 0)) || String(a.id || '').localeCompare(String(b.id || '')));
+        }
+        const displayed = this.paginateList(allVulns, 'severidad');
 
         if (displayed.length === 0) {
             return `
@@ -908,7 +990,7 @@ const ViewRenderer = {
                 <tbody>
                     ${displayed.map(v => `
                         <tr class="row-${v.severity}">
-                            <td><span class="severity-badge severity-badge--${v.severity}">${v.severity}</span></td>
+                            <td><span class="severity-badge severity-badge--${v.severity}">${SEVERITY_ES[v.severity] || v.severity}</span></td>
                             <td class="font-medium text-sm max-w-[200px] truncate" title="${this.escape(v.artifactName || v.type)}">${this.escape(v.artifactName || v.type)}</td>
                             <td class="text-xs text-[#03658C]">${v.repoName}</td>
                             <td class="text-xs font-mono max-w-[150px] truncate" title="${this.escape(v.file)}">${this.escape(v.file)}</td>
@@ -1034,31 +1116,27 @@ const ViewRenderer = {
         `;
     },
 
-    buildDependencyDetailTable(repos) {
-        const allDeps = [];
+    buildDependencyDetailTable(allDeps) {
         const seen = new Set();
-
-        repos.forEach(r => {
-            if (r.dependencies) {
-                r.dependencies.forEach(d => {
-                    const key = `${d.name}@${d.version}`;
-                    if (seen.has(key)) return;
-                    seen.add(key);
-                    allDeps.push({ ...d, repoName: r.name });
-                });
-            }
+        const uniqueDeps = [];
+        allDeps.forEach(d => {
+            const key = `${d.name}@${d.version}`;
+            if (seen.has(key)) return;
+            seen.add(key);
+            uniqueDeps.push(d);
         });
 
-        const sorted = allDeps.sort((a, b) => a.name.localeCompare(b.name));
-        const displayed = sorted.slice(0, 50);
-        const truncated = allDeps.length > 50;
+        const sorted = uniqueDeps.sort((a, b) => a.name.localeCompare(b.name));
+        const displayed = this.paginateList(sorted, 'sbom');
+        const truncated = uniqueDeps.length > AppState.pagination.sbom.limit;
 
         if (displayed.length === 0) {
             return `<div class="empty-state"><div class="empty-state__icon"><i data-lucide="package-open" class="w-10 h-10 text-[#88AABF]"></i></div><p class="empty-state__title">Sin dependencias</p><p class="empty-state__text">No se encontraron dependencias en los SBOMs.</p></div>`;
         }
 
         return `
-            ${truncated ? `<div class="p-3 text-xs text-[#88AABF] bg-[#F9FAFB] border-b border-[#E8ECF0]">Mostrando ${displayed.length} de ${allDeps.length} dependencias. Usa el buscador global para filtrar por repositorio.</div>` : ''}
+            ${this.buildPaginationControls('sbom', uniqueDeps.length)}
+            ${truncated ? `<div class="p-3 text-xs text-[#88AABF] bg-[#F9FAFB] border-b border-[#E8ECF0]">Mostrando ${displayed.length} de ${uniqueDeps.length} dependencias. Usa el buscador global para filtrar por repositorio.</div>` : ''}
             <table class="table-zebra w-full">
                 <thead>
                     <tr>
@@ -1105,11 +1183,13 @@ function refreshView() {
     AppState.filteredRepos = GlobalFilters.apply(dataset, {
         searchQuery: AppState.searchQuery,
         severityFilter: AppState.severityFilter,
-        dateFilter: AppState.dateFilter,
     });
     ViewRenderer.render(AppState.currentView);
     updateTopBarStats();
     bindSeverityFilterButtons();
+    bindPaginationControls();
+    bindSeverityTableControls();
+    bindSbomControls();
 }
 
 function updateTopBarStats() {
@@ -1137,9 +1217,86 @@ function bindSeverityFilterButtons() {
     document.querySelectorAll('.severity-filter-btn').forEach(btn => {
         btn.addEventListener('click', () => {
             AppState.viewSeverityFilter = btn.dataset.sev;
+            AppState.pagination.severidad.page = 1;
             refreshView();
         });
     });
+}
+
+function bindPaginationControls() {
+    document.querySelectorAll('[data-pagination]').forEach(wrapper => {
+        const viewKey = wrapper.getAttribute('data-pagination');
+        const state = AppState.pagination[viewKey];
+        if (!state) return;
+
+        const sizeSelect = wrapper.querySelector('.page-size');
+        const prevButton = wrapper.querySelector('.page-prev');
+        const nextButton = wrapper.querySelector('.page-next');
+
+        if (sizeSelect) {
+            sizeSelect.addEventListener('change', e => {
+                state.limit = parseInt(e.target.value, 10);
+                state.page = 1;
+                refreshView();
+            });
+        }
+
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                if (state.page > 1) {
+                    state.page -= 1;
+                    refreshView();
+                }
+            });
+        }
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                const totalItems = viewKey === 'severidad'
+                    ? ViewRenderer.getSeverityTableTotal(AppState.filteredRepos)
+                    : viewKey === 'sbom'
+                        ? document.querySelector('[data-pagination="sbom"]')?.getAttribute('data-total')
+                        : viewKey === 'evolucion'
+                            ? (AppState.dataset?.timeline?.vulnsByDate || []).length
+                            : 0;
+                const totalPages = Math.max(1, Math.ceil(Number(totalItems || 0) / state.limit));
+                if (state.page < totalPages) {
+                    state.page += 1;
+                    refreshView();
+                }
+            });
+        }
+    });
+}
+
+function bindSeverityTableControls() {
+    const sortSelect = document.getElementById('severity-sort');
+    const sourceSelect = document.getElementById('severity-source');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', e => {
+            AppState.severityTable.sortBy = e.target.value;
+            AppState.pagination.severidad.page = 1;
+            refreshView();
+        });
+    }
+    if (sourceSelect) {
+        sourceSelect.addEventListener('change', e => {
+            AppState.severityTable.source = e.target.value;
+            AppState.pagination.severidad.page = 1;
+            refreshView();
+        });
+    }
+}
+
+function bindSbomControls() {
+    const sourceSelect = document.getElementById('sbom-source-filter');
+    if (sourceSelect) {
+        sourceSelect.addEventListener('change', e => {
+            AppState.sbomSource = e.target.value;
+            AppState.pagination.sbom.page = 1;
+            refreshView();
+        });
+    }
 }
 
 async function initApp() {
@@ -1154,15 +1311,21 @@ async function initApp() {
         AppState.filteredRepos = GlobalFilters.apply(AppState.dataset, {
             searchQuery: '',
             severityFilter: 'all',
-            dateFilter: 'all',
             viewSeverityFilter: 'all',
         });
+
+        AppState.pagination.severidad.page = 1;
+        AppState.pagination.evolucion.page = 1;
+        AppState.pagination.sbom.page = 1;
 
         document.getElementById('loading-placeholder').style.display = 'none';
 
         ViewRenderer.render('resumen');
         updateTopBarStats();
         bindSeverityFilterButtons();
+        bindPaginationControls();
+        bindSeverityTableControls();
+        bindSbomControls();
 
     } catch (error) {
         console.error('Error al inicializar:', error);
@@ -1218,11 +1381,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('severity-filter').addEventListener('change', e => {
         AppState.severityFilter = e.target.value;
         AppState.viewSeverityFilter = 'all';
-        refreshView();
-    });
-
-    document.getElementById('date-filter').addEventListener('change', e => {
-        AppState.dateFilter = e.target.value;
         refreshView();
     });
 
