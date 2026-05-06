@@ -1,0 +1,245 @@
+{
+  "total_issues": 16,
+  "issues_by_severity": {
+    "error": 0,
+    "warning": 16,
+    "note": 0
+  },
+  "issues": [
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/accessibilityReport.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/tcAllPassedOnlyViolations.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/tcInapplicablePresent.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/tcIncludingCustomSummary.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/tcOnlyPasses.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/tcPassesAndViolations.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/tcWithTheKey.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/tsAllOptionalParametersPresent.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/artifacts/urlIsNotPassed.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/docs/index.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/functionality-from-untrusted-source",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "Script loaded from content delivery network with no integrity check.",
+      "file": "frontend/temp/tcPassesViolationsIncomplete.html",
+      "region": {
+        "startLine": 75,
+        "startColumn": 9,
+        "endColumn": 102
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/incomplete-sanitization",
+      "rule_index": 37,
+      "level": "warning",
+      "message": "This replaces only the first occurrence of \"*\".",
+      "file": "frontend/src/components/ui/file-upload/index.js",
+      "region": {
+        "startLine": 110,
+        "startColumn": 26,
+        "endColumn": 45
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/xss",
+      "rule_index": 52,
+      "level": "warning",
+      "message": "Cross-site scripting vulnerability due to [user-provided value](1).",
+      "file": "frontend/public/playground-frame.html",
+      "region": {
+        "startLine": 58,
+        "startColumn": 50,
+        "endColumn": 59
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/shell-command-injection-from-environment",
+      "rule_index": 66,
+      "level": "warning",
+      "message": "This shell command depends on an uncontrolled [absolute path](1).",
+      "file": "frontend/scripts/fix-tests.js",
+      "region": {
+        "startLine": 387,
+        "startColumn": 29,
+        "endColumn": 69
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/shell-command-injection-from-environment",
+      "rule_index": 66,
+      "level": "warning",
+      "message": "This shell command depends on an uncontrolled [absolute path](1).\nThis shell command depends on an uncontrolled [absolute path](2).\nThis shell command depends on an uncontrolled [file name](3).",
+      "file": "frontend/scripts/run-working-tests.js",
+      "region": {
+        "startLine": 57,
+        "startColumn": 14,
+        "endColumn": 46
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "js/insecure-randomness",
+      "rule_index": 75,
+      "level": "warning",
+      "message": "This uses a cryptographically insecure random number generated at [Math.random()](1) in a security context.",
+      "file": "frontend/src/services/analytics.js",
+      "region": {
+        "startLine": 16,
+        "startColumn": 22,
+        "endColumn": 46
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    }
+  ],
+  "sarif_metadata": {
+    "version": "2.1.0",
+    "schema_uri": "https://json.schemastore.org/sarif-2.1.0.json",
+    "tool": {
+      "name": "CodeQL",
+      "version": "unknown",
+      "information_uri": ""
+    },
+    "tool_name": "CodeQL",
+    "tool_version": "unknown"
+  }
+}

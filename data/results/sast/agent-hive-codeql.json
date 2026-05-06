@@ -1,0 +1,931 @@
+{
+  "total_issues": 65,
+  "issues_by_severity": {
+    "error": 0,
+    "warning": 65,
+    "note": 0
+  },
+  "issues": [
+    {
+      "rule_id": "py/incomplete-url-substring-sanitization",
+      "rule_index": 1,
+      "level": "warning",
+      "message": "The string [github.com](1) may be at an arbitrary position in the sanitized URL.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/scripts/github_app_auth.py",
+      "region": {
+        "startLine": 203,
+        "startColumn": 12,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/incomplete-url-substring-sanitization",
+      "rule_index": 1,
+      "level": "warning",
+      "message": "The string [github.com](1) may be at an arbitrary position in the sanitized URL.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/scripts/github_app_auth.py",
+      "region": {
+        "startLine": 203,
+        "startColumn": 12,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/incomplete-url-substring-sanitization",
+      "rule_index": 1,
+      "level": "warning",
+      "message": "The string [github.com](1) may be at an arbitrary position in the sanitized URL.",
+      "file": "scripts/github_app_auth.py",
+      "region": {
+        "startLine": 203,
+        "startColumn": 12,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/incomplete-url-substring-sanitization",
+      "rule_index": 1,
+      "level": "warning",
+      "message": "The string [github.com](1) may be at an arbitrary position in the sanitized URL.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/scripts/github_app_auth.py",
+      "region": {
+        "startLine": 203,
+        "startColumn": 12,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/incomplete-url-substring-sanitization",
+      "rule_index": 1,
+      "level": "warning",
+      "message": "The string [github.com](1) may be at an arbitrary position in the sanitized URL.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/scripts/pr_integration_manager.py",
+      "region": {
+        "startLine": 24,
+        "startColumn": 12,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/incomplete-url-substring-sanitization",
+      "rule_index": 1,
+      "level": "warning",
+      "message": "The string [github.com](1) may be at an arbitrary position in the sanitized URL.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/scripts/pr_integration_manager.py",
+      "region": {
+        "startLine": 24,
+        "startColumn": 12,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/incomplete-url-substring-sanitization",
+      "rule_index": 1,
+      "level": "warning",
+      "message": "The string [github.com](1) may be at an arbitrary position in the sanitized URL.",
+      "file": "scripts/pr_integration_manager.py",
+      "region": {
+        "startLine": 24,
+        "startColumn": 12,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/incomplete-url-substring-sanitization",
+      "rule_index": 1,
+      "level": "warning",
+      "message": "The string [github.com](1) may be at an arbitrary position in the sanitized URL.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/scripts/pr_integration_manager.py",
+      "region": {
+        "startLine": 24,
+        "startColumn": 12,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.\nThis expression logs [sensitive data (password)](2) as clear text.\nThis expression logs [sensitive data (password)](3) as clear text.\nThis expression logs [sensitive data (password)](4) as clear text.\nThis expression logs [sensitive data (password)](5) as clear text.\nThis expression logs [sensitive data (password)](6) as clear text.\nThis expression logs [sensitive data (password)](7) as clear text.\nThis expression logs [sensitive data (password)](8) as clear text.\nThis expression logs [sensitive data (password)](9) as clear text.\nThis expression logs [sensitive data (password)](10) as clear text.\nThis expression logs [sensitive data (secret)](11) as clear text.\nThis expression logs [sensitive data (password)](12) as clear text.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 97,
+        "startColumn": 21,
+        "endColumn": 97
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 411,
+        "startColumn": 25,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.\nThis expression logs [sensitive data (password)](2) as clear text.\nThis expression logs [sensitive data (password)](3) as clear text.\nThis expression logs [sensitive data (password)](4) as clear text.\nThis expression logs [sensitive data (password)](5) as clear text.\nThis expression logs [sensitive data (password)](6) as clear text.\nThis expression logs [sensitive data (password)](7) as clear text.\nThis expression logs [sensitive data (password)](8) as clear text.\nThis expression logs [sensitive data (password)](9) as clear text.\nThis expression logs [sensitive data (password)](10) as clear text.\nThis expression logs [sensitive data (secret)](11) as clear text.\nThis expression logs [sensitive data (password)](12) as clear text.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 97,
+        "startColumn": 21,
+        "endColumn": 97
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 411,
+        "startColumn": 25,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.\nThis expression logs [sensitive data (password)](2) as clear text.\nThis expression logs [sensitive data (password)](3) as clear text.\nThis expression logs [sensitive data (password)](4) as clear text.\nThis expression logs [sensitive data (password)](5) as clear text.\nThis expression logs [sensitive data (password)](6) as clear text.\nThis expression logs [sensitive data (password)](7) as clear text.\nThis expression logs [sensitive data (password)](8) as clear text.\nThis expression logs [sensitive data (password)](9) as clear text.\nThis expression logs [sensitive data (password)](10) as clear text.\nThis expression logs [sensitive data (secret)](11) as clear text.\nThis expression logs [sensitive data (password)](12) as clear text.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 97,
+        "startColumn": 21,
+        "endColumn": 97
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 411,
+        "startColumn": 25,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "hooks/pre-commit-security",
+      "region": {
+        "startLine": 93,
+        "startColumn": 23,
+        "endColumn": 50
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "hooks/pre-commit-security",
+      "region": {
+        "startLine": 98,
+        "startColumn": 27,
+        "endColumn": 50
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "hooks/pre-commit-security",
+      "region": {
+        "startLine": 100,
+        "startColumn": 27,
+        "endColumn": 53
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "hooks/pre-commit-security",
+      "region": {
+        "startLine": 102,
+        "startColumn": 27,
+        "endColumn": 50
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "hooks/pre-commit-security",
+      "region": {
+        "startLine": 105,
+        "startColumn": 23,
+        "endColumn": 58
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "security/quality_gates.py",
+      "region": {
+        "startLine": 170,
+        "startColumn": 29,
+        "endColumn": 65
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "security/quality_gates.py",
+      "region": {
+        "startLine": 176,
+        "startColumn": 34,
+        "endColumn": 101
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "security/quality_gates.py",
+      "region": {
+        "startLine": 178,
+        "startColumn": 33,
+        "endColumn": 90
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "security/quality_gates.py",
+      "region": {
+        "startLine": 181,
+        "startColumn": 30,
+        "endColumn": 76
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (secret)](1) as clear text.",
+      "file": "config/security_config.py",
+      "region": {
+        "startLine": 127,
+        "startColumn": 23,
+        "endColumn": 89
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.\nThis expression logs [sensitive data (password)](2) as clear text.\nThis expression logs [sensitive data (password)](3) as clear text.\nThis expression logs [sensitive data (password)](4) as clear text.\nThis expression logs [sensitive data (password)](5) as clear text.\nThis expression logs [sensitive data (secret)](6) as clear text.\nThis expression logs [sensitive data (password)](7) as clear text.",
+      "file": "test_simple_auth.py",
+      "region": {
+        "startLine": 84,
+        "startColumn": 11,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.\nThis expression logs [sensitive data (password)](2) as clear text.\nThis expression logs [sensitive data (password)](3) as clear text.\nThis expression logs [sensitive data (password)](4) as clear text.\nThis expression logs [sensitive data (password)](5) as clear text.\nThis expression logs [sensitive data (secret)](6) as clear text.\nThis expression logs [sensitive data (password)](7) as clear text.",
+      "file": "test_simple_auth.py",
+      "region": {
+        "startLine": 89,
+        "startColumn": 15,
+        "endColumn": 71
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.\nThis expression logs [sensitive data (password)](2) as clear text.\nThis expression logs [sensitive data (password)](3) as clear text.\nThis expression logs [sensitive data (password)](4) as clear text.\nThis expression logs [sensitive data (password)](5) as clear text.\nThis expression logs [sensitive data (secret)](6) as clear text.\nThis expression logs [sensitive data (password)](7) as clear text.",
+      "file": "test_simple_auth.py",
+      "region": {
+        "startLine": 90,
+        "startColumn": 15,
+        "endColumn": 64
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.",
+      "file": "test_simple_auth.py",
+      "region": {
+        "startLine": 142,
+        "startColumn": 11,
+        "endColumn": 59
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-logging-sensitive-data",
+      "rule_index": 8,
+      "level": "warning",
+      "message": "This expression logs [sensitive data (password)](1) as clear text.",
+      "file": "test_simple_auth.py",
+      "region": {
+        "startLine": 179,
+        "startColumn": 11,
+        "endColumn": 60
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/clear-text-storage-sensitive-data",
+      "rule_index": 9,
+      "level": "warning",
+      "message": "This expression stores [sensitive data (secret)](1) as clear text.\nThis expression stores [sensitive data (secret)](2) as clear text.\nThis expression stores [sensitive data (secret)](1) as clear text.\nThis expression stores [sensitive data (secret)](2) as clear text.\nThis expression stores [sensitive data (secret)](1) as clear text.\nThis expression stores [sensitive data (secret)](2) as clear text.",
+      "file": "scripts/verify_production_readiness.py",
+      "region": {
+        "startLine": 586,
+        "startColumn": 21,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/insecure-temporary-file",
+      "rule_index": 16,
+      "level": "warning",
+      "message": "Call to deprecated function tempfile.mktemp may be insecure.",
+      "file": "tests/external_api/test_service_registry.py",
+      "region": {
+        "startLine": 325,
+        "startColumn": 23,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/bad-tag-filter",
+      "rule_index": 17,
+      "level": "warning",
+      "message": "This regular expression does not match script end tags like </script >.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/security/security_manager.py",
+      "region": {
+        "startLine": 347,
+        "startColumn": 30,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/bad-tag-filter",
+      "rule_index": 17,
+      "level": "warning",
+      "message": "This regular expression does not match script end tags like </script >.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/security/security_manager.py",
+      "region": {
+        "startLine": 347,
+        "startColumn": 30,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/bad-tag-filter",
+      "rule_index": 17,
+      "level": "warning",
+      "message": "This regular expression does not match script end tags like </script >.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/security/security_manager.py",
+      "region": {
+        "startLine": 347,
+        "startColumn": 30,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/bad-tag-filter",
+      "rule_index": 17,
+      "level": "warning",
+      "message": "This regular expression does not match script end tags like </script >.",
+      "file": "security/security_manager.py",
+      "region": {
+        "startLine": 347,
+        "startColumn": 30,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 91,
+        "startColumn": 24,
+        "endColumn": 52
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 115,
+        "startColumn": 24,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 133,
+        "startColumn": 24,
+        "endColumn": 59
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 164,
+        "startColumn": 24,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 175,
+        "startColumn": 24,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 215,
+        "startColumn": 24,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 91,
+        "startColumn": 24,
+        "endColumn": 52
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 115,
+        "startColumn": 24,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 133,
+        "startColumn": 24,
+        "endColumn": 59
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 164,
+        "startColumn": 24,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 175,
+        "startColumn": 24,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 215,
+        "startColumn": 24,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 91,
+        "startColumn": 24,
+        "endColumn": 52
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 115,
+        "startColumn": 24,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 133,
+        "startColumn": 24,
+        "endColumn": 59
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 164,
+        "startColumn": 24,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 175,
+        "startColumn": 24,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 215,
+        "startColumn": 24,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": "dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 91,
+        "startColumn": 24,
+        "endColumn": 52
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": "dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 115,
+        "startColumn": 24,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": "dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 133,
+        "startColumn": 24,
+        "endColumn": 59
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": "dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 164,
+        "startColumn": 24,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": "dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 175,
+        "startColumn": 24,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/stack-trace-exposure",
+      "rule_index": 21,
+      "level": "warning",
+      "message": "[Stack trace information](1) flows to this location and may be exposed to an external user.",
+      "file": "dashboard/enhanced_server.py",
+      "region": {
+        "startLine": 215,
+        "startColumn": 24,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/weak-sensitive-data-hashing",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "[Sensitive data (password)](1) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](2) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](3) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](4) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](5) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](6) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.",
+      "file": "security/api_key_manager.py",
+      "region": {
+        "startLine": 600,
+        "startColumn": 31,
+        "endColumn": 47
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/weak-sensitive-data-hashing",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "[Sensitive data (password)](1) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](2) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](3) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](4) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](5) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](6) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/new-worktrees/service-mesh-Jul-16-1339/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 486,
+        "startColumn": 36,
+        "endColumn": 92
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/weak-sensitive-data-hashing",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "[Sensitive data (password)](1) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](2) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](3) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](4) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](5) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](6) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.",
+      "file": ".worktree-archive/product-manager-Jul-17-0156/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 486,
+        "startColumn": 36,
+        "endColumn": 92
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/weak-sensitive-data-hashing",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "[Sensitive data (password)](1) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](2) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](3) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](4) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](5) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.\n[Sensitive data (password)](6) is used in a hashing algorithm (SHA256) that is insecure for password hashing, since it is not a computationally expensive hash function.",
+      "file": ".worktree-archive/phase2-legacy-20250718/archived-worktrees/frontend-Jul-17-1438/external_api/auth_middleware.py",
+      "region": {
+        "startLine": 486,
+        "startColumn": 36,
+        "endColumn": 92
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/weak-sensitive-data-hashing",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "[Sensitive data (id)](1) is used in a hashing algorithm (MD5) that is insecure.",
+      "file": "external_api/load_balancer.py",
+      "region": {
+        "startLine": 525,
+        "startColumn": 38,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/weak-sensitive-data-hashing",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "[Sensitive data (id)](1) is used in a hashing algorithm (MD5) that is insecure.\n[Sensitive data (id)](2) is used in a hashing algorithm (MD5) that is insecure.\n[Sensitive data (id)](3) is used in a hashing algorithm (MD5) that is insecure.",
+      "file": "external_api/redis_cache_integration.py",
+      "region": {
+        "startLine": 340,
+        "startColumn": 28,
+        "endColumn": 47
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    }
+  ],
+  "sarif_metadata": {
+    "version": "2.1.0",
+    "schema_uri": "https://json.schemastore.org/sarif-2.1.0.json",
+    "tool": {
+      "name": "CodeQL",
+      "version": "unknown",
+      "information_uri": ""
+    },
+    "tool_name": "CodeQL",
+    "tool_version": "unknown"
+  }
+}

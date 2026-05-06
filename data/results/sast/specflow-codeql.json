@@ -1,0 +1,232 @@
+{
+  "total_issues": 15,
+  "issues_by_severity": {
+    "error": 0,
+    "warning": 15,
+    "note": 0
+  },
+  "issues": [
+    {
+      "rule_id": "py/polynomial-redos",
+      "rule_index": 39,
+      "level": "warning",
+      "message": "This [regular expression](1) that depends on a [user-provided value](2) may run slow on strings starting with '# ' and with many repetitions of '  '.",
+      "file": "src/specflow/parsers/markdown.py",
+      "region": {
+        "startLine": 106,
+        "startColumn": 42,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/polynomial-redos",
+      "rule_index": 39,
+      "level": "warning",
+      "message": "This [regular expression](1) that depends on a [user-provided value](2) may run slow on strings starting with '## ' and with many repetitions of '  '.",
+      "file": "src/specflow/parsers/markdown.py",
+      "region": {
+        "startLine": 122,
+        "startColumn": 51,
+        "endColumn": 58
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/polynomial-redos",
+      "rule_index": 39,
+      "level": "warning",
+      "message": "This [regular expression](1) that depends on a [user-provided value](2) may run slow on strings starting with '### ' and with many repetitions of '  '.",
+      "file": "src/specflow/parsers/markdown.py",
+      "region": {
+        "startLine": 162,
+        "startColumn": 51,
+        "endColumn": 58
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/polynomial-redos",
+      "rule_index": 39,
+      "level": "warning",
+      "message": "This [regular expression](1) that depends on a [user-provided value](2) may run slow on strings starting with '\\t' and with many repetitions of '\\t\\t'.",
+      "file": "src/specflow/parsers/markdown.py",
+      "region": {
+        "startLine": 251,
+        "startColumn": 50,
+        "endColumn": 58
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/polynomial-redos",
+      "rule_index": 39,
+      "level": "warning",
+      "message": "This [regular expression](1) that depends on a [user-provided value](2) may run slow on strings starting with '\\t' and with many repetitions of '\\t\\t'.",
+      "file": "src/specflow/parsers/markdown.py",
+      "region": {
+        "startLine": 283,
+        "startColumn": 50,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/polynomial-redos",
+      "rule_index": 39,
+      "level": "warning",
+      "message": "This [regular expression](1) that depends on a [user-provided value](2) may run slow on strings starting with '\\t' and with many repetitions of '\\t\\t'.",
+      "file": "src/specflow/parsers/markdown.py",
+      "region": {
+        "startLine": 306,
+        "startColumn": 50,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/call/wrong-arguments",
+      "rule_index": 67,
+      "level": "warning",
+      "message": "Call to [method JiraOAuthHandler.get_authorization_url](1) with too few arguments; should be no fewer than 1.",
+      "file": "src/specflow/cli/commands/auth.py",
+      "region": {
+        "startLine": 65,
+        "startColumn": 24,
+        "endColumn": 61
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/redundant-comparison",
+      "rule_index": 71,
+      "level": "warning",
+      "message": "Test is always true, because of [this condition](1).",
+      "file": "tests/test_e2e/test_cli_workflows.py",
+      "region": {
+        "startLine": 125,
+        "startColumn": 16,
+        "endColumn": 33
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/call/wrong-number-class-arguments",
+      "rule_index": 85,
+      "level": "warning",
+      "message": "Call to [JiraOAuthHandler.__init__](1) with too few arguments; should be no fewer than 3.",
+      "file": "src/specflow/cli/commands/auth.py",
+      "region": {
+        "startLine": 56,
+        "startColumn": 29,
+        "endLine": 59,
+        "endColumn": 14
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable score is not used.",
+      "file": "tests/test_e2e/test_full_pipeline.py",
+      "region": {
+        "startLine": 252,
+        "startColumn": 9,
+        "endColumn": 14
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable router_prefixes is not used.",
+      "file": "tests/test_api/test_main.py",
+      "region": {
+        "startLine": 87,
+        "startColumn": 5,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable scores is not used.",
+      "file": "tests/test_e2e/test_performance.py",
+      "region": {
+        "startLine": 156,
+        "startColumn": 9,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/ineffectual-statement",
+      "rule_index": 145,
+      "level": "warning",
+      "message": "This statement has no effect.",
+      "file": "src/specflow/parsers/base.py",
+      "region": {
+        "startLine": 33,
+        "startColumn": 9,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/ineffectual-statement",
+      "rule_index": 145,
+      "level": "warning",
+      "message": "This statement has no effect.",
+      "file": "src/specflow/parsers/base.py",
+      "region": {
+        "startLine": 44,
+        "startColumn": 9,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/non-iterable-in-for-loop",
+      "rule_index": 152,
+      "level": "warning",
+      "message": "This for-loop may attempt to iterate over a [non-iterable instance](1) of class [type](2).",
+      "file": "src/specflow/intelligence/scorer.py",
+      "region": {
+        "startLine": 328,
+        "startColumn": 9,
+        "endColumn": 46
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    }
+  ],
+  "sarif_metadata": {
+    "version": "2.1.0",
+    "schema_uri": "https://json.schemastore.org/sarif-2.1.0.json",
+    "tool": {
+      "name": "CodeQL",
+      "version": "unknown",
+      "information_uri": ""
+    },
+    "tool_name": "CodeQL",
+    "tool_version": "unknown"
+  }
+}

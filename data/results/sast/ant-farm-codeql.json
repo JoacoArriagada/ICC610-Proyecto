@@ -1,0 +1,6618 @@
+{
+  "total_issues": 485,
+  "issues_by_severity": {
+    "error": 0,
+    "warning": 485,
+    "note": 0
+  },
+  "issues": [
+    {
+      "rule_id": "py/weak-sensitive-data-hashing",
+      "rule_index": 35,
+      "level": "warning",
+      "message": "[Sensitive data (id)](1) is used in a hashing algorithm (MD5) that is insecure.\n[Sensitive data (id)](2) is used in a hashing algorithm (MD5) that is insecure.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 268,
+        "startColumn": 41,
+        "endColumn": 60
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1468,
+        "startColumn": 22,
+        "endColumn": 67
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1515,
+        "startColumn": 22,
+        "endColumn": 76
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1551,
+        "startColumn": 22,
+        "endColumn": 68
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1624,
+        "startColumn": 13,
+        "endColumn": 114
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1758,
+        "startColumn": 22,
+        "endColumn": 67
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1810,
+        "startColumn": 22,
+        "endColumn": 76
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1847,
+        "startColumn": 22,
+        "endColumn": 68
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1929,
+        "startColumn": 13,
+        "endColumn": 114
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2072,
+        "startColumn": 22,
+        "endColumn": 63
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2093,
+        "startColumn": 22,
+        "endColumn": 66
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2637,
+        "startColumn": 22,
+        "endColumn": 77
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).\nThis log entry depends on a [user-provided value](2).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2698,
+        "startColumn": 13,
+        "endColumn": 92
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2747,
+        "startColumn": 22,
+        "endColumn": 77
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/log-injection",
+      "rule_index": 43,
+      "level": "warning",
+      "message": "This log entry depends on a [user-provided value](1).",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2769,
+        "startColumn": 22,
+        "endColumn": 77
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/call/wrong-arguments",
+      "rule_index": 67,
+      "level": "warning",
+      "message": "Call to [method EnhancedAIPairProgramming._calculate_context_relevance](1) with too many arguments; should be no more than 2.",
+      "file": "src/core/collaboration/enhanced_pair_programming.py",
+      "region": {
+        "startLine": 333,
+        "startColumn": 33,
+        "endLine": 335,
+        "endColumn": 10
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/call/wrong-arguments",
+      "rule_index": 67,
+      "level": "warning",
+      "message": "Call to [function get_orchestrator](1) with too few arguments; should be no fewer than 2.",
+      "file": "src/core/load_balancer.py",
+      "region": {
+        "startLine": 122,
+        "startColumn": 34,
+        "endColumn": 52
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/call/wrong-arguments",
+      "rule_index": 67,
+      "level": "warning",
+      "message": "Call to [method MessageBroker.flush_dlq_metrics](1) with too few arguments; should be no fewer than 3.",
+      "file": "tests/unit/test_metrics_flush.py",
+      "region": {
+        "startLine": 248,
+        "startColumn": 15,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/redundant-comparison",
+      "rule_index": 71,
+      "level": "warning",
+      "message": "Test is always true, because of [this condition](1).",
+      "file": "tests/unit/test_caching.py",
+      "region": {
+        "startLine": 302,
+        "startColumn": 16,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/call/wrong-number-class-arguments",
+      "rule_index": 85,
+      "level": "warning",
+      "message": "Call to [PairProgrammingSession.__init__](1) with too few arguments; should be no fewer than 3.",
+      "file": "src/core/collaboration/enhanced_pair_programming.py",
+      "region": {
+        "startLine": 968,
+        "startColumn": 24,
+        "endColumn": 66
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/call/wrong-number-class-arguments",
+      "rule_index": 85,
+      "level": "warning",
+      "message": "Call to [BaseAgent.__init__](1) with too few arguments; should be no fewer than 3.",
+      "file": "src/core/self_modifier.py",
+      "region": {
+        "startLine": 899,
+        "startColumn": 30,
+        "endLine": 901,
+        "endColumn": 18
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/call/wrong-number-class-arguments",
+      "rule_index": 85,
+      "level": "warning",
+      "message": "Call to [AsyncDatabaseManager.__init__](1) with too few arguments; should be no fewer than 1.",
+      "file": "tests/integration/test_real_system_integration.py",
+      "region": {
+        "startLine": 23,
+        "startColumn": 18,
+        "endColumn": 40
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/missing-call-to-init",
+      "rule_index": 98,
+      "level": "warning",
+      "message": "This class does not call [MessageBroker.__init__](1) during initialization. ([EnhancedMessageBroker.__init__](2) may be missing a call to a base class __init__)",
+      "file": "src/core/enhanced_message_broker.py",
+      "region": {
+        "startLine": 205,
+        "endColumn": 44
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/agent_health.py",
+      "region": {
+        "startLine": 263,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/agent_lifecycle.py",
+      "region": {
+        "startLine": 445,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/agent_orchestrator_impl.py",
+      "region": {
+        "startLine": 277,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/agent_recovery.py",
+      "region": {
+        "startLine": 596,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/alert_manager.py",
+      "region": {
+        "startLine": 180,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/alert_manager.py",
+      "region": {
+        "startLine": 252,
+        "startColumn": 9,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/analytics.py",
+      "region": {
+        "startLine": 143,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/agents/architect_agent.py",
+      "region": {
+        "startLine": 934,
+        "startColumn": 25,
+        "endColumn": 40
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/agents/architect_agent.py",
+      "region": {
+        "startLine": 943,
+        "startColumn": 25,
+        "endColumn": 62
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/monitoring/autonomous_dashboard.py",
+      "region": {
+        "startLine": 266,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "bootstrap.py",
+      "region": {
+        "startLine": 134,
+        "startColumn": 9,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "bootstrap.py",
+      "region": {
+        "startLine": 149,
+        "startColumn": 9,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "bootstrap.py",
+      "region": {
+        "startLine": 166,
+        "startColumn": 9,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "bootstrap.py",
+      "region": {
+        "startLine": 179,
+        "startColumn": 9,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "bootstrap.py",
+      "region": {
+        "startLine": 191,
+        "startColumn": 9,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/bottleneck_detector.py",
+      "region": {
+        "startLine": 159,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/caching.py",
+      "region": {
+        "startLine": 242,
+        "startColumn": 25,
+        "endColumn": 42
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/api/websocket/dashboard_handler.py",
+      "region": {
+        "startLine": 137,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/api/websocket/dashboard_handler.py",
+      "region": {
+        "startLine": 144,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/enhanced_message_broker.py",
+      "region": {
+        "startLine": 1176,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/event_aggregator.py",
+      "region": {
+        "startLine": 142,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/event_aggregator.py",
+      "region": {
+        "startLine": 241,
+        "startColumn": 13,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/event_aggregator.py",
+      "region": {
+        "startLine": 248,
+        "startColumn": 9,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/testing/extended_session_tester.py",
+      "region": {
+        "startLine": 454,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/health_monitor.py",
+      "region": {
+        "startLine": 61,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/adw/integration_validation.py",
+      "region": {
+        "startLine": 425,
+        "startColumn": 21,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/adw/integration_validation.py",
+      "region": {
+        "startLine": 448,
+        "startColumn": 25,
+        "endColumn": 53
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/message_broker.py",
+      "region": {
+        "startLine": 431,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/message_broker.py",
+      "region": {
+        "startLine": 460,
+        "startColumn": 17,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/message_broker.py",
+      "region": {
+        "startLine": 519,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/message_broker.py",
+      "region": {
+        "startLine": 1010,
+        "startColumn": 17,
+        "endColumn": 47
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/metrics_collector.py",
+      "region": {
+        "startLine": 108,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/metrics_collector.py",
+      "region": {
+        "startLine": 204,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/metrics_collector.py",
+      "region": {
+        "startLine": 284,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/metrics_collector.py",
+      "region": {
+        "startLine": 295,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 182,
+        "startColumn": 21,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 184,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 499,
+        "startColumn": 25,
+        "endColumn": 42
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 584,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 643,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/orchestrator_refactored.py",
+      "region": {
+        "startLine": 232,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/orchestrator_v2.py",
+      "region": {
+        "startLine": 277,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/real_time_monitoring.py",
+      "region": {
+        "startLine": 429,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/safety/resource_guardian.py",
+      "region": {
+        "startLine": 553,
+        "startColumn": 13,
+        "endColumn": 32
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/resource_management.py",
+      "region": {
+        "startLine": 387,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/resource_management.py",
+      "region": {
+        "startLine": 394,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 230,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 321,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 422,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 496,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 518,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 523,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 658,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 1359,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/cli/commands/system.py",
+      "region": {
+        "startLine": 282,
+        "startColumn": 5,
+        "endColumn": 22
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "tests/unit/test_autonomous_dashboard.py",
+      "region": {
+        "startLine": 410,
+        "startColumn": 9,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 457,
+        "startColumn": 17,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "tests/unit/test_extended_session_tester.py",
+      "region": {
+        "startLine": 369,
+        "startColumn": 17,
+        "endColumn": 47
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "tests/unit/test_metrics_flush.py",
+      "region": {
+        "startLine": 139,
+        "startColumn": 9,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "tests/unit/test_orchestrator.py",
+      "region": {
+        "startLine": 443,
+        "startColumn": 9,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/observability/time_series_store.py",
+      "region": {
+        "startLine": 131,
+        "startColumn": 13,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/empty-except",
+      "rule_index": 106,
+      "level": "warning",
+      "message": "'except' clause does nothing but pass and there is no explanatory comment.",
+      "file": "src/core/tmux_manager.py",
+      "region": {
+        "startLine": 216,
+        "startColumn": 21,
+        "endColumn": 47
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "src/core/observability/metrics_collector.py",
+      "region": {
+        "startLine": 284,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "src/core/observability/metrics_collector.py",
+      "region": {
+        "startLine": 295,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "src/cli/commands/monitor.py",
+      "region": {
+        "startLine": 608,
+        "startColumn": 21,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "src/core/persistent_cli.py",
+      "region": {
+        "startLine": 392,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "src/core/resource_management.py",
+      "region": {
+        "startLine": 273,
+        "startColumn": 17,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "scripts/test_adw_system.py",
+      "region": {
+        "startLine": 209,
+        "startColumn": 9,
+        "endColumn": 16
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "scripts/test_adw_system.py",
+      "region": {
+        "startLine": 271,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "scripts/test_adw_system.py",
+      "region": {
+        "startLine": 307,
+        "startColumn": 9,
+        "endColumn": 16
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/catch-base-exception",
+      "rule_index": 107,
+      "level": "warning",
+      "message": "Except block directly handles BaseException.",
+      "file": "test_auth_agent_fix.py",
+      "region": {
+        "startLine": 96,
+        "startColumn": 9,
+        "endColumn": 16
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/file-not-closed",
+      "rule_index": 109,
+      "level": "warning",
+      "message": "File is opened but is not closed.",
+      "file": "system_analyzer.py",
+      "region": {
+        "startLine": 157,
+        "startColumn": 31,
+        "endColumn": 46
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'cache' may be used before it is initialized.",
+      "file": "src/core/context_engine.py",
+      "region": {
+        "startLine": 670,
+        "startColumn": 23,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'cache' may be used before it is initialized.",
+      "file": "src/core/context_engine.py",
+      "region": {
+        "startLine": 817,
+        "startColumn": 27,
+        "endColumn": 32
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'cache' may be used before it is initialized.",
+      "file": "src/core/context_engine.py",
+      "region": {
+        "startLine": 883,
+        "startColumn": 23,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'json' may be used before it is initialized.",
+      "file": "src/core/collaboration/ml_performance_optimizer.py",
+      "region": {
+        "startLine": 857,
+        "startColumn": 20,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'chunks' may be used before it is initialized.",
+      "file": "src/core/safety/resource_guardian.py",
+      "region": {
+        "startLine": 285,
+        "startColumn": 28,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'headers' may be used before it is initialized.",
+      "file": "src/cli/commands/task.py",
+      "region": {
+        "startLine": 890,
+        "startColumn": 33,
+        "endColumn": 40
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'cache' may be used before it is initialized.",
+      "file": "src/core/task_queue.py",
+      "region": {
+        "startLine": 385,
+        "startColumn": 19,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'cache' may be used before it is initialized.",
+      "file": "src/core/task_queue.py",
+      "region": {
+        "startLine": 417,
+        "startColumn": 19,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'cache' may be used before it is initialized.",
+      "file": "src/core/task_queue.py",
+      "region": {
+        "startLine": 455,
+        "startColumn": 19,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/uninitialized-local-variable",
+      "rule_index": 114,
+      "level": "warning",
+      "message": "Local variable 'cache' may be used before it is initialized.",
+      "file": "src/core/task_queue.py",
+      "region": {
+        "startLine": 493,
+        "startColumn": 19,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-global-variable",
+      "rule_index": 115,
+      "level": "warning",
+      "message": "The global variable 'revision' is not used.",
+      "file": "alembic/versions/7b71b9a0ac9e_add_pgvector_support_and_vector_columns.py",
+      "region": {
+        "startLine": 24,
+        "endColumn": 9
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-global-variable",
+      "rule_index": 115,
+      "level": "warning",
+      "message": "The global variable 'down_revision' is not used.",
+      "file": "alembic/versions/7b71b9a0ac9e_add_pgvector_support_and_vector_columns.py",
+      "region": {
+        "startLine": 25,
+        "endColumn": 14
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-global-variable",
+      "rule_index": 115,
+      "level": "warning",
+      "message": "The global variable 'branch_labels' is not used.",
+      "file": "alembic/versions/7b71b9a0ac9e_add_pgvector_support_and_vector_columns.py",
+      "region": {
+        "startLine": 26,
+        "endColumn": 14
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-global-variable",
+      "rule_index": 115,
+      "level": "warning",
+      "message": "The global variable 'depends_on' is not used.",
+      "file": "alembic/versions/7b71b9a0ac9e_add_pgvector_support_and_vector_columns.py",
+      "region": {
+        "startLine": 27,
+        "endColumn": 11
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to '_review_architecture' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/agents/architect_agent.py",
+      "region": {
+        "startLine": 298,
+        "startColumn": 15,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to '_on_collaboration_completed' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/agents/architect_agent.py",
+      "region": {
+        "startLine": 493,
+        "startColumn": 15,
+        "endColumn": 42
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to 'flush_metrics_if_enabled' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/agents/base_agent.py",
+      "region": {
+        "startLine": 912,
+        "startColumn": 15,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to 'share_context' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/core/collaboration/enhanced_pair_programming.py",
+      "region": {
+        "startLine": 319,
+        "startColumn": 15,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to '_calculate_context_relevance' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/core/collaboration/enhanced_pair_programming.py",
+      "region": {
+        "startLine": 365,
+        "startColumn": 15,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to 'end_session' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/core/collaboration/enhanced_pair_programming.py",
+      "region": {
+        "startLine": 407,
+        "startColumn": 15,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to 'flush_dlq_metrics' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/core/message_broker.py",
+      "region": {
+        "startLine": 825,
+        "startColumn": 15,
+        "endColumn": 32
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to 'get_failed_tasks' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/core/task_queue.py",
+      "region": {
+        "startLine": 91,
+        "startColumn": 15,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/multiple-definition",
+      "rule_index": 116,
+      "level": "warning",
+      "message": "This assignment to 'get_queue_depth' is unnecessary as it is [redefined](1) before this value is used.",
+      "file": "src/core/task_queue.py",
+      "region": {
+        "startLine": 602,
+        "startColumn": 15,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable agent_short_id is not used.",
+      "file": "src/core/agent_orchestrator_impl.py",
+      "region": {
+        "startLine": 73,
+        "startColumn": 13,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable metrics_collector is not used.",
+      "file": "src/core/observability/alert_manager.py",
+      "region": {
+        "startLine": 261,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable _architecture_task_types is not used.",
+      "file": "src/agents/architect_agent.py",
+      "region": {
+        "startLine": 532,
+        "startColumn": 9,
+        "endColumn": 33
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable settings is not used.",
+      "file": "src/cli/auth.py",
+      "region": {
+        "startLine": 34,
+        "startColumn": 9,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable user is not used.",
+      "file": "src/cli/auth.py",
+      "region": {
+        "startLine": 155,
+        "startColumn": 13,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable method_body is not used.",
+      "file": "src/core/refactoring/autonomous_refactoring.py",
+      "region": {
+        "startLine": 329,
+        "startColumn": 9,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable current_time is not used.",
+      "file": "src/agents/base_agent.py",
+      "region": {
+        "startLine": 369,
+        "startColumn": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable result is not used.",
+      "file": "src/agents/base_agent.py",
+      "region": {
+        "startLine": 662,
+        "startColumn": 21,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable active_agents is not used.",
+      "file": "src/agents/base_agent.py",
+      "region": {
+        "startLine": 2067,
+        "startColumn": 13,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable mean is not used.",
+      "file": "src/core/bottleneck_detector.py",
+      "region": {
+        "startLine": 341,
+        "startColumn": 9,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable enhanced_system is not used.",
+      "file": "src/cli/commands/collaborate.py",
+      "region": {
+        "startLine": 383,
+        "startColumn": 5,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable max_tokens is not used.",
+      "file": "src/core/ai/cost_optimizer.py",
+      "region": {
+        "startLine": 47,
+        "startColumn": 9,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable _devops_task_types is not used.",
+      "file": "src/agents/devops_agent.py",
+      "region": {
+        "startLine": 84,
+        "startColumn": 9,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable failure_rate is not used.",
+      "file": "src/core/testing/extended_session_tester.py",
+      "region": {
+        "startLine": 426,
+        "startColumn": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable targets is not used.",
+      "file": "src/core/testing/extended_session_tester.py",
+      "region": {
+        "startLine": 432,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable decomposition_prompt is not used.",
+      "file": "src/core/collaboration/large_project_coordination.py",
+      "region": {
+        "startLine": 398,
+        "startColumn": 9,
+        "endColumn": 29
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable recent_executions is not used.",
+      "file": "src/core/subagents/learning_agent.py",
+      "region": {
+        "startLine": 161,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable capabilities is not used.",
+      "file": "src/core/load_balancer.py",
+      "region": {
+        "startLine": 264,
+        "startColumn": 9,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable orchestrator is not used.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 1319,
+        "startColumn": 9,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable db_manager is not used.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2241,
+        "startColumn": 17,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable cli_metrics_query is not used.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2246,
+        "startColumn": 21,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable current_time is not used.",
+      "file": "src/core/message_broker.py",
+      "region": {
+        "startLine": 845,
+        "startColumn": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable current_time is not used.",
+      "file": "src/core/message_broker.py",
+      "region": {
+        "startLine": 971,
+        "startColumn": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable component_scores is not used.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 560,
+        "startColumn": 13,
+        "endColumn": 29
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable agent_capabilities is not used.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 777,
+        "startColumn": 21,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable existing_tests is not used.",
+      "file": "src/core/adw/micro_development.py",
+      "region": {
+        "startLine": 205,
+        "startColumn": 13,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable capabilities is not used.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 302,
+        "startColumn": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable agent_short_id is not used.",
+      "file": "src/core/orchestrator_v2.py",
+      "region": {
+        "startLine": 73,
+        "startColumn": 13,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable history_file is not used.",
+      "file": "src/core/persistent_cli.py",
+      "region": {
+        "startLine": 71,
+        "startColumn": 9,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable coordinator is not used.",
+      "file": "src/cli/commands/project.py",
+      "region": {
+        "startLine": 294,
+        "startColumn": 5,
+        "endColumn": 16
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable _qa_task_types is not used.",
+      "file": "src/agents/qa_agent.py",
+      "region": {
+        "startLine": 90,
+        "startColumn": 9,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable stdout is not used.",
+      "file": "src/core/safety/quality_gates.py",
+      "region": {
+        "startLine": 527,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable stderr is not used.",
+      "file": "src/core/safety/quality_gates.py",
+      "region": {
+        "startLine": 527,
+        "startColumn": 21,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable communication_monitor is not used.",
+      "file": "src/core/realtime_collaboration.py",
+      "region": {
+        "startLine": 176,
+        "startColumn": 9,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable key is not used.",
+      "file": "src/core/realtime_collaboration.py",
+      "region": {
+        "startLine": 1412,
+        "startColumn": 9,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable stdout is not used.",
+      "file": "src/core/adw/reconnaissance.py",
+      "region": {
+        "startLine": 210,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable stderr is not used.",
+      "file": "src/core/adw/reconnaissance.py",
+      "region": {
+        "startLine": 210,
+        "startColumn": 21,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable slow_test_threshold is not used.",
+      "file": "src/core/safety/resource_guardian.py",
+      "region": {
+        "startLine": 557,
+        "startColumn": 13,
+        "endColumn": 32
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable result is not used.",
+      "file": "src/core/safety/rollback_system.py",
+      "region": {
+        "startLine": 307,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable result is not used.",
+      "file": "src/core/self_modifier.py",
+      "region": {
+        "startLine": 148,
+        "startColumn": 17,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable final_checkpoint is not used.",
+      "file": "src/core/adw/session_manager.py",
+      "region": {
+        "startLine": 551,
+        "startColumn": 17,
+        "endColumn": 33
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable stdout is not used.",
+      "file": "src/core/adw/session_manager.py",
+      "region": {
+        "startLine": 610,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable stderr is not used.",
+      "file": "src/core/adw/session_manager.py",
+      "region": {
+        "startLine": 610,
+        "startColumn": 21,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable communication_monitor is not used.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 194,
+        "startColumn": 9,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable status_style is not used.",
+      "file": "src/cli/commands/system.py",
+      "region": {
+        "startLine": 372,
+        "startColumn": 17,
+        "endColumn": 29
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable current_endpoint is not used.",
+      "file": "system_analyzer.py",
+      "region": {
+        "startLine": 318,
+        "startColumn": 13,
+        "endColumn": 29
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable title_length is not used.",
+      "file": "src/core/subagents/task_decomposition_agent.py",
+      "region": {
+        "startLine": 216,
+        "startColumn": 9,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable initial_mode is not used.",
+      "file": "tests/integration/test_adw_full_system.py",
+      "region": {
+        "startLine": 212,
+        "startColumn": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable session_start is not used.",
+      "file": "scripts/test_adw_system.py",
+      "region": {
+        "startLine": 126,
+        "startColumn": 13,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable cli_operational is not used.",
+      "file": "scripts/test_adw_system.py",
+      "region": {
+        "startLine": 342,
+        "startColumn": 9,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable context_id is not used.",
+      "file": "tests/integration/test_agent_enhanced_communication.py",
+      "region": {
+        "startLine": 293,
+        "startColumn": 9,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable result is not used.",
+      "file": "tests/unit/test_agent_health_system.py",
+      "region": {
+        "startLine": 610,
+        "startColumn": 17,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable agent is not used.",
+      "file": "test_agent_workflow.py",
+      "region": {
+        "startLine": 125,
+        "startColumn": 5,
+        "endColumn": 10
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable context_engine is not used.",
+      "file": "test_agent_workflow.py",
+      "region": {
+        "startLine": 133,
+        "startColumn": 9,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable result is not used.",
+      "file": "tests/unit/test_ai_integration.py",
+      "region": {
+        "startLine": 181,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable admin is not used.",
+      "file": "tests/security/test_api_security.py",
+      "region": {
+        "startLine": 33,
+        "startColumn": 9,
+        "endColumn": 14
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable regular_user is not used.",
+      "file": "tests/security/test_api_security.py",
+      "region": {
+        "startLine": 36,
+        "startColumn": 9,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable r1 is not used.",
+      "file": "tests/unit/test_base_agent.py",
+      "region": {
+        "startLine": 232,
+        "startColumn": 9,
+        "endColumn": 11
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable manager is not used.",
+      "file": "tests/unit/smoke/test_caching_smoke.py",
+      "region": {
+        "startLine": 19,
+        "startColumn": 9,
+        "endColumn": 16
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable duration is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 510,
+        "startColumn": 9,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable mock_file is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 701,
+        "startColumn": 13,
+        "endColumn": 22
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable original_method is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 854,
+        "startColumn": 13,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable original_method is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 864,
+        "startColumn": 13,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable data is not used.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 567,
+        "startColumn": 9,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable next_task is not used.",
+      "file": "tests/integration/test_core_system_integration.py",
+      "region": {
+        "startLine": 222,
+        "startColumn": 9,
+        "endColumn": 18
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable expired_context is not used.",
+      "file": "tests/unit/test_enhanced_collaboration.py",
+      "region": {
+        "startLine": 232,
+        "startColumn": 9,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable result is not used.",
+      "file": "tests/unit/test_enhanced_message_broker_redis_breaker.py",
+      "region": {
+        "startLine": 58,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable response is not used.",
+      "file": "tests/unit/test_message_broker_isolation.py",
+      "region": {
+        "startLine": 166,
+        "startColumn": 13,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable total_duration is not used.",
+      "file": "tests/unit/test_message_broker_isolation.py",
+      "region": {
+        "startLine": 438,
+        "startColumn": 9,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable current_time is not used.",
+      "file": "tests/unit/test_metrics_flush.py",
+      "region": {
+        "startLine": 61,
+        "startColumn": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable written_count is not used.",
+      "file": "tests/unit/test_metrics_flush.py",
+      "region": {
+        "startLine": 132,
+        "startColumn": 17,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable user is not used.",
+      "file": "tests/security/test_oauth2_scopes.py",
+      "region": {
+        "startLine": 40,
+        "startColumn": 5,
+        "endColumn": 9
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable metrics_collector is not used.",
+      "file": "tests/unit/test_observability_system.py",
+      "region": {
+        "startLine": 696,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable original_sync_store is not used.",
+      "file": "tests/unit/test_orchestrator.py",
+      "region": {
+        "startLine": 144,
+        "startColumn": 9,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable original_check is not used.",
+      "file": "tests/unit/test_orchestrator.py",
+      "region": {
+        "startLine": 429,
+        "startColumn": 9,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable dev_focus is not used.",
+      "file": "tests/unit/test_pair_programming.py",
+      "region": {
+        "startLine": 362,
+        "startColumn": 9,
+        "endColumn": 18
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable qa_focus is not used.",
+      "file": "tests/unit/test_pair_programming.py",
+      "region": {
+        "startLine": 363,
+        "startColumn": 9,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable refactoring_result is not used.",
+      "file": "tests/integration/test_phase3_workflows.py",
+      "region": {
+        "startLine": 551,
+        "startColumn": 21,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable smells is not used.",
+      "file": "tests/integration/test_phase3_workflows.py",
+      "region": {
+        "startLine": 610,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable settings is not used.",
+      "file": "tests/integration/test_real_system_integration.py",
+      "region": {
+        "startLine": 22,
+        "startColumn": 5,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable syntax_valid is not used.",
+      "file": "tests/unit/safety/test_rollback_system.py",
+      "region": {
+        "startLine": 250,
+        "startColumn": 9,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable test_valid is not used.",
+      "file": "tests/unit/safety/test_rollback_system.py",
+      "region": {
+        "startLine": 254,
+        "startColumn": 9,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable admin is not used.",
+      "file": "tests/security/test_security_pytest.py",
+      "region": {
+        "startLine": 19,
+        "startColumn": 5,
+        "endColumn": 10
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable regular_user is not used.",
+      "file": "tests/security/test_security_pytest.py",
+      "region": {
+        "startLine": 32,
+        "startColumn": 5,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable invalid_task is not used.",
+      "file": "tests/unit/test_task_queue_comprehensive.py",
+      "region": {
+        "startLine": 699,
+        "startColumn": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable mock_request is not used.",
+      "file": "tests/unit/test_user_profile_crud.py",
+      "region": {
+        "startLine": 114,
+        "startColumn": 9,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable result is not used.",
+      "file": "tests/unit/test_user_profile_edge_cases.py",
+      "region": {
+        "startLine": 315,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable create_data is not used.",
+      "file": "tests/security/test_user_profile_security.py",
+      "region": {
+        "startLine": 130,
+        "startColumn": 13,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable exists is not used.",
+      "file": "src/core/tmux_manager.py",
+      "region": {
+        "startLine": 388,
+        "startColumn": 25,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable resource_guardian is not used.",
+      "file": "validate_adw_system.py",
+      "region": {
+        "startLine": 297,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable quality_gates is not used.",
+      "file": "validate_adw_system.py",
+      "region": {
+        "startLine": 305,
+        "startColumn": 13,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable rollback_system is not used.",
+      "file": "validate_adw_system.py",
+      "region": {
+        "startLine": 313,
+        "startColumn": 13,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable cognitive_manager is not used.",
+      "file": "validate_adw_system.py",
+      "region": {
+        "startLine": 331,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable dashboard is not used.",
+      "file": "validate_adw_system.py",
+      "region": {
+        "startLine": 341,
+        "startColumn": 13,
+        "endColumn": 22
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable prediction_system is not used.",
+      "file": "validate_adw_system.py",
+      "region": {
+        "startLine": 349,
+        "startColumn": 13,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-local-variable",
+      "rule_index": 119,
+      "level": "warning",
+      "message": "Variable status is not used.",
+      "file": "validate_adw_system.py",
+      "region": {
+        "startLine": 374,
+        "startColumn": 13,
+        "endColumn": 19
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 97,
+        "startColumn": 5,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 111,
+        "startColumn": 5,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 117,
+        "startColumn": 5,
+        "endColumn": 38
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 123,
+        "startColumn": 5,
+        "endColumn": 32
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 147,
+        "startColumn": 5,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 161,
+        "startColumn": 5,
+        "endColumn": 36
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 168,
+        "startColumn": 5,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 194,
+        "startColumn": 5,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 200,
+        "startColumn": 5,
+        "endColumn": 33
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 214,
+        "startColumn": 5,
+        "endColumn": 36
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 233,
+        "startColumn": 5,
+        "endColumn": 36
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 241,
+        "startColumn": 5,
+        "endColumn": 37
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 259,
+        "startColumn": 5,
+        "endColumn": 33
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/not-named-self",
+      "rule_index": 134,
+      "level": "warning",
+      "message": "Normal methods should have 'self', rather than 'cls', as their first parameter.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 266,
+        "startColumn": 5,
+        "endColumn": 39
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/mixed-returns",
+      "rule_index": 137,
+      "level": "warning",
+      "message": "Mixing implicit and explicit returns may indicate an error, as implicit returns always return None.",
+      "file": "scripts/test_adw_system.py",
+      "region": {
+        "startLine": 121,
+        "startColumn": 11,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/mixed-returns",
+      "rule_index": 137,
+      "level": "warning",
+      "message": "Mixing implicit and explicit returns may indicate an error, as implicit returns always return None.",
+      "file": "tests/integration/test_complete_agent_workflow.py",
+      "region": {
+        "startLine": 84,
+        "startColumn": 11,
+        "endLine": 86,
+        "endColumn": 7
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unnecessary-pass",
+      "rule_index": 142,
+      "level": "warning",
+      "message": "Unnecessary 'pass' statement.",
+      "file": "src/core/di_container.py",
+      "region": {
+        "startLine": 254,
+        "startColumn": 9,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unnecessary-pass",
+      "rule_index": 142,
+      "level": "warning",
+      "message": "Unnecessary 'pass' statement.",
+      "file": "src/core/testing/extended_session_tester.py",
+      "region": {
+        "startLine": 428,
+        "startColumn": 13,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unnecessary-pass",
+      "rule_index": 142,
+      "level": "warning",
+      "message": "Unnecessary 'pass' statement.",
+      "file": "src/core/testing/extended_session_tester.py",
+      "region": {
+        "startLine": 434,
+        "startColumn": 13,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unnecessary-pass",
+      "rule_index": 142,
+      "level": "warning",
+      "message": "Unnecessary 'pass' statement.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2300,
+        "startColumn": 17,
+        "endColumn": 21
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unnecessary-pass",
+      "rule_index": 142,
+      "level": "warning",
+      "message": "Unnecessary 'pass' statement.",
+      "file": "tests/unit/test_base_agent.py",
+      "region": {
+        "startLine": 166,
+        "startColumn": 9,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unnecessary-pass",
+      "rule_index": 142,
+      "level": "warning",
+      "message": "Unnecessary 'pass' statement.",
+      "file": "tests/unit/test_base_agent.py",
+      "region": {
+        "startLine": 174,
+        "startColumn": 9,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unnecessary-pass",
+      "rule_index": 142,
+      "level": "warning",
+      "message": "Unnecessary 'pass' statement.",
+      "file": "tests/unit/test_base_agent.py",
+      "region": {
+        "startLine": 182,
+        "startColumn": 9,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unnecessary-pass",
+      "rule_index": 142,
+      "level": "warning",
+      "message": "Unnecessary 'pass' statement.",
+      "file": "tests/unit/test_base_agent.py",
+      "region": {
+        "startLine": 190,
+        "startColumn": 9,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/ineffectual-statement",
+      "rule_index": 145,
+      "level": "warning",
+      "message": "This statement has no effect.",
+      "file": "tests/unit/test_agent_lifecycle_isolation.py",
+      "region": {
+        "startLine": 158,
+        "startColumn": 13,
+        "endColumn": 29
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/core/agent_spawner.py",
+      "region": {
+        "startLine": 263,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "demo_self_improvement.py",
+      "region": {
+        "startLine": 170,
+        "startColumn": 9,
+        "endColumn": 77
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/agents/developer_agent.py",
+      "region": {
+        "startLine": 448,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/core/di_container.py",
+      "region": {
+        "startLine": 269,
+        "startColumn": 5,
+        "endColumn": 27
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/agents/enhanced_base_agent.py",
+      "region": {
+        "startLine": 469,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/agents/enhanced_base_agent.py",
+      "region": {
+        "startLine": 477,
+        "startColumn": 9,
+        "endColumn": 26
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 2264,
+        "startColumn": 17,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 891,
+        "startColumn": 9,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/core/observability/metrics_collector.py",
+      "region": {
+        "startLine": 381,
+        "startColumn": 9,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/core/adw/micro_development.py",
+      "region": {
+        "startLine": 282,
+        "startColumn": 9,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/core/sleep_wake_manager.py",
+      "region": {
+        "startLine": 738,
+        "startColumn": 9,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "src/core/sleep_wake_manager.py",
+      "region": {
+        "startLine": 752,
+        "startColumn": 9,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unreachable-statement",
+      "rule_index": 147,
+      "level": "warning",
+      "message": "This statement is unreachable.",
+      "file": "tests/integration/test_complete_agent_workflow.py",
+      "region": {
+        "startLine": 160,
+        "startColumn": 9,
+        "endColumn": 58
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/use-of-exit-or-quit",
+      "rule_index": 155,
+      "level": "warning",
+      "message": "The 'exit' site.Quitter object may not exist if the 'site' module is not loaded or is modified.",
+      "file": "scripts/analyze_query_performance.py",
+      "region": {
+        "startLine": 467,
+        "startColumn": 5,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/use-of-exit-or-quit",
+      "rule_index": 155,
+      "level": "warning",
+      "message": "The 'exit' site.Quitter object may not exist if the 'site' module is not loaded or is modified.",
+      "file": "scripts/benchmark_performance.py",
+      "region": {
+        "startLine": 498,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/use-of-exit-or-quit",
+      "rule_index": 155,
+      "level": "warning",
+      "message": "The 'exit' site.Quitter object may not exist if the 'site' module is not loaded or is modified.",
+      "file": "scripts/benchmark_performance.py",
+      "region": {
+        "startLine": 503,
+        "startColumn": 13,
+        "endColumn": 20
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/use-of-exit-or-quit",
+      "rule_index": 155,
+      "level": "warning",
+      "message": "The 'exit' site.Quitter object may not exist if the 'site' module is not loaded or is modified.",
+      "file": "scripts/benchmark_performance.py",
+      "region": {
+        "startLine": 508,
+        "startColumn": 9,
+        "endColumn": 16
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/use-of-exit-or-quit",
+      "rule_index": 155,
+      "level": "warning",
+      "message": "The 'exit' site.Quitter object may not exist if the 'site' module is not loaded or is modified.",
+      "file": "tests/security/test_api_security.py",
+      "region": {
+        "startLine": 566,
+        "startColumn": 5,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/print-during-import",
+      "rule_index": 158,
+      "level": "warning",
+      "message": "Print statement may execute during import.",
+      "file": "src/core/observability/__init__.py",
+      "region": {
+        "startLine": 82,
+        "startColumn": 5,
+        "endColumn": 74
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'sa' is not used.",
+      "file": "alembic/versions/add_performance_indexes.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Union' is not used.",
+      "file": "src/cli/commands/agent.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'warning_message' is not used.",
+      "file": "src/cli/commands/agent.py",
+      "region": {
+        "startLine": 18,
+        "endLine": 25,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/agent_health.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/agent_lifecycle.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'traceback' is not used.",
+      "file": "src/core/agent_lifecycle.py",
+      "region": {
+        "startLine": 16,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/agent_recovery.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.",
+      "file": "src/core/agent_recovery.py",
+      "region": {
+        "startLine": 15,
+        "endColumn": 60
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'subprocess' is not used.",
+      "file": "src/core/agent_spawner.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 18
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'time' is not used.",
+      "file": "src/core/agent_spawner.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AgentInfo' is not used.\nImport of 'AgentStatus' is not used.",
+      "file": "src/core/agent_spawner.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 62
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/alert_manager.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.\nImport of 'Callable' is not used.",
+      "file": "src/core/alert_manager.py",
+      "region": {
+        "startLine": 19,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'urlparse' is not used.",
+      "file": "src/core/alert_manager.py",
+      "region": {
+        "startLine": 21,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AlertStatus' is not used.",
+      "file": "src/core/alert_manager.py",
+      "region": {
+        "startLine": 23,
+        "endColumn": 62
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/observability/alert_manager.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/observability/alert_manager.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Path' is not used.",
+      "file": "scripts/analyze_query_performance.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Tuple' is not used.",
+      "file": "scripts/analyze_query_performance.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 47
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'inspect' is not used.",
+      "file": "src/core/auth.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.",
+      "file": "src/cli/auth.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'get_cli_user' is not used.\nImport of 'get_current_user' is not used.",
+      "file": "src/cli/auth.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/bottleneck_detector.py",
+      "region": {
+        "startLine": 18,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Union' is not used.",
+      "file": "src/core/circuit_breaker.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 62
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'traceback' is not used.",
+      "file": "src/core/circuit_breaker.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/communication_monitor.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'statistics' is not used.",
+      "file": "src/core/communication_monitor.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 18
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/communication_monitor.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.\nImport of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Tuple' is not used.",
+      "file": "src/core/communication_monitor.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/communication_performance_dashboard.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.",
+      "file": "src/core/communication_performance_dashboard.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 45
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'Any' is not used.",
+      "file": "tests/conftest.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 29
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/subagents/coordination_agent.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.",
+      "file": "src/core/collaboration/cross_project_learning.py",
+      "region": {
+        "startLine": 16,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'model_orchestrator' is not used.",
+      "file": "src/core/collaboration/cross_project_learning.py",
+      "region": {
+        "startLine": 20,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ContextShareType' is not used.",
+      "file": "src/core/collaboration/cross_project_learning.py",
+      "region": {
+        "startLine": 22,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'WebSocketDisconnect' is not used.",
+      "file": "src/api/websocket/dashboard_handler.py",
+      "region": {
+        "startLine": 27,
+        "startColumn": 5,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TaskResult' is not used.",
+      "file": "demo_multi_agent_collaboration.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 56
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'get_enhanced_message_broker' is not used.",
+      "file": "demo_multi_agent_collaboration.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 73
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'get_collaboration_sync' is not used.",
+      "file": "demo_multi_agent_collaboration.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 67
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "src/core/di_container.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "src/agents/enhanced_base_agent.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'managed_resource' is not used.",
+      "file": "src/agents/enhanced_base_agent.py",
+      "region": {
+        "startLine": 40,
+        "startColumn": 5,
+        "endLine": 46,
+        "endColumn": 6
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'managed_resource' is not used.",
+      "file": "src/agents/enhanced_base_agent.py",
+      "region": {
+        "startLine": 69,
+        "startColumn": 5,
+        "endLine": 75,
+        "endColumn": 6
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.",
+      "file": "src/core/enhanced_message_broker.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.\nImport of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.",
+      "file": "src/core/enhanced_message_broker.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 50
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TaskPriority' is not used.",
+      "file": "src/core/enhanced_message_broker.py",
+      "region": {
+        "startLine": 18,
+        "endColumn": 32
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Message' is not used.",
+      "file": "src/core/enhanced_message_broker.py",
+      "region": {
+        "startLine": 19,
+        "endColumn": 64
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AsyncDatabaseManager' is not used.",
+      "file": "src/core/enhanced_message_broker.py",
+      "region": {
+        "startLine": 28,
+        "startColumn": 5,
+        "endColumn": 47
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Callable' is not used.",
+      "file": "src/core/enhanced_routing.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 37
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/enhanced_routing.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.\nImport of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Tuple' is not used.",
+      "file": "src/core/enhanced_routing.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Union' is not used.\nImport of 'Type' is not used.",
+      "file": "src/core/error_handling.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 68
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/observability/event_aggregator.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.",
+      "file": "src/core/observability/event_aggregator.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 60
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/observability/event_aggregator.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Union' is not used.",
+      "file": "src/core/ai/gemini_client.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 68
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ModelType' is not used.",
+      "file": "src/core/ai/gemini_client.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ModelType' is not used.",
+      "file": "src/core/ai/gpt4_client.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.",
+      "file": "src/core/health_monitor.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 45
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AgentInfo' is not used.\nImport of 'AgentStatus' is not used.",
+      "file": "src/core/health_monitor.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 79
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ABC' is not used.",
+      "file": "src/core/interfaces.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 36
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "src/core/subagents/learning_agent.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/subagents/learning_agent.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/subagents/learning_agent.py",
+      "region": {
+        "startLine": 15,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Intervals' is not used.",
+      "file": "src/core/subagents/learning_agent.py",
+      "region": {
+        "startLine": 20,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MessageType' is not used.\nImport of 'message_broker' is not used.",
+      "file": "src/core/subagents/learning_agent.py",
+      "region": {
+        "startLine": 21,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "src/core/load_balancer.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.\nImport of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Tuple' is not used.",
+      "file": "src/core/load_balancer.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AgentStatus' is not used.",
+      "file": "src/core/load_balancer.py",
+      "region": {
+        "startLine": 17,
+        "endColumn": 45
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'string' is not used.",
+      "file": "tests/performance/locustfile.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 14
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'CORSMiddleware' is not used.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 82,
+        "endColumn": 51
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'stop_metrics_collection' is not used.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 433,
+        "startColumn": 5,
+        "endLine": 437,
+        "endColumn": 6
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'stop_bottleneck_detection' is not used.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 438,
+        "startColumn": 5,
+        "endLine": 442,
+        "endColumn": 6
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'process_alert_notification' is not used.",
+      "file": "src/api/main.py",
+      "region": {
+        "startLine": 443,
+        "startColumn": 5,
+        "endLine": 446,
+        "endColumn": 6
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 6,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 45
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TaskResult' is not used.\nImport of 'ToolResult' is not used.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 58
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TaskStatus' is not used.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 61
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AgentStatus' is not used.",
+      "file": "src/agents/meta_agent.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 37
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/observability/metrics_collector.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'HealthMonitorRegistry' is not used.",
+      "file": "src/core/observability/metrics_collector.py",
+      "region": {
+        "startLine": 34,
+        "startColumn": 5,
+        "endColumn": 82
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/collaboration/ml_performance_optimizer.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.",
+      "file": "src/core/collaboration/ml_performance_optimizer.py",
+      "region": {
+        "startLine": 15,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'model_orchestrator' is not used.",
+      "file": "src/core/collaboration/ml_performance_optimizer.py",
+      "region": {
+        "startLine": 19,
+        "endColumn": 55
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "src/core/ai/model_orchestrator.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TaskRequirements' is not used.\nImport of 'AIModelInterface' is not used.",
+      "file": "src/core/ai/model_orchestrator.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 75
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.",
+      "file": "src/cli/commands/monitor.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.\nImport of 'List' is not used.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'IAgentOrchestrator' is not used.\nImport of 'InterfaceAgentInfo' is not used.\nImport of 'InterfaceAgentStatus' is not used.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 16,
+        "endColumn": 127
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'SubprocessTmuxBackend' is not used.\nImport of 'TmuxManagerBackend' is not used.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 21,
+        "endLine": 26,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TmuxOperationResult' is not used.",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 27,
+        "endColumn": 64
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'IHealthMonitor' is not used.",
+      "file": "src/core/orchestrator_refactored.py",
+      "region": {
+        "startLine": 11,
+        "endLine": 14,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Path' is not used.",
+      "file": "src/cli/commands/plan.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "src/core/subagents/quality_gate_agent.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Intervals' is not used.",
+      "file": "src/core/subagents/quality_gate_agent.py",
+      "region": {
+        "startLine": 19,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MessageType' is not used.\nImport of 'message_broker' is not used.",
+      "file": "src/core/subagents/quality_gate_agent.py",
+      "region": {
+        "startLine": 20,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.",
+      "file": "src/core/real_time_monitoring.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 45
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'PerformanceMetric' is not used.",
+      "file": "src/core/real_time_monitoring.py",
+      "region": {
+        "startLine": 18,
+        "endColumn": 79
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.\nImport of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.",
+      "file": "src/core/realtime_collaboration.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 50
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AgentState' is not used.",
+      "file": "src/core/realtime_collaboration.py",
+      "region": {
+        "startLine": 20,
+        "endLine": 25,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'weakref' is not used.",
+      "file": "src/core/resource_management.py",
+      "region": {
+        "startLine": 16,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'field' is not used.",
+      "file": "src/core/resource_management.py",
+      "region": {
+        "startLine": 17,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/resource_management.py",
+      "region": {
+        "startLine": 18,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Union' is not used.",
+      "file": "src/core/resource_management.py",
+      "region": {
+        "startLine": 20,
+        "endColumn": 67
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'traceback' is not used.",
+      "file": "src/core/resource_management.py",
+      "region": {
+        "startLine": 21,
+        "endColumn": 17
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Any' is not used.",
+      "file": "src/core/ai/response_validator.py",
+      "region": {
+        "startLine": 6,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'os' is not used.",
+      "file": "src/agents/runner.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 10
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ast' is not used.",
+      "file": "scripts/security_audit.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 11
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Tuple' is not used.",
+      "file": "scripts/security_audit.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 42
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'timedelta' is not used.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 31
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.\nImport of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Tuple' is not used.",
+      "file": "src/core/shared_knowledge_base.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.",
+      "file": "src/cli/state/store.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 28
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'importlib' is not used.",
+      "file": "system_analyzer.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 22
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'os' is not used.",
+      "file": "system_analyzer.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 10
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'sys' is not used.",
+      "file": "system_analyzer.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 11
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "src/core/subagents/task_decomposition_agent.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Intervals' is not used.",
+      "file": "src/core/subagents/task_decomposition_agent.py",
+      "region": {
+        "startLine": 18,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MessageType' is not used.\nImport of 'message_broker' is not used.",
+      "file": "src/core/subagents/task_decomposition_agent.py",
+      "region": {
+        "startLine": 19,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.\nImport of 'List' is not used.",
+      "file": "scripts/test_adw_system.py",
+      "region": {
+        "startLine": 22,
+        "endColumn": 45
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.",
+      "file": "tests/integration/test_agent_enhanced_communication.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 47
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Any' is not used.",
+      "file": "tests/unit/test_agent_lifecycle_isolation.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'create_isolated_agent' is not used.",
+      "file": "tests/unit/test_agent_lifecycle_isolation.py",
+      "region": {
+        "startLine": 20,
+        "endLine": 24,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/test_ai_integration.py",
+      "region": {
+        "startLine": 2,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AsyncMock' is not used.",
+      "file": "tests/unit/test_ai_integration.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Any' is not used.",
+      "file": "tests/unit/test_ai_integration.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 45
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ModelResponse' is not used.",
+      "file": "tests/unit/test_ai_integration.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 87
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/security/test_api_security.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'List' is not used.",
+      "file": "tests/security/test_api_security.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'httpx' is not used.",
+      "file": "tests/security/test_api_security.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'pytest' is not used.",
+      "file": "tests/security/test_api_security.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 14
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'os' is not used.",
+      "file": "test_auth_fix.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 10
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/test_base_agent.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'os' is not used.",
+      "file": "tests/unit/test_broker_structured_api.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 10
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "tests/contracts/test_component_contracts.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Any' is not used.",
+      "file": "tests/contracts/test_component_contracts.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 18,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'uuid' is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 20,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'field' is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 23,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Union' is not used.\nImport of 'Set' is not used.\nImport of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 24,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Mock' is not used.",
+      "file": "tests/unit/test_component_isolation_framework.py",
+      "region": {
+        "startLine": 25,
+        "endColumn": 60
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Union' is not used.\nImport of 'Set' is not used.\nImport of 'Optional' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.",
+      "file": "tests/contracts/test_contract_framework.py",
+      "region": {
+        "startLine": 21,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'timedelta' is not used.",
+      "file": "test_datetime_issue.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 46
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/test_enhanced_collaboration.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'SessionPhase' is not used.",
+      "file": "tests/unit/test_enhanced_collaboration.py",
+      "region": {
+        "startLine": 9,
+        "endLine": 15,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'uuid4' is not used.",
+      "file": "tests/integration/test_enhanced_communication_integration.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/test_enhanced_message_broker.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'uuid4' is not used.",
+      "file": "tests/unit/test_enhanced_message_broker.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Message' is not used.",
+      "file": "tests/unit/test_enhanced_message_broker.py",
+      "region": {
+        "startLine": 24,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.",
+      "file": "tests/unit/test_enhanced_message_broker_idempotency.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'BrokerSendResult' is not used.",
+      "file": "tests/unit/test_enhanced_message_broker_idempotency.py",
+      "region": {
+        "startLine": 6,
+        "endColumn": 66
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'uuid' is not used.",
+      "file": "tests/unit/test_enhanced_message_broker_isolation.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Set' is not used.\nImport of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Any' is not used.",
+      "file": "tests/unit/test_enhanced_message_broker_isolation.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 40
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AgentState' is not used.\nImport of 'EnhancedMessageBroker' is not used.\nImport of 'SharedContext' is not used.",
+      "file": "tests/unit/test_enhanced_message_broker_isolation.py",
+      "region": {
+        "startLine": 17,
+        "endLine": 24,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.\nImport of 'AsyncMock' is not used.\nImport of 'patch' is not used.",
+      "file": "tests/unit/test_error_handling.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/test_framework_validation.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/test_gemini_integration.py",
+      "region": {
+        "startLine": 2,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "tests/unit/test_gemini_integration.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.\nImport of 'AsyncMock' is not used.\nImport of 'Mock' is not used.",
+      "file": "tests/unit/test_gemini_integration.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 60
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'Any' is not used.",
+      "file": "tests/unit/test_gemini_integration.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 29
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ModelType' is not used.",
+      "file": "tests/unit/test_gemini_integration.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/test_gpt4_integration.py",
+      "region": {
+        "startLine": 2,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "tests/unit/test_gpt4_integration.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.\nImport of 'AsyncMock' is not used.\nImport of 'Mock' is not used.",
+      "file": "tests/unit/test_gpt4_integration.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 60
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'Any' is not used.",
+      "file": "tests/unit/test_gpt4_integration.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 29
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ModelType' is not used.",
+      "file": "tests/unit/test_gpt4_integration.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'List' is not used.",
+      "file": "tests/unit/test_message_broker_isolation.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MessageBroker' is not used.",
+      "file": "tests/unit/test_message_broker_isolation.py",
+      "region": {
+        "startLine": 17,
+        "endColumn": 88
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/smoke/test_message_broker_smoke.py",
+      "region": {
+        "startLine": 1,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.",
+      "file": "tests/unit/test_meta_agent.py",
+      "region": {
+        "startLine": 6,
+        "endColumn": 30
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'time' is not used.",
+      "file": "tests/unit/test_meta_agent.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TaskStatus' is not used.",
+      "file": "tests/unit/test_meta_agent.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 63
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AsyncMock' is not used.",
+      "file": "tests/integration/test_metrics_api.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Message' is not used.\nImport of 'MessageType' is not used.",
+      "file": "tests/unit/test_metrics_flush.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 72
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.",
+      "file": "tests/unit/test_metrics_wiring.py",
+      "region": {
+        "startLine": 6,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'CLIToolType' is not used.",
+      "file": "tests/unit/test_metrics_wiring.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 57
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'os' is not used.",
+      "file": "test_middleware_debug.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 10
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Path' is not used.",
+      "file": "tests/unit/test_monitor_commands.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'tempfile' is not used.",
+      "file": "tests/unit/test_monitor_commands.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 16
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of '_monitor_agents_live' is not used.\nImport of '_monitor_tasks_live' is not used.\nImport of '_monitor_system_live' is not used.\nImport of '_monitor_resources_live' is not used.",
+      "file": "tests/unit/test_monitor_commands.py",
+      "region": {
+        "startLine": 11,
+        "endLine": 25,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Mock' is not used.",
+      "file": "tests/unit/test_observability_system.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Any' is not used.",
+      "file": "tests/unit/test_observability_system.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 35
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'SystemMetrics' is not used.\nImport of 'AgentMetrics' is not used.\nImport of 'TaskMetrics' is not used.",
+      "file": "tests/unit/test_observability_system.py",
+      "region": {
+        "startLine": 16,
+        "startColumn": 5,
+        "endLine": 23,
+        "endColumn": 6
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MessageType' is not used.",
+      "file": "tests/unit/test_observability_system.py",
+      "region": {
+        "startLine": 41,
+        "startColumn": 5,
+        "endLine": 45,
+        "endColumn": 6
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TaskType' is not used.",
+      "file": "tests/unit/test_plan_schema.py",
+      "region": {
+        "startLine": 2,
+        "endColumn": 67
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "tests/unit/test_plan_state.py",
+      "region": {
+        "startLine": 3,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/integration/test_pwa_functionality.py",
+      "region": {
+        "startLine": 12,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.\nImport of 'AsyncMock' is not used.\nImport of 'patch' is not used.",
+      "file": "tests/integration/test_pwa_functionality.py",
+      "region": {
+        "startLine": 15,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'uuid4' is not used.",
+      "file": "tests/unit/test_realtime_collaboration.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'CollaborationSession' is not used.\nImport of 'SharedWorkspace' is not used.\nImport of 'SyncConflictResolver' is not used.",
+      "file": "tests/unit/test_realtime_collaboration.py",
+      "region": {
+        "startLine": 18,
+        "endLine": 23,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.\nImport of 'AsyncMock' is not used.",
+      "file": "tests/unit/test_self_modifier_enhanced.py",
+      "region": {
+        "startLine": 6,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'ModificationRecord' is not used.\nImport of 'ValidationResult' is not used.",
+      "file": "tests/unit/test_self_modifier_enhanced.py",
+      "region": {
+        "startLine": 10,
+        "endLine": 23,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'asyncio' is not used.",
+      "file": "tests/unit/test_shared_knowledge_base.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'uuid4' is not used.",
+      "file": "tests/unit/test_shared_knowledge_base.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'KnowledgeEntry' is not used.\nImport of 'KnowledgeGraph' is not used.\nImport of 'SemanticSearchEngine' is not used.",
+      "file": "tests/unit/test_shared_knowledge_base.py",
+      "region": {
+        "startLine": 18,
+        "endLine": 23,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Path' is not used.",
+      "file": "test_system_validation.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TaskPriority' is not used.\nImport of 'TaskStatus' is not used.",
+      "file": "test_system_validation.py",
+      "region": {
+        "startLine": 13,
+        "endColumn": 52
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Task' is not used.",
+      "file": "test_system_validation.py",
+      "region": {
+        "startLine": 14,
+        "endColumn": 33
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Path' is not used.",
+      "file": "tests/unit/test_tmux_manager.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'MagicMock' is not used.",
+      "file": "tests/unit/test_tmux_manager.py",
+      "region": {
+        "startLine": 6,
+        "endColumn": 54
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'TmuxCommandTimeoutError' is not used.\nImport of 'TmuxError' is not used.\nImport of 'TmuxRetryExhaustedError' is not used.",
+      "file": "tests/unit/test_tmux_manager.py",
+      "region": {
+        "startLine": 10,
+        "endLine": 19,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AsyncMock' is not used.",
+      "file": "tests/unit/test_user_profile_crud.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'json' is not used.",
+      "file": "tests/unit/test_user_profile_crud.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timezone' is not used.",
+      "file": "tests/unit/test_user_profile_crud.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 40
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'get_user_profile' is not used.\nImport of 'update_user_profile' is not used.\nImport of 'get_user_profile_by_id' is not used.\nImport of 'delete_user_profile' is not used.\nImport of 'APIResponse' is not used.",
+      "file": "tests/unit/test_user_profile_crud.py",
+      "region": {
+        "startLine": 10,
+        "endLine": 19,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'httpx' is not used.",
+      "file": "tests/integration/test_user_profile_crud_integration.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AsyncMock' is not used.\nImport of 'patch' is not used.",
+      "file": "tests/integration/test_user_profile_crud_integration.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 43
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AsyncMock' is not used.\nImport of 'patch' is not used.",
+      "file": "tests/unit/test_user_profile_edge_cases.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timezone' is not used.",
+      "file": "tests/unit/test_user_profile_edge_cases.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 40
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'get_user_profile' is not used.\nImport of 'update_user_profile' is not used.\nImport of 'delete_user_profile' is not used.\nImport of 'UserProfile' is not used.",
+      "file": "tests/unit/test_user_profile_edge_cases.py",
+      "region": {
+        "startLine": 11,
+        "endLine": 18,
+        "endColumn": 2
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'httpx' is not used.",
+      "file": "tests/security/test_user_profile_security.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 13
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'AsyncMock' is not used.",
+      "file": "tests/security/test_user_profile_security.py",
+      "region": {
+        "startLine": 5,
+        "endColumn": 49
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'HTTPException' is not used.",
+      "file": "tests/security/test_user_profile_security.py",
+      "region": {
+        "startLine": 7,
+        "endColumn": 34
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Path' is not used.",
+      "file": "testing_strategy_designer.py",
+      "region": {
+        "startLine": 8,
+        "endColumn": 25
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Dict' is not used.\nImport of 'List' is not used.\nImport of 'Tuple' is not used.",
+      "file": "testing_strategy_designer.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 42
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'datetime' is not used.\nImport of 'timedelta' is not used.",
+      "file": "src/core/observability/time_series_store.py",
+      "region": {
+        "startLine": 10,
+        "endColumn": 41
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Enum' is not used.",
+      "file": "src/core/observability/time_series_store.py",
+      "region": {
+        "startLine": 11,
+        "endColumn": 22
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'subprocess' is not used.",
+      "file": "src/core/tmux_manager.py",
+      "region": {
+        "startLine": 4,
+        "endColumn": 18
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'Optional' is not used.",
+      "file": "src/core/tmux_manager.py",
+      "region": {
+        "startLine": 9,
+        "endColumn": 33
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/unused-import",
+      "rule_index": 162,
+      "level": "warning",
+      "message": "Import of 'get_authenticated_cli_user' is not used.",
+      "file": "src/cli/utils.py",
+      "region": {
+        "startLine": 16,
+        "startColumn": 5,
+        "endColumn": 73
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/repeated-import",
+      "rule_index": 163,
+      "level": "warning",
+      "message": "This import of module json is redundant, as it was previously imported [on line 10](1).",
+      "file": "src/core/collaboration/ml_performance_optimizer.py",
+      "region": {
+        "startLine": 844,
+        "startColumn": 13,
+        "endColumn": 24
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/repeated-import",
+      "rule_index": 163,
+      "level": "warning",
+      "message": "This import of module asyncio is redundant, as it was previously imported [on line 3](1).",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 217,
+        "startColumn": 9,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/repeated-import",
+      "rule_index": 163,
+      "level": "warning",
+      "message": "This import of module asyncio is redundant, as it was previously imported [on line 3](1).",
+      "file": "src/core/orchestrator.py",
+      "region": {
+        "startLine": 269,
+        "startColumn": 9,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/repeated-import",
+      "rule_index": 163,
+      "level": "warning",
+      "message": "This import of module asyncio is redundant, as it was previously imported [on line 1](1).",
+      "file": "tests/unit/test_message_broker_comprehensive.py",
+      "region": {
+        "startLine": 77,
+        "endColumn": 15
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/repeated-import",
+      "rule_index": 163,
+      "level": "warning",
+      "message": "This import of module json is redundant, as it was previously imported [on line 2](1).",
+      "file": "tests/unit/test_message_broker_comprehensive.py",
+      "region": {
+        "startLine": 78,
+        "endColumn": 12
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    },
+    {
+      "rule_id": "py/repeated-import",
+      "rule_index": 163,
+      "level": "warning",
+      "message": "This import of module asyncio is redundant, as it was previously imported [on line 4](1).",
+      "file": "tests/unit/test_user_profile_edge_cases.py",
+      "region": {
+        "startLine": 313,
+        "startColumn": 9,
+        "endColumn": 23
+      },
+      "kind": "notApplicable",
+      "properties": {}
+    }
+  ],
+  "sarif_metadata": {
+    "version": "2.1.0",
+    "schema_uri": "https://json.schemastore.org/sarif-2.1.0.json",
+    "tool": {
+      "name": "CodeQL",
+      "version": "unknown",
+      "information_uri": ""
+    },
+    "tool_name": "CodeQL",
+    "tool_version": "unknown"
+  }
+}

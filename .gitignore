@@ -33,3 +33,7 @@ EjemploVisualizer/EjemploCSS.css
 EjemploVisualizer/EjemploHTML.html
 EjemploVisualizer/EjemploJS01.js
 EjemploVisualizer/EjemploJS02.js
+# Ignorar archivos residuales SARIF
+
+
+*.sarif

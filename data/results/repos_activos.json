@@ -1,0 +1,50 @@
+[
+  {
+    "name": "agent-hive",
+    "clone_url": "https://github.com/LeanVibe/agent-hive.git",
+    "language": "Python",
+    "stargazers_count": 2
+  },
+  {
+    "name": "Septica",
+    "clone_url": "https://github.com/LeanVibe/Septica.git",
+    "language": null,
+    "stargazers_count": 1
+  },
+  {
+    "name": "leanvibe-ai",
+    "clone_url": "https://github.com/LeanVibe/leanvibe-ai.git",
+    "language": "Python",
+    "stargazers_count": 0
+  },
+  {
+    "name": "startup-factory",
+    "clone_url": "https://github.com/LeanVibe/startup-factory.git",
+    "language": "JavaScript",
+    "stargazers_count": 0
+  },
+  {
+    "name": "bee-hive",
+    "clone_url": "https://github.com/LeanVibe/bee-hive.git",
+    "language": "Python",
+    "stargazers_count": 0
+  },
+  {
+    "name": "ant-farm",
+    "clone_url": "https://github.com/LeanVibe/ant-farm.git",
+    "language": "Python",
+    "stargazers_count": 0
+  },
+  {
+    "name": "clan-wars",
+    "clone_url": "https://github.com/LeanVibe/clan-wars.git",
+    "language": null,
+    "stargazers_count": 0
+  },
+  {
+    "name": "specflow",
+    "clone_url": "https://github.com/LeanVibe/specflow.git",
+    "language": "Python",
+    "stargazers_count": 0
+  }
+]

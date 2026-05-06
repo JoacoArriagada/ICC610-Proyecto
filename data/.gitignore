@@ -1,4 +1,10 @@
-*
-!.gitignore
-!.gitkeep
-!*/
+# Ignorar el contenido de la carpeta de repositorios clonados
+repos/*
+!repos/.gitkeep
+
+# Permitir explícitamente todo dentro de results
+!results/
+!results/**
+
+# Ignorar archivos ocultos del sistema
+.DS_Store
