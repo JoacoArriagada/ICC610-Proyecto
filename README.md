@@ -8,7 +8,7 @@ Herramienta para detectar, analizar y visualizar vulnerabilidades en repositorio
 Equipo
 ------
 
-- Jonathan Chaves
+- Jonathan Chavez
 - Joaquin Arriagada
 - Lucas Colomera
 
@@ -22,6 +22,7 @@ Estructura del proyecto
 
 - `miner/` — Orquestador y scripts para extraer repositorios, generar SBOMs (Syft), escanear dependencias (Grype) y ejecutar análisis estático (CodeQL).
 - `analyzer/` — Notebooks Jupyter para análisis exploratorio de vulnerabilidades (frecuencia, severidad, patrones).
+- `visualizer/` — Dashboard web interactivo (HTML/JS/CSS) para explorar, filtrar y visualizar las métricas y vulnerabilidades extraídas.
 - `tests/` — Pruebas unitarias para modelos y scanners.
 - `.devcontainer/` — Configuración Docker para reproducir el entorno completo (Python, Node.js, CodeQL, Syft, Grype).
 - `data/` — Salidas generadas por el Miner (repos clonados, SBOMs, resultados de escaneos).
@@ -32,7 +33,7 @@ Requisitos y reproducibilidad
 El proyecto se ejecuta mediante Docker Compose con un entorno completo que incluye:
 - Python 3.11 con dependencias (pandas, seaborn, jupyterlab, etc.)
 - Node.js 20.x
-- CodeQL CLI v2.20.3 con paquetes de consulta (Python, JavaScript, Java)
+- CodeQL CLI v2.25.3 con paquetes de consulta (Python, JavaScript, Java)
 - Syft y Grype (instalados via scripts oficiales)
 
 ---
@@ -41,12 +42,12 @@ El proyecto se ejecuta mediante Docker Compose con un entorno completo que inclu
 
 **Lenguajes y frameworks:**
 - Python 3.11 (Miner y Analyzer)
-- JavaScript/Node.js 20.x (pendiente: Visualizer)
+- JavaScript/Node.js 20.x (Visualizer)
 
 **Herramientas de análisis:**
-- **CodeQL** v2.20.3 — Análisis estático de código (queries para Python, JavaScript, Java)
-- **Syft** v1.44.0 — Generación de SBOMs (Software Bill of Materials)
-- **Grype** v0.112.0 — Escaneo de vulnerabilidades en dependencias
+- **CodeQL** v2.25.3 — Análisis estático de código (queries para Python, JavaScript, Java)
+- **Syft** (latest) — Generación de SBOMs (Software Bill of Materials)
+- **Grype** (latest) — Escaneo de vulnerabilidades en dependencias
 
 **Bibliotecas Python principales:**
 - `requests` — Consumo de API de GitHub
@@ -56,6 +57,7 @@ El proyecto se ejecuta mediante Docker Compose con un entorno completo que inclu
 - `jupyterlab` — Entorno interactivo para notebooks
 - `PyYAML` — Procesamiento de archivos YAML
 - `beautifulsoup4` — Parsing de HTML/XML
+- `pytest` — Pruebas de funcionamiento
 
 **Infraestructura:**
 - Docker + Docker Compose — Contenerización y orquestación
@@ -65,22 +67,20 @@ El proyecto se ejecuta mediante Docker Compose con un entorno completo que inclu
 
 #### 1. Crear archivo de variables de entorno
 
-Crear un archivo `.env` en la raíz del proyecto:
+Copia el archivo de ejemplo para crear tu propio `.env` en la raíz del proyecto:
 
 ```bash
 # En Linux/Mac
-touch .env
-echo "GITHUB_TOKEN=tu_token_aquí" >> .env
+cp .env.example .env
 
 # En Windows (CMD)
-type nul > .env
-echo GITHUB_TOKEN=tu_token_aquí >> .env
+copy .env.example .env
 ```
 
 **Obtener token de GitHub:**
 1. Ir a GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
 2. Generar nuevo token con permiso `public_repo` (o `repo` para repos privados)
-3. Copiar el token y colocarlo en el archivo `.env`
+3. Copiar el token y reemplazar el valor en tu nuevo archivo `.env`
 
 #### 2. Iniciar los contenedores Docker
 
@@ -103,6 +103,9 @@ docker compose exec miner bash
 
 # Acceder al Analyzer (Jupyter Lab)
 Abrir en el navegador: http://localhost:8888
+
+# Acceder al Visualizer (Dashboard Web)
+Abrir en el navegador: http://localhost:8080
 ```
 
 ### Uso con Docker Compose (Recomendado)
@@ -115,26 +118,6 @@ python miner/run.py --org <organizacion> --limit <cantidad>
 # Ejecutar el Miner completo (fetch + SBOMs + Grype + CodeQL + limpieza)
 docker compose exec miner bash
 python miner/run.py --org FlowiseAI --limit 5
-
-```
-
-### Uso directo de los componentes
-
-```bash
-# Obtener repositorios
-python miner/scanners/fetch_repos.py --org FlowiseAI --limit 5
-
-# Generar SBOMs y escanear vulnerabilidades
-python miner/scanners/generate_sboms.py
-
-# Ejecutar análisis CodeQL
-python miner/scanners/generate_codeql.py
-
-# Extraer vulnerabilidades críticas
-python extract_critical_vulns.py
-
-# Ejecutar pruebas
-python -m pytest tests/
 ```
 
 Estado actual
@@ -144,14 +127,7 @@ Estado actual
 - ✅ **Analyzer**: Notebooks Jupyter para análisis de resultados
 - ✅ **Entorno reproducible**: Dockerfile y Docker Compose configurados
 - ✅ **Pruebas**: Unit tests para modelos y scanners
-- ⚠️ **Visualizer**: Pendiente de implementación (requisito obligatorio en JavaScript)
-
-Cómo contribuir
---------------
-
-1. Crear una rama `feature/<tema>`.
-2. Añadir cambios y pruebas mínimas.
-3. Abrir PR explicando objetivos y pasos para reproducir.
+- ✅ **Visualizer**: Implementado dashboard interactivo para exploración de vulnerabilidades
 
 Entregables
 -----------
