@@ -387,8 +387,8 @@ const GlobalFilters = {
         if (filters.searchQuery) {
             const q = filters.searchQuery.toLowerCase();
             repos = repos.filter(r =>
-                r.name.toLowerCase().includes(q) ||
-                r.language.toLowerCase().includes(q)
+                (r.name && r.name.toLowerCase().includes(q)) ||
+                (r.language && r.language.toLowerCase().includes(q))
             );
         }
 
