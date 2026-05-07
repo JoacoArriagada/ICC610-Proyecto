@@ -98,6 +98,10 @@ const DatasetLoader = {
         const repositories = [];
         let totalVulns = 0;
         let totalDeps = 0;
+        
+        // Patrones de rutas a excluir del análisis
+        const excludePatterns = ['/test/', '/tests/', '/example/', '/examples/', '/docs/', '/mock/'];
+        let omittedVulnsCount = 0;
 
         reposMeta.forEach(meta => {
             const repoName = meta.name;
@@ -111,10 +115,20 @@ const DatasetLoader = {
             vulns.matches.forEach((match, idx) => {
                 const v = match.vulnerability;
                 const a = match.artifact;
+                const location = a.locations && a.locations.length > 0 ? a.locations[0].path : '';
+                
+                // Excluir vulnerabilidades en carpetas de testing/ejemplos
+                const isExcluded = location && excludePatterns.some(pattern => 
+                    location.toLowerCase().includes(pattern)
+                );
+                if (isExcluded) {
+                    omittedVulnsCount++;
+                    return;
+                }
+
                 const severity = (v.severity || 'Low').toLowerCase();
                 const cvssItem = (v.cvss && Array.isArray(v.cvss)) ? v.cvss.find(c => c && c.metrics && c.metrics.baseScore !== undefined) : null;
                 const cvssScore = cvssItem ? cvssItem.metrics.baseScore : null;
-                const location = a.locations && a.locations.length > 0 ? a.locations[0].path : '';
                 const detectedAt = (v.fix && v.fix.available && v.fix.available.length > 0 && v.fix.available[0].date)
                     ? v.fix.available[0].date + 'T00:00:00Z'
                     : null;
@@ -140,9 +154,19 @@ const DatasetLoader = {
 
             if (sast.issues && sast.issues.length > 0) {
                 sast.issues.forEach((issue, idx) => {
+                    const loc = issue.file || (issue.locations && issue.locations[0] && issue.locations[0].physicalLocation ? issue.locations[0].physicalLocation.artifactLocation.uri || '' : '');
+                    
+                    // Excluir código vulnerable en tests/ejemplos
+                    const isExcluded = loc && excludePatterns.some(pattern => 
+                        loc.toLowerCase().includes(pattern)
+                    );
+                    if (isExcluded) {
+                        omittedVulnsCount++;
+                        return;
+                    }
+
                     const sevMap = { error: 'critical', warning: 'high', note: 'medium' };
                     const sev = sevMap[issue.level] || sevMap[issue.severity] || 'low';
-                    const loc = issue.file || (issue.locations && issue.locations[0] && issue.locations[0].physicalLocation ? issue.locations[0].physicalLocation.artifactLocation.uri || '' : '');
                     const region = issue.region || (issue.locations && issue.locations[0] && issue.locations[0].physicalLocation ? issue.locations[0].physicalLocation.region : null);
 
                     vulnerabilities.push({
@@ -261,6 +285,7 @@ window.toggleCvssSort = function() {
                 totalRepositories: repositories.length,
                 totalVulnerabilities: totalVulns,
                 totalDependencies: totalDeps,
+                omittedVulnerabilities: omittedVulnsCount,
                 repositories: repositories,
             },
             timeline: timeline,
@@ -522,8 +547,10 @@ const ViewRenderer = {
             }
             : { critical: 0, high: 0, medium: 0, low: 0 };
 
+        const omittedVulns = AppState.dataset?.organization?.omittedVulnerabilities || 0;
+
         container.innerHTML = `
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-6">
                 <div class="stat-card animate-slide-up" style="animation-delay: 0ms;">
                     <div class="stat-card__icon bg-red-100">
                         <i data-lucide="shield-alert" class="w-5 h-5 text-red-600"></i>
@@ -558,6 +585,15 @@ const ViewRenderer = {
                     <div>
                         <div class="stat-card__value">${stats.low}</div>
                         <div class="stat-card__label">Bajas</div>
+                    </div>
+                </div>
+                <div class="stat-card animate-slide-up" style="animation-delay: 320ms;" title="Vulnerabilidades en carpetas de testing, examples o docs que fueron excluidas del análisis">
+                    <div class="stat-card__icon bg-gray-100">
+                        <i data-lucide="filter-x" class="w-5 h-5 text-gray-600"></i>
+                    </div>
+                    <div>
+                        <div class="stat-card__value">${omittedVulns}</div>
+                        <div class="stat-card__label">Omitidas (Test/Docs)</div>
                     </div>
                 </div>
             </div>
