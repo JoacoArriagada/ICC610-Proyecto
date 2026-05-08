@@ -140,6 +140,8 @@ docker compose exec miner bash
 
 # Acceder al Analyzer (Jupyter Lab)
 Abrir en el navegador: http://localhost:8888
+token: icc610-seguro
+
 
 # Acceder al Visualizer (Dashboard Web)
 Abrir en el navegador: http://localhost:8080
