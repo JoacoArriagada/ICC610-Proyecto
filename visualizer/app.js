@@ -15,7 +15,6 @@ const AppState = {
     severityFilter: 'all',
     searchQuery: '',
     viewSeverityFilter: 'all',
-    vulnLimit: 50,
     sourceFilter: 'all',
     cvssSortOrder: 'none',
     chartsManager: null,
@@ -221,23 +220,16 @@ window.toggleVulnDetails = function(idx) {
 // Global function for toggling CVSS sort
 window.toggleCvssSort = function() {
     if (AppState.cvssSortOrder === 'none') {
-        AppState.cvssSortOrder = 'desc';  // Start with descending (highest first)
+        AppState.cvssSortOrder = 'desc';
     } else if (AppState.cvssSortOrder === 'desc') {
         AppState.cvssSortOrder = 'asc';
     } else {
         AppState.cvssSortOrder = 'none';
     }
     
-    // Re-render only the table, not the entire view
-    const tableContainer = document.querySelector('#severity-table-container');
-    if (tableContainer) {
-        tableContainer.innerHTML = ViewRenderer.buildVulnerabilityTable(AppState.filteredRepos, AppState.vulnLimit);
-        
-        // Re-initialize Lucide icons for the new content
-        if (typeof lucide !== 'undefined') {
-            lucide.createIcons();
-        }
-    }
+    // Reset to page 1 when sorting changes
+    AppState.pagination.severidad.page = 1;
+    refreshView();
 };
                         });
                     }
@@ -503,33 +495,13 @@ const ViewRenderer = {
         // Add event listeners for severity view filters
         if (viewName === 'severidad') {
             setTimeout(() => {
-                const limitSelector = document.getElementById('vuln-limit-selector');
-                if (limitSelector) {
-                    limitSelector.value = AppState.vulnLimit;
-                    limitSelector.addEventListener('change', (e) => {
-                        AppState.vulnLimit = parseInt(e.target.value);
-                        const tableContainer = document.querySelector('#severity-table-container');
-                        if (tableContainer) {
-                            tableContainer.innerHTML = this.buildVulnerabilityTable(AppState.filteredRepos, AppState.vulnLimit);
-                            if (typeof lucide !== 'undefined') {
-                                lucide.createIcons();
-                            }
-                        }
-                    });
-                }
-
                 const sourceSelector = document.getElementById('source-filter');
                 if (sourceSelector) {
                     sourceSelector.value = AppState.sourceFilter;
                     sourceSelector.addEventListener('change', (e) => {
                         AppState.sourceFilter = e.target.value;
-                        const tableContainer = document.querySelector('#severity-table-container');
-                        if (tableContainer) {
-                            tableContainer.innerHTML = this.buildVulnerabilityTable(AppState.filteredRepos, AppState.vulnLimit);
-                            if (typeof lucide !== 'undefined') {
-                                lucide.createIcons();
-                            }
-                        }
+                        AppState.pagination.severidad.page = 1;
+                        refreshView();
                     });
                 }
             }, 100);
@@ -681,23 +653,13 @@ const ViewRenderer = {
                                 <option value="CodeQL">CodeQL (SAST)</option>
                             </select>
                         </div>
-                        <div class="flex items-center gap-2">
-                            <label class="text-sm font-medium text-[#023E73]">Mostrar:</label>
-                            <select id="vuln-limit-selector" class="text-sm border border-[#E0E6EB] rounded-lg bg-[#F9FAFB] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#03658C]/30 cursor-pointer">
-                                <option value="10">10</option>
-                                <option value="25">25</option>
-                                <option value="50" selected>50</option>
-                                <option value="100">100</option>
-                                <option value="200">200</option>
-                                <option value="-1">Todas</option>
-                            </select>
-                            <span class="text-xs text-[#88AABF]">vulnerabilidades</span>
-                        </div>
                     </div>
                 </div>
                 <div class="card__body card__body--no-padding overflow-x-auto">
                     ${this.buildSeverityFilterBar(stats)}
-                    <div id="severity-table-container">${this.buildVulnerabilityTable(AppState.filteredRepos, AppState.vulnLimit)}</div>
+                    ${this.buildSeverityTableControls(ViewRenderer.getFilteredVulnTotal(AppState.filteredRepos))}
+                    <div id="severity-table-container">${this.buildVulnerabilityTable(AppState.filteredRepos)}</div>
+                    ${this.buildSeverityTableControls(ViewRenderer.getFilteredVulnTotal(AppState.filteredRepos))}
                 </div>
             </div>
         `;
@@ -1017,12 +979,12 @@ const ViewRenderer = {
         `;
     },
 
-    getSeverityTableTotal(repos) {
+    getFilteredVulnTotal(repos) {
         let total = 0;
         repos.forEach(r => {
             r.vulnerabilities.forEach(v => {
                 if (AppState.viewSeverityFilter !== 'all' && v.severity !== AppState.viewSeverityFilter) return;
-                if (AppState.severityTable.source !== 'all' && v.source !== AppState.severityTable.source) return;
+                if (AppState.sourceFilter !== 'all' && v.source !== AppState.sourceFilter) return;
                 total += 1;
             });
         });
@@ -1032,18 +994,7 @@ const ViewRenderer = {
     buildSeverityTableControls(totalItems) {
         return `
             <div class="flex items-center gap-3 p-3 flex-wrap border-b border-[#E8ECF0]">
-                <label class="text-xs font-semibold text-[#88AABF]">Ordenar por</label>
-                <select id="severity-sort" class="text-xs border border-[#E0E6EB] rounded-lg bg-white px-2 py-1">
-                    <option value="date_desc" ${AppState.severityTable.sortBy === 'date_desc' ? 'selected' : ''}>Fecha (desc)</option>
-                    <option value="cvss_desc" ${AppState.severityTable.sortBy === 'cvss_desc' ? 'selected' : ''}>CVSS (desc)</option>
-                    <option value="cvss_asc" ${AppState.severityTable.sortBy === 'cvss_asc' ? 'selected' : ''}>CVSS (asc)</option>
-                </select>
-                <label class="text-xs font-semibold text-[#88AABF]">Fuente</label>
-                <select id="severity-source" class="text-xs border border-[#E0E6EB] rounded-lg bg-white px-2 py-1">
-                    <option value="all" ${AppState.severityTable.source === 'all' ? 'selected' : ''}>Todas</option>
-                    <option value="Grype" ${AppState.severityTable.source === 'Grype' ? 'selected' : ''}>Grype</option>
-                    <option value="CodeQL" ${AppState.severityTable.source === 'CodeQL' ? 'selected' : ''}>CodeQL</option>
-                </select>
+                <span class="text-xs text-[#88AABF]">Click en la columna "CVSS / Línea" para ordenar</span>
                 ${this.buildPaginationControls('severidad', totalItems)}
             </div>
         `;
@@ -1078,7 +1029,7 @@ const ViewRenderer = {
         return list.slice(start, start + state.limit);
     },
 
-    buildVulnerabilityTable(repos, limit) {
+    buildVulnerabilityTable(repos) {
         let allVulns = [];
         repos.forEach(r => {
             r.vulnerabilities.forEach(v => {
@@ -1112,8 +1063,8 @@ const ViewRenderer = {
             });
         }
         
-        limit = limit || AppState.vulnLimit || 50;
-        const displayed = limit === -1 ? allVulns : allVulns.slice(0, limit);
+        const totalFiltered = allVulns.length;
+        const displayed = this.paginateList(allVulns, 'severidad');
 
         if (displayed.length === 0) {
             return `
@@ -1368,7 +1319,6 @@ function refreshView() {
     updateTopBarStats();
     bindSeverityFilterButtons();
     bindPaginationControls();
-    bindSeverityTableControls();
     bindSbomControls();
 }
 
@@ -1433,7 +1383,7 @@ function bindPaginationControls() {
         if (nextButton) {
             nextButton.addEventListener('click', () => {
                 const totalItems = viewKey === 'severidad'
-                    ? ViewRenderer.getSeverityTableTotal(AppState.filteredRepos)
+                    ? ViewRenderer.getFilteredVulnTotal(AppState.filteredRepos)
                     : viewKey === 'sbom'
                         ? document.querySelector('[data-pagination="sbom"]')?.getAttribute('data-total')
                         : viewKey === 'evolucion'
@@ -1447,25 +1397,6 @@ function bindPaginationControls() {
             });
         }
     });
-}
-
-function bindSeverityTableControls() {
-    const sortSelect = document.getElementById('severity-sort');
-    const sourceSelect = document.getElementById('severity-source');
-    if (sortSelect) {
-        sortSelect.addEventListener('change', e => {
-            AppState.severityTable.sortBy = e.target.value;
-            AppState.pagination.severidad.page = 1;
-            refreshView();
-        });
-    }
-    if (sourceSelect) {
-        sourceSelect.addEventListener('change', e => {
-            AppState.severityTable.source = e.target.value;
-            AppState.pagination.severidad.page = 1;
-            refreshView();
-        });
-    }
 }
 
 function bindSbomControls() {
@@ -1504,7 +1435,6 @@ async function initApp() {
         updateTopBarStats();
         bindSeverityFilterButtons();
         bindPaginationControls();
-        bindSeverityTableControls();
         bindSbomControls();
 
     } catch (error) {
