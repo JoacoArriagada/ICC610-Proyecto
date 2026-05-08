@@ -99,7 +99,14 @@ const DatasetLoader = {
         let totalDeps = 0;
         
         // Patrones de rutas a excluir del análisis
-        const excludePatterns = ['/test/', '/tests/', '/example/', '/examples/', '/docs/', '/mock/'];
+        const excludePatterns = [
+            '/test/', '/tests/',
+            '/example/', '/examples/',
+            '/docs/', '/mock/',
+            'tests/',
+            'examples/',
+            '/test_',
+        ];
         let omittedVulnsCount = 0;
 
         reposMeta.forEach(meta => {
