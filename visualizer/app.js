@@ -1452,6 +1452,9 @@ async function initApp() {
                 <p class="empty-state__text">${error.message}. Asegúrate de servir los archivos desde un servidor HTTP local.</p>
             </div>
         `;
+        document.getElementById('org-name-sidebar').textContent = 'Error de conexión';
+        document.getElementById('repo-count-display').textContent = '0 repositorios · 0 vulns';
+        document.getElementById('dataset-info').textContent = 'Error al cargar dataset';
     }
 }
 

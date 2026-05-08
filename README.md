@@ -27,6 +27,43 @@ Estructura del proyecto
 - `.devcontainer/` — Configuración Docker para reproducir el entorno completo (Python, Node.js, CodeQL, Syft, Grype).
 - `data/` — Salidas generadas por el Miner (repos clonados, SBOMs, resultados de escaneos).
 
+```
+├── miner/
+│   ├── __init__.py           # Package init
+│   ├── models.py             # Repository dataclass
+│   ├── run.py                # CLI entrypoint
+│   └── scanners/
+│       ├── __init__.py       # Scanner classes (CodeQL, Syft, Grype)
+│       ├── fetch_repos.py    # GitHub API client
+│       ├── generate_sboms.py # git clone + SBOM + Grype + CI/CD scan
+│       ├── generate_codeql.py# CodeQL static analysis
+│       ├── queries/          # QL queries personalizadas
+│       └── run_codeql.sh     # Shell helper para CodeQL
+├── data/
+│   └── results/
+│       ├── repos_activos.json
+│       ├── sast/             # Reportes CodeQL SARIF
+│       ├── sboms/            # SBOMs generados por Syft
+│       ├── vulns/            # Escaneos de Grype
+│       └── cicd/             # Hallazgos CI/CD
+├── analyzer/
+│   └── analisis_vulnerabilidades.ipynb  # Jupyter notebook
+├── visualizer/
+│   ├── index.html            # Dashboard HTML
+│   ├── app.js                # Lógica del dashboard
+│   ├── charts.js             # Gráficos (Chart.js + D3.js)
+│   └── styles.css            # Estilos
+├── tests/
+│   ├── test_models.py        # Tests de modelos
+│   └── test_scanner_interface.py  # Tests de scanners
+├── .devcontainer/
+│   ├── Dockerfile            # Imagen con Python + Node + CodeQL + Syft + Grype
+│   └── devcontainer.json     # Config VSCode Dev Container
+├── serve.py                  # Servidor HTTP para visualizer
+├── docker-compose.yml        # Orquestación (miner, analyzer, visualizer)
+├── requirements.txt
+└── .env.example
+```
 Requisitos y reproducibilidad
 ----------------------------
 
