@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miner-Visualizer | Ciberseguridad Dashboard</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-primary': '#F2F2F2',
+                        'dark-primary': '#023E73',
+                        'dark-secondary': '#024873',
+                        'accent': '#03658C',
+                        'muted': '#88AABF',
+                        'card-bg': '#FFFFFF',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'Roboto', 'system-ui', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px rgba(0, 0, 0, 0.05)',
+                        'card-hover': '0 8px 24px rgba(0, 0, 0, 0.10)',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'pulse-soft': 'pulseSoft 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        pulseSoft: {
+                            '0%, 100%': { opacity: '1' },
+                            '50%': { opacity: '0.7' },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="bg-[#F2F2F2] font-sans antialiased min-h-screen flex overflow-hidden">
+
+    <aside id="sidebar" class="w-64 bg-[#023E73] text-white flex flex-col flex-shrink-0 z-30 transition-all duration-300 min-h-screen">
+        <div class="p-6 border-b border-white/10">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-[#03658C] rounded-lg flex items-center justify-center">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-sm font-bold tracking-wide">MINER<span class="text-[#88AABF]">-VISUALIZER</span></h1>
+                </div>
+            </div>
+            <p id="org-name-sidebar" class="text-xs text-[#88AABF] font-medium truncate"></p>
+        </div>
+
+        <nav class="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
+            <p class="text-xs font-semibold text-[#88AABF] uppercase tracking-wider px-3 mb-2">Vistas</p>
+            <button data-view="resumen" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 bg-[#024873] text-white active">
+                <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+                Resumen Ejecutivo
+            </button>
+            <button data-view="severidad" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-[#88AABF] hover:bg-white/5 hover:text-white">
+                <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+                Severidad
+            </button>
+            <button data-view="repositorios" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-[#88AABF] hover:bg-white/5 hover:text-white">
+                <i data-lucide="git-branch" class="w-4 h-4"></i>
+                Repositorios
+            </button>
+            <button data-view="evolucion" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-[#88AABF] hover:bg-white/5 hover:text-white">
+                <i data-lucide="timeline" class="w-4 h-4"></i>
+                Evolución
+            </button>
+            <button data-view="sbom" class="nav-btn w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 text-[#88AABF] hover:bg-white/5 hover:text-white">
+                <i data-lucide="package" class="w-4 h-4"></i>
+                Vista SBOM
+            </button>
+        </nav>
+
+        <div class="p-4 border-t border-white/10">
+            <div class="flex items-center gap-2 text-xs text-[#88AABF]">
+                <div id="status-indicator" class="w-2 h-2 rounded-full bg-green-400 animate-pulse-soft"></div>
+                <span id="status-text">Sistema Operativo</span>
+            </div>
+        </div>
+    </aside>
+
+    <button id="sidebar-toggle" class="lg:hidden fixed top-4 left-4 z-50 bg-[#023E73] text-white p-2 rounded-lg shadow-lg hidden">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+    </button>
+
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto overflow-x-hidden">
+
+        <header class="bg-white border-b border-[#E8ECF0] px-6 py-3 flex flex-wrap items-center gap-3 sticky top-0 z-20 shadow-sm">
+            <div class="relative flex-1 min-w-[200px] max-w-md">
+                <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#88AABF]"></i>
+                <input
+                    type="text"
+                    id="global-search"
+                    placeholder="Buscar repositorio..."
+                    class="w-full pl-10 pr-4 py-2 text-sm border border-[#E0E6EB] rounded-lg bg-[#F9FAFB] focus:outline-none focus:ring-2 focus:ring-[#03658C]/30 focus:border-[#03658C] transition-all duration-200"
+                />
+            </div>
+
+            <div class="flex items-center gap-2">
+                <i data-lucide="filter" class="w-4 h-4 text-[#88AABF]"></i>
+                <select id="severity-filter" class="text-sm border border-[#E0E6EB] rounded-lg bg-[#F9FAFB] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#03658C]/30 focus:border-[#03658C] transition-all duration-200 cursor-pointer">
+                    <option value="all">Todas las severidades</option>
+                    <option value="critical">Crítica+</option>
+                    <option value="high">Alta+</option>
+                    <option value="medium">Media+</option>
+                    <option value="low">Baja+</option>
+                </select>
+            </div>
+
+            <div id="repo-status-badge" class="flex items-center gap-2 bg-[#F0F7FB] px-3 py-1.5 rounded-full text-xs font-semibold text-[#023E73]">
+                <span class="w-2 h-2 rounded-full bg-green-500"></span>
+                <span id="repo-count-display"></span>
+            </div>
+        </header>
+
+        <section id="main-content" class="flex-1 p-6">
+            <div id="view-container" class="animate-fade-in">
+                <div id="loading-placeholder" class="flex items-center justify-center h-64">
+                    <div class="flex flex-col items-center gap-4">
+                        <div class="w-12 h-12 border-4 border-[#03658C] border-t-transparent rounded-full animate-spin"></div>
+                        <p class="text-[#88AABF] text-sm font-medium">Cargando datos del dataset...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="bg-white border-t border-[#E8ECF0] px-6 py-3 flex flex-wrap items-center justify-between text-xs text-[#88AABF]">
+            <span>Miner-Visualizer v2.1.0 · Dashboard de Ciberseguridad</span>
+            <span id="dataset-info" class="text-[#03658C] font-medium"></span>
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+    <script src="/app.js"></script>
+    <script src="/charts.js"></script>
+</body>
+</html>

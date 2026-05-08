@@ -1,0 +1,11 @@
+{
+  "repositorio": "bee-hive",
+  "hallazgos": [
+    {
+      "workflow": "consolidation-testing.yml",
+      "issues": [
+        "Falta npm ci"
+      ]
+    }
+  ]
+}

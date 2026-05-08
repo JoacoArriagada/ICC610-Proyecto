@@ -1,0 +1,15 @@
+# Dependencias principales para el proyecto
+requests
+python-dotenv
+GitPython
+jupyterlab
+pandas
+seaborn
+matplotlib
+beautifulsoup4
+PyYAML
+ipython
+ipykernel
+notebook
+jupyter
+pytest
